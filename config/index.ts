@@ -1,3 +1,5 @@
+import path from "path"
+
 const config = {
   projectName: 'taro',
   date: '2023-10-19',
@@ -12,6 +14,9 @@ const config = {
   outputRoot: 'build/' + process.env.TARO_ENV + '-' + process.env.NODE_ENV,
   plugins: ['@tarojs/plugin-html'],
   defineConstants: {
+  },
+  alias: {
+    "@/library": path.resolve(__dirname, '..', 'src/library'),
   },
   copy: {
     patterns: [
