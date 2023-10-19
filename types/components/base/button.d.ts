@@ -1,0 +1,1 @@
+export declare const Button: (props: import("@yimoko/store").WithValueChildrenProps<Omit<Partial<import("@nutui/nutui-react-taro").ButtonProps>, "ref"> & import("react").RefAttributes<HTMLButtonElement>>) => JSX.Element;
