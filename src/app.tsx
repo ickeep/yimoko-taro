@@ -5,7 +5,15 @@ import { components, configStore, defaultConfig } from '@/library';
 
 const SchemaField = createSchemaField({ components });
 
-configStore.setConfig({ ...defaultConfig, indexPage: 'pages/index/index' });
+configStore.setConfig({
+  ...defaultConfig, indexPage: '/pages/index/index',
+  tabURL: [
+    '/pages/index/index',
+    '/pages/components/index',
+    '/pages/adapter/index',
+    '/pages/about/index',
+  ],
+});
 
 function App(props) {
   return (

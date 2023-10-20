@@ -30,8 +30,8 @@ export const ErrorContent = (props: ErrorProps) => {
     <PageLoading loading={loading} >
       <Empty status={status} description={response?.msg} image={icon}>
         <Space style={{ marginTop: '10px' }}>
-          {onAgain && <Button type='primary' onClick={onAgain}>重试</Button>}
           {isReturnIndex && <Button onClick={returnIndex}>返回首页</Button>}
+          {onAgain && <Button type='primary' onClick={onAgain}>再试一次</Button>}
         </Space>
         {children}
       </Empty>

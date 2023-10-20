@@ -1,3 +1,5 @@
+import { StorePageContent } from '@yimoko/store';
+
 import { Button } from './base/button';
 import { Cell } from './base/cell';
 import { ErrorContent } from './feedback/error-content';
@@ -7,6 +9,9 @@ import { Skeleton } from './feedback/skeleton';
 import { Divider } from './layout/divider';
 
 export const components = {
+  // store 相关组件
+  StorePageContent,
+
   // 基础
   Button,
   Cell,

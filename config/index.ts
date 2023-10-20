@@ -19,7 +19,7 @@ const config = {
     "@/library": path.resolve(__dirname, '..', 'src/library'),
   },
   cache: {
-    enable: true,
+    // enable: true,
   },
   copy: {
     patterns: [
