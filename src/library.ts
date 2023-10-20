@@ -3,6 +3,7 @@ export * from './adapter/http';
 export * from './adapter/toast';
 
 export * from './components/base/button';
+export * from './components/base/cell';
 
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';

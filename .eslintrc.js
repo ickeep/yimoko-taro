@@ -13,6 +13,7 @@ module.exports = {
     'react-hooks',
   ],
   rules: {
+    "@typescript-eslint/no-misused-promises": "off",
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则

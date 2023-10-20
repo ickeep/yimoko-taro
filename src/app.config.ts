@@ -1,6 +1,14 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
+    'pages/index/skeleton/index',
+    'pages/index/error/index',
+    'pages/index/loading/index',
+    'pages/index/add/index',
+    'pages/index/list/index',
+    'pages/index/detail/index',
+    'pages/index/edit/index',
+
     'pages/components/index',
     'pages/adapter/index',
     'pages/about/index',
