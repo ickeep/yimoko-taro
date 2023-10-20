@@ -18,6 +18,9 @@ const config = {
   alias: {
     "@/library": path.resolve(__dirname, '..', 'src/library'),
   },
+  cache: {
+    enable: true,
+  },
   copy: {
     patterns: [
     ],
