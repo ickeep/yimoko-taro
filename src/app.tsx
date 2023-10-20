@@ -1,9 +1,11 @@
 import { createSchemaField } from '@formily/react';
 import { ConfigStoreProvider, SchemaComponentsProvider, SchemaFieldProvider } from '@yimoko/store';
 
-import { components, configStore } from '@/library';
+import { components, configStore, defaultConfig } from '@/library';
 
 const SchemaField = createSchemaField({ components });
+
+configStore.setConfig({ ...defaultConfig, indexPage: 'pages/index/index' });
 
 function App(props) {
   return (
