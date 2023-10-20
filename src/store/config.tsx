@@ -40,11 +40,7 @@ export const configStore: ConfigStore<typeof defaultConfig> = new ConfigStore(de
   useRouter,
   components: {
     Loading: PageLoading,
-    Skeleton: (props: any) => {
-      console.log('props', props);
-
-      return <Skeleton rows={6} {...props} />;
-    },
+    Skeleton: (props: any) => <Skeleton rows={6} {...props} />,
     ErrorContent,
   },
 });
