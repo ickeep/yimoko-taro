@@ -28,7 +28,7 @@ const Index = observer(() => {
           }}
         >设置 loading </Button>
         <Button onClick={() => store.setResponse({ code: 0, msg: 'ok', data: '' })}>成功内容</Button>
-        <Button onClick={() => store.setResponse({ code: 500, msg: '用品出错了', data: '' })}>失败内容</Button>
+        <Button onClick={() => store.setResponse({ code: 500, msg: '服务器出错了', data: '' })}>失败内容</Button>
       </Space>
       <StorePage
         store={store}
@@ -62,7 +62,7 @@ const Index = observer(() => {
           }}
         >设置 loading </Button>
         <Button onClick={() => errStore.setResponse({ code: 0, msg: 'ok', data: '' })}>成功内容</Button>
-        <Button onClick={() => errStore.setResponse({ code: 500, msg: '用品出错了', data: '' })}>失败内容</Button>
+        <Button onClick={() => errStore.setResponse({ code: 500, msg: '服务器出错了', data: '' })}>失败内容</Button>
       </Space>
 
       <StorePage
