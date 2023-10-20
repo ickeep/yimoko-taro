@@ -1,6 +1,11 @@
-import { ConfigStore } from '@yimoko/store';
+import { ConfigStore, INotifier, useConfig as useConfigOld } from '@yimoko/store';
 
 import { httpRequest } from '../adapter/http';
+import { showToast } from '../adapter/toast';
+import { ErrorContent } from '../components/feedback/error-content';
+import { PageLoading } from '../components/feedback/loading';
+import { Skeleton } from '../components/feedback/skeleton';
+import { useRouter } from '../hooks/use-router';
 
 const tabURL: string[] = [];
 const themeVars: Record<any, any> = {};
@@ -21,13 +26,28 @@ export const defaultConfig = {
 
 export type IConfig = typeof defaultConfig;
 
+const notifier: INotifier = (message, type, options) => {
+  const curOptions: any = { ...options, title: message };
+  if (type) {
+    curOptions.icon = type;
+  }
+  showToast(curOptions);
+};
 
 export const configStore: ConfigStore<typeof defaultConfig> = new ConfigStore(defaultConfig, {
-  notifier: () => '',
+  notifier,
   apiExecutor: httpRequest,
-  useRouter: () => { }
-  components: {},
+  useRouter,
+  components: {
+    Loading: PageLoading,
+    Skeleton: (props: any) => <Skeleton rows={6} {...props} />,
+    ErrorContent,
+  },
 });
+
 export const { logger } = configStore;
 
 export const getIsTabURL = (path: string) => configStore.config.tabURL.includes(path);
+
+export const useConfig = () => useConfigOld<IConfig>();
+

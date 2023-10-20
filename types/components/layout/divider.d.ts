@@ -1,1 +1,0 @@
-export declare const Divider: (props: import("@yimoko/store").WithValueChildrenProps<Partial<import("@nutui/nutui-react-taro").DividerProps> & import("react").HTMLAttributes<HTMLDivElement>>) => JSX.Element;
