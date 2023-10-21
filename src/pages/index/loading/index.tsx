@@ -1,9 +1,8 @@
 import { observer } from '@formily/react';
-import { Space } from '@nutui/nutui-react-taro';
 import { StorePage, useStore } from '@yimoko/store';
 import { useEffect } from 'react';
 
-import { Button, Divider } from '@/library';
+import { Button, Divider, Space } from '@/library';
 
 const Index = observer(() => {
   const api = () => new Promise(resolve => setTimeout(() => resolve({ code: 0, msg: 'ok', data: { name: '张三' } }), 1000));

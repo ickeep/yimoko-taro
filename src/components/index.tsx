@@ -7,6 +7,7 @@ import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
 
 import { Divider } from './layout/divider';
+import { Space } from './layout/space';
 
 export const components = {
   // store 相关组件
@@ -23,4 +24,5 @@ export const components = {
   Skeleton,
   // 布局
   Divider,
+  Space,
 };
