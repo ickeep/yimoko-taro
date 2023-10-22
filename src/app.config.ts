@@ -10,6 +10,18 @@ export default defineAppConfig({
     'pages/index/edit/index',
 
     'pages/components/index',
+    'pages/components/base/button/index',
+    // 'pages/components/base/cell/index',
+    // 'pages/components/base/image/index',
+
+    // 'pages/components/feedback/error-content/index',
+    // 'pages/components/feedback/loading/index',
+    // 'pages/components/feedback/skeleton/index',
+
+    'pages/components/layout/divider/index',
+    // 'pages/components/layout/space/index',
+    'pages/components/layout/grid/index',
+
     'pages/adapter/index',
     'pages/about/index',
   ],

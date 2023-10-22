@@ -4,6 +4,7 @@ export * from './adapter/toast';
 
 export * from './components/base/button';
 export * from './components/base/cell';
+export * from './components/base/image';
 
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';
@@ -11,6 +12,7 @@ export * from './components/feedback/skeleton';
 
 export * from './components/layout/divider';
 export * from './components/layout/space';
+export * from './components/layout/grid';
 
 export * from './components/index';
 

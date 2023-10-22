@@ -1,19 +1,46 @@
-import { View } from '@tarojs/components';
+import { Cell, router, Divider } from '@/library';
 
-import { Button } from '@/library';
+const data = [
+  {
+    title: '基础组件',
+    children: [
+      {
+        title: '按钮 - Button',
+        path: '/pages/components/base/button/index',
+      },
+    ],
+  },
+  {
+    title: '布局组件',
+    children: [
+      {
+        title: '分割线 - Divider',
+        path: '/pages/components/layout/divider/index',
+      },
+      {
+        title: '宫格 - Grid',
+        path: '/pages/components/layout/grid/index',
+      },
+    ],
+  },
+];
 
 function Index() {
   return (
-    <View className='nutui-react-demo'>
-      <View className='index'>
-        欢迎使用 NutUI React 开发 Taro 多端项目。
-      </View>
-      <View className='index'>
-        <Button type='primary' className='btn'>
-          NutUI React Button
-        </Button>
-      </View>
-    </View>
+    <div>
+      <Divider>适配及增强 NutUI-React-Taro 组件</Divider>
+      {data.map(item => (
+        <Cell.Group key={item.title} title={item.title}>
+          {item.children.map(child => (
+            <Cell
+              key={child.title}
+              title={child.title}
+              onClick={() => router.to(child.path)}
+            />
+          ))}
+        </Cell.Group>
+      ))}
+    </div>
   );
 }
 

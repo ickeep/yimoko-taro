@@ -22,10 +22,6 @@ const data = [
     title: '基础页面',
     children: [
       {
-        title: '列表',
-        path: '/pages/index/list/index',
-      },
-      {
         title: '添加',
         path: '/pages/index/add/index',
       },
@@ -36,6 +32,10 @@ const data = [
       {
         title: '编辑',
         path: '/pages/index/edit/index',
+      },
+      {
+        title: '列表',
+        path: '/pages/index/list/index',
       },
     ],
   },
