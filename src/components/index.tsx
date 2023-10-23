@@ -10,7 +10,9 @@ import { Skeleton } from './feedback/skeleton';
 
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
+import { Col, Layout, Row } from './layout/layout';
 import { Space } from './layout/space';
+import { Sticky } from './layout/sticky';
 
 export const components = {
   // store 相关组件
@@ -30,4 +32,8 @@ export const components = {
   Divider,
   Space,
   Grid,
+  Layout,
+  Row,
+  Col,
+  Sticky,
 };

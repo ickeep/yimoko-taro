@@ -11,8 +11,10 @@ export * from './components/feedback/loading';
 export * from './components/feedback/skeleton';
 
 export * from './components/layout/divider';
-export * from './components/layout/space';
 export * from './components/layout/grid';
+export * from './components/layout/layout';
+export * from './components/layout/space';
+export * from './components/layout/sticky';
 
 export * from './components/index';
 
