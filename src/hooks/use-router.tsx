@@ -1,9 +1,9 @@
 import Taro from '@tarojs/taro';
 
-import { To, NavigateFunction, IUseRouter } from '@yimoko/store';
+import { To, IUseRouter } from '@yimoko/store';
 
 import { adapter } from '../adapter/adapter';
-import { getIsTabURL } from '../store/config';
+import { getIsTabURL, useConfig } from '../store/config';
 
 export const router = {
   to: (url: string, events?: TaroGeneral.IAnyObject) => adapter<TaroGeneral.CallbackResult, Error>(
@@ -20,6 +20,7 @@ export const router = {
 // TODO 待完善
 export const useRouter: IUseRouter = () => {
   const taroRouter = Taro.useRouter();
+  const navigate = useNavigate();
   const location = {
     pathname: taroRouter.path,
     search: '',
@@ -31,17 +32,25 @@ export const useRouter: IUseRouter = () => {
   return { navigate, location, params: taroRouter.params };
 };
 
-// TODO 待完善
-export const navigate: NavigateFunction = (to: To | number, option: { replace?: boolean; state?: any;[key: string]: any; } = {}) => {
-  let url = '';
-  if (typeof to === 'string') {
-    url = to;
-  } else if (typeof to === 'object') {
-    url = `${to?.pathname ?? ''}${to?.search ?? ''}${to.hash}`;
-  }
-  if (option?.replace) {
-    route.redirect(url);
-  } else {
-    route.to(url, option?.events);
-  }
+
+export const useNavigate = () => {
+  const config = useConfig();
+  const { webViewPage = 'pages/web-view/index' } = config;
+  return (to: To | number, option: { replace?: boolean; state?: any;[key: string]: any; } = {}) => {
+    let url = '';
+    if (typeof to === 'string') {
+      url = to;
+    } else if (typeof to === 'object') {
+      url = `${to?.pathname}${to?.search}${to.hash}`;
+    }
+    // 如果跳转的 URL 是 http:// https:// 页面，则使用使用 web-view 页面渲染
+    if (url.startsWith('http')) {
+      url = `${webViewPage}?src=${encodeURIComponent(url)}`;
+    }
+    if (option?.replace) {
+      router.redirect(url);
+    } else {
+      router.to(url, option?.events);
+    }
+  };
 };

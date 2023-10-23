@@ -17,6 +17,7 @@ export const defaultConfig = {
   apiHost: '',
   uploadAPI: '',
   indexPage: '',
+  webViewPage: '',
   pageCachePrefix: '',
   tabURL,
   themeVars,
