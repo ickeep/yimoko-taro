@@ -11,6 +11,8 @@ export const Grid = (props: GridProps & Omit<IOptionsAPIProps, 'valueType'> & { 
   const schema = useFieldSchema() ?? {};
   const { items, properties, name } = schema;
 
+  const curValue = value ?? data;
+
   const curChildren = useMemo(() => {
     if (children !== undefined) {
       return children;
@@ -22,10 +24,10 @@ export const Grid = (props: GridProps & Omit<IOptionsAPIProps, 'valueType'> & { 
   }, [children, isRenderProperties, properties, name]);
 
   const itemsChildren = useMemo(() => {
-    if (judgeIsEmpty(items) || judgeIsEmpty(data)) {
+    if (judgeIsEmpty(items) || judgeIsEmpty(curValue)) {
       return null;
     }
-    return (value ?? data).map((record, dataIndex) => {
+    return (curValue).map((record, dataIndex) => {
       const schemaItem = Array.isArray(items) ? (items[dataIndex] ?? items[0]) : items;
       const itemProps = getItemPropsBySchema(schemaItem, 'Grid.Item', dataIndex);
 
@@ -35,10 +37,10 @@ export const Grid = (props: GridProps & Omit<IOptionsAPIProps, 'valueType'> & { 
         </RecordScope>
       );
     });
-  }, [data, items, value]);
+  }, [curValue, items]);
 
   return (
-    <RecordsScope getRecords={() => data}>
+    <RecordsScope getRecords={() => curValue}>
       <NGrid  {...rest} >
         {itemsChildren}
         {curChildren}

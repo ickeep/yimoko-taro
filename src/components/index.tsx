@@ -13,6 +13,8 @@ import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
 import { Space } from './layout/space';
 import { Sticky } from './layout/sticky';
+import { BackTop } from './navigation/back_top';
+import { Elevator } from './navigation/elevator';
 
 export const components = {
   // store 相关组件
@@ -36,4 +38,8 @@ export const components = {
   Row,
   Col,
   Sticky,
+
+  // 导航
+  BackTop,
+  Elevator,
 };

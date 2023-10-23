@@ -16,6 +16,9 @@ export * from './components/layout/layout';
 export * from './components/layout/space';
 export * from './components/layout/sticky';
 
+export * from './components/navigation/back_top';
+export * from './components/navigation/elevator';
+
 export * from './components/index';
 
 export * from './hooks/use-router';
