@@ -18,6 +18,7 @@ export * from './components/layout/sticky';
 
 export * from './components/navigation/back_top';
 export * from './components/navigation/elevator';
+export * from './components/navigation/link';
 
 export * from './components/index';
 

@@ -35,8 +35,11 @@ export const useRouter: IUseRouter = () => {
 
 export const useNavigate = () => {
   const config = useConfig();
-  const { webViewPage = 'pages/web-view/index' } = config;
+  const { webViewPage = '/pages/web-view/index' } = config;
   return (to: To | number, option: { replace?: boolean; state?: any;[key: string]: any; } = {}) => {
+    if (typeof to === 'number') {
+      return router.back(to);
+    }
     let url = '';
     if (typeof to === 'string') {
       url = to;
@@ -48,9 +51,8 @@ export const useNavigate = () => {
       url = `${webViewPage}?src=${encodeURIComponent(url)}`;
     }
     if (option?.replace) {
-      router.redirect(url);
-    } else {
-      router.to(url, option?.events);
+      return router.redirect(url);
     }
+    return router.to(url, option?.events);
   };
 };

@@ -15,6 +15,7 @@ import { Space } from './layout/space';
 import { Sticky } from './layout/sticky';
 import { BackTop } from './navigation/back_top';
 import { Elevator } from './navigation/elevator';
+import { Link } from './navigation/link';
 
 export const components = {
   // store 相关组件
@@ -42,4 +43,5 @@ export const components = {
   // 导航
   BackTop,
   Elevator,
+  Link,
 };

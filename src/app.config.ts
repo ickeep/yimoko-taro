@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    'pages/web-view/index',
     'pages/index/index',
     'pages/index/skeleton/index',
     'pages/index/error/index',
