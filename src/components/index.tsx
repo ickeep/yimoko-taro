@@ -17,6 +17,7 @@ import { BackTop } from './navigation/back_top';
 import { Elevator } from './navigation/elevator';
 import { FixedNav } from './navigation/fixed_nav';
 import { Link } from './navigation/link';
+import { NavBar } from './navigation/nav_bar';
 
 export const components = {
   // store 相关组件
@@ -46,4 +47,5 @@ export const components = {
   Elevator,
   FixedNav,
   Link,
+  NavBar,
 };

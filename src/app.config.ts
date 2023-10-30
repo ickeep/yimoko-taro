@@ -22,6 +22,8 @@ export default defineAppConfig({
     // 'pages/components/layout/space/index',
     'pages/components/layout/grid/index',
 
+    'pages/components/navigation/nav_bar/index',
+
     'pages/adapter/index',
     'pages/about/index',
 

@@ -23,6 +23,16 @@ const data = [
       },
     ],
   },
+  {
+    title: '导航组件',
+    children: [
+      {
+        title: 'NavBar - 头部导航',
+        path: '/pages/components/navigation/nav_bar/index',
+      },
+
+    ],
+  },
 ];
 
 function Index() {
