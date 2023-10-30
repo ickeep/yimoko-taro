@@ -1,6 +1,5 @@
 export default defineAppConfig({
   pages: [
-    'pages/web-view/index',
     'pages/index/index',
     'pages/index/skeleton/index',
     'pages/index/error/index',
@@ -25,6 +24,8 @@ export default defineAppConfig({
 
     'pages/adapter/index',
     'pages/about/index',
+
+    'pages/web-view/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',

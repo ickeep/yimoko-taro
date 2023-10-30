@@ -1,12 +1,14 @@
-import { createSchemaField } from '@formily/react';
+import { createSchemaField, Schema } from '@formily/react';
 import { ConfigStoreProvider, SchemaComponentsProvider, SchemaFieldProvider } from '@yimoko/store';
 
-import { components, configStore, defaultConfig } from '@/library';
+import { compiler, components, configStore, defaultConfig } from '@/library';
 
-const SchemaField = createSchemaField({ components });
+Schema.registerCompiler(compiler);
+const SchemaField = createSchemaField({ components, scope: { configStore } });
 
 configStore.setConfig({
-  ...defaultConfig, indexPage: '/pages/index/index',
+  ...defaultConfig,
+  indexPage: '/pages/index/index',
   tabURL: [
     '/pages/index/index',
     '/pages/components/index',

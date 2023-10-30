@@ -25,3 +25,5 @@ export * from './components/index';
 export * from './hooks/use-router';
 
 export * from './store/config';
+
+export * from './tools/compiler';
