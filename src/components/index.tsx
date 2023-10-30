@@ -15,6 +15,7 @@ import { Space } from './layout/space';
 import { Sticky } from './layout/sticky';
 import { BackTop } from './navigation/back_top';
 import { Elevator } from './navigation/elevator';
+import { FixedNav } from './navigation/fixed_nav';
 import { Link } from './navigation/link';
 
 export const components = {
@@ -43,5 +44,6 @@ export const components = {
   // 导航
   BackTop,
   Elevator,
+  FixedNav,
   Link,
 };
