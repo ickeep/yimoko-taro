@@ -30,7 +30,10 @@ const data = [
         title: 'NavBar - 头部导航',
         path: '/pages/components/navigation/nav_bar/index',
       },
-
+      {
+        title: 'SideNavBar - 侧边栏导航',
+        path: '/pages/components/navigation/side_nav_bar/index',
+      },
     ],
   },
 ];

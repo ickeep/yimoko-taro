@@ -4,6 +4,8 @@ import { Button } from './base/button';
 import { Cell } from './base/cell';
 import { Image } from './base/image';
 
+import { Overlay } from './base/overlay';
+import { Trigger } from './base/trigger';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -18,6 +20,7 @@ import { Elevator } from './navigation/elevator';
 import { FixedNav } from './navigation/fixed_nav';
 import { Link } from './navigation/link';
 import { NavBar } from './navigation/nav_bar';
+import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 
 export const components = {
   // store 相关组件
@@ -27,6 +30,8 @@ export const components = {
   Button,
   Cell,
   Image,
+  Overlay,
+  Trigger,
 
   // 操作反馈
   ErrorContent,
@@ -48,4 +53,7 @@ export const components = {
   FixedNav,
   Link,
   NavBar,
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
 };
