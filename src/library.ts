@@ -25,6 +25,7 @@ export * from './components/navigation/link';
 export * from './components/navigation/nav_bar';
 export * from './components/navigation/side_nav_bar';
 export * from './components/navigation/tabbar';
+export * from './components/navigation/tabs';
 
 export * from './components/index';
 

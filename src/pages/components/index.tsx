@@ -42,6 +42,10 @@ const data = [
         title: '标签栏 - TabBar',
         path: '/pages/components/navigation/tabbar/index',
       },
+      {
+        title: '选项卡切换 - Tabs',
+        path: '/pages/components/navigation/tabs/index',
+      },
     ],
   },
 ];

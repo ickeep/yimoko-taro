@@ -26,6 +26,7 @@ export default defineAppConfig({
     'pages/components/navigation/nav_bar/index',
     'pages/components/navigation/side_nav_bar/index',
     'pages/components/navigation/tabbar/index',
+    'pages/components/navigation/tabs/index',
 
     'pages/adapter/index',
     'pages/about/index',
