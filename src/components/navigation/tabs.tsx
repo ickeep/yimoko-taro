@@ -1,6 +1,7 @@
 import { RecordScope, RecursionField, observer, useFieldSchema } from '@formily/react';
 import { TabsProps, Tabs as NTabs } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
+import { pick } from 'lodash-es';
 import { useMemo } from 'react';
 
 const TabPane: typeof NTabs.TabPane = observer((props) => {
@@ -31,7 +32,7 @@ export const Tabs = (props: TabsProps & Omit<IOptionsAPIProps, 'valueType'>) => 
     return data.map((record, dataIndex) => {
       const schemaItem = Array.isArray(items) ? (items[dataIndex] ?? items[0]) : items;
       return (
-        <TabPane key={dataIndex} {...record} >
+        <TabPane key={dataIndex} {...(pick(record, ['title', 'value', 'disabled']))} >
           <RecordScope getRecord={() => record} getIndex={() => dataIndex} >
             <RecursionField schema={schemaItem} name={dataIndex} />
           </RecordScope>
