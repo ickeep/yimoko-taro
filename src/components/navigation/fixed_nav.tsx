@@ -5,7 +5,7 @@ import { useNavigate } from '../../hooks/use-router';
 
 export const FixedNav = (props: FixedNavProps & Omit<IOptionsAPIProps, 'valueType'> & { value?: boolean }) => {
   const { options, visible, api, keys, splitter, value, list, onSelect, ...rest } = props;
-  const [data] = useAPIOptions(list ?? options, api, { ...keys }, splitter);
+  const [data] = useAPIOptions(list ?? options, api, keys, splitter);
   const navigate = useNavigate();
 
   return (

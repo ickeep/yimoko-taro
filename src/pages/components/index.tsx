@@ -38,6 +38,10 @@ const data = [
         title: '侧边栏导航 - SideNavBar',
         path: '/pages/components/navigation/side_nav_bar/index',
       },
+      {
+        title: '标签栏 - TabBar',
+        path: '/pages/components/navigation/tabbar/index',
+      },
     ],
   },
 ];
