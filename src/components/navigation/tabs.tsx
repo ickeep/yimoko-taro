@@ -1,31 +1,51 @@
-import { observer } from '@formily/react';
-import { TabsProps, Tabs as NTabs, TabPaneProps } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
+import { RecordScope, RecursionField, observer, useFieldSchema } from '@formily/react';
+import { TabsProps, Tabs as NTabs } from '@nutui/nutui-react-taro';
+import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
+import { useMemo } from 'react';
+
+const TabPane: typeof NTabs.TabPane = observer((props) => {
+  const { children, ...rest } = props;
+  const curChildren = useChildrenNullishCoalescing(children);
+
+  return (
+    <NTabs.TabPane  {...rest}>
+      {curChildren}
+    </NTabs.TabPane>
+  );
+});
 
 export const Tabs = (props: TabsProps & Omit<IOptionsAPIProps, 'valueType'>) => {
   const { options, api, keys, splitter, children, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter);
   const curChildren = useChildrenNullishCoalescing(children);
+  const { items } = useFieldSchema();
+  const itemsChildren = useMemo(() => {
+    if (judgeIsEmpty(data)) {
+      return null;
+    }
+
+    if (judgeIsEmpty(items)) {
+      return data.map((record, dataIndex) => <TabPane key={dataIndex} {...record} />);
+    }
+
+    return data.map((record, dataIndex) => {
+      const schemaItem = Array.isArray(items) ? (items[dataIndex] ?? items[0]) : items;
+      return (
+        <TabPane key={dataIndex} {...record} >
+          <RecordScope getRecord={() => record} getIndex={() => dataIndex} >
+            <RecursionField schema={schemaItem} name={dataIndex} />
+          </RecordScope>
+        </TabPane>
+      );
+    });
+  }, [items, data]);
 
   return (
     <NTabs  {...rest} >
-      {data.map((item, index) => <NTabs.TabPane key={index} {...item} />)}
+      {itemsChildren}
       {curChildren}
     </NTabs>
   );
 };
-
-const TabPane = observer((props: TabPaneProps) => {
-  const { children, ...rest } = props;
-  const curChildren = useChildrenNullishCoalescing(children);
-
-  console.log('TabPane', rest);
-
-  return (
-    <NTabs.TabPane  {...rest} title='x'>
-      {curChildren}
-    </NTabs.TabPane>
-  );
-});
 
 Tabs.TabPane = TabPane;

@@ -1,9 +1,7 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
-
-// TODO  schema 中 Tabs.TabPane tab 无法显示
-// Tabs 初始值设置无效
+// TODO Tabs 初始时设置值无效
 function Index() {
   const store = useStore({ defaultValues: { index: 'order' } });
   console.log('index', store.values.index);
@@ -36,42 +34,39 @@ function Index() {
           },
           void: {
             type: 'void',
-            // type: 'number',
-            title: '非受控',
+            title: '自定义 item 渲染',
             'x-component': 'Tabs',
-            properties: {
-              0: {
+            'x-component-props': {
+              defaultValue: 'home',
+            },
+            enum: [
+              { title: '首页', value: 'home', children: 'home' },
+              { title: '订单', value: 'order', children: 'order' },
+              { title: '我的', value: 'user', children: 'user' },
+            ],
+            items: [
+              {
                 type: 'void',
-                'x-decorator': 'Tabs.TabPane',
-                'x-decorator-props': {
-                  title: '首页',
-                  icon: 'home',
-                  value: 0,
-                },
                 'x-component': 'Button',
                 'x-component-props': {
-                  children: '按钮 0',
+                  children: '自定义 item 渲染 Button',
                 },
               },
-              1: {
+              {
                 type: 'void',
-                'x-component': 'Tabs.TabPane',
+                'x-component': 'Cell',
                 'x-component-props': {
-                  title: '订单',
-                  icon: 'order',
-                  value: 1,
-                },
-                properties: {
-                  btn: {
-                    type: 'void',
-                    'x-component': 'Button',
-                    'x-component-props': {
-                      children: '按钮 1',
-                    },
-                  },
+                  children: '自定义 item 渲染 Cell',
                 },
               },
-            },
+              {
+                type: 'void',
+                'x-component': 'Button',
+                'x-component-props': {
+                  children: '{{$record.title}}',
+                },
+              },
+            ],
           },
         },
       }}
