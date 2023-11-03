@@ -27,6 +27,8 @@ export * from './components/navigation/side_nav_bar';
 export * from './components/navigation/tabbar';
 export * from './components/navigation/tabs';
 
+export * from './components/in/cascader';
+
 export * from './components/index';
 
 export * from './hooks/use-router';

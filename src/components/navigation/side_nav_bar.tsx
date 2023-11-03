@@ -3,7 +3,9 @@ import { SideNavBarProps as NSideNavBarProps, SideNavBar as NSideNavBar, SubSide
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { ITriggerRender, Trigger, TriggerProps, useNavigate } from '@/library';
+import { useNavigate } from '../../hooks/use-router';
+import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
+
 
 export const SubSideNavBar = NSubSideNavBar;
 
@@ -19,7 +21,6 @@ export type SideNavBarProps = NSideNavBarProps & {
   trigger?: ITriggerRender,
   trigEvent?: TriggerProps['trigEvent'],
   // 数据
-  options?: IOptionsAPIProps['options'],
   childrenKey?: string,
 } & Omit<IOptionsAPIProps, 'valueType'>;
 
@@ -68,7 +69,7 @@ export const SideNavBar = (props: SideNavBarProps) => {
       />;
     }
 
-    return <Trigger render={curTrigger} trigEvent={trigEvent} onTrig={trig} text={title} />;
+    return <Trigger render={trigger} trigEvent={trigEvent} onTrig={trig} text={title} />;
   }, [trigger, additionalProperties, trigEvent, trig, title, name]);
 
   const renderData = (arr: any[]) => arr.map((item, i) => {

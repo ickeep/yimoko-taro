@@ -10,6 +10,7 @@ import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
 
+import { Cascader } from './in/cascader';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -60,4 +61,8 @@ export const components = {
   SideNavBarItem,
   Tabbar,
   Tabs,
+
+  // 数据录入
+  // Address
+  Cascader,
 };

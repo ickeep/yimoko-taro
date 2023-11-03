@@ -4,7 +4,7 @@ import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoales
 import { pick } from 'lodash-es';
 import { useMemo } from 'react';
 
-const TabPane: typeof NTabs.TabPane = observer((props) => {
+const TabPane = observer((props: any) => {
   const { children, ...rest } = props;
   const curChildren = useChildrenNullishCoalescing(children);
 

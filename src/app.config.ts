@@ -28,6 +28,8 @@ export default defineAppConfig({
     'pages/components/navigation/tabbar/index',
     'pages/components/navigation/tabs/index',
 
+    'pages/components/in/cascader/index',
+
     'pages/adapter/index',
     'pages/about/index',
 

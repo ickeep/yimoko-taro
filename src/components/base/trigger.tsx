@@ -35,7 +35,7 @@ export const Trigger = observer((props: TriggerProps) => {
 
   if (isValidElementType(render)) {
     const C: any = render;
-    return <C {...args} {...eventProps} />;
+    return <C {...args}  {...eventProps} >{children ?? text}</C>;
   }
 
   if (typeof children !== 'string' && children) {
