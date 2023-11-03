@@ -28,6 +28,8 @@ export * from './components/navigation/tabbar';
 export * from './components/navigation/tabs';
 
 export * from './components/in/cascader';
+export * from './components/in/form';
+export * from './components/in/input';
 
 export * from './components/index';
 

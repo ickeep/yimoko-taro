@@ -53,6 +53,7 @@ const data = [
     title: '数据录入',
     children: [
       { title: '级联选择器 - Cascader', path: '/pages/components/in/cascader/index' },
+      { title: '表单 - Form', path: '/pages/components/in/form/index' },
     ],
   },
 ];
