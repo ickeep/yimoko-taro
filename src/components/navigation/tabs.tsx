@@ -32,6 +32,7 @@ export const Tabs = (props: TabsProps & Omit<IOptionsAPIProps, 'valueType'>) => 
     return data.map((record, dataIndex) => {
       const schemaItem = Array.isArray(items) ? (items[dataIndex] ?? items[0]) : items;
       return (
+        // TabPane 必须在顶层
         <TabPane key={dataIndex} {...(pick(record, ['title', 'value', 'disabled']))} >
           <RecordScope getRecord={() => record} getIndex={() => dataIndex} >
             <RecursionField schema={schemaItem} name={dataIndex} />
