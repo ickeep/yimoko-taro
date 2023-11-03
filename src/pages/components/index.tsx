@@ -8,6 +8,10 @@ const data = [
         title: '按钮 - Button',
         path: '/pages/components/base/button/index',
       },
+      {
+        title: '触发器 - Trigger',
+        path: '/pages/components/base/trigger/index',
+      },
     ],
   },
   {
@@ -27,11 +31,11 @@ const data = [
     title: '导航组件',
     children: [
       {
-        title: 'NavBar - 头部导航',
+        title: '头部导航 - NavBar',
         path: '/pages/components/navigation/nav_bar/index',
       },
       {
-        title: 'SideNavBar - 侧边栏导航',
+        title: '侧边栏导航 - SideNavBar',
         path: '/pages/components/navigation/side_nav_bar/index',
       },
     ],

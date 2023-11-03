@@ -24,11 +24,16 @@ function Index() {
             'x-component': 'SideNavBar',
             'x-component-props': { keys: { title: 'label', key: 'value' }, title: '菜单' },
           },
-          // 受控
+          // 受控 且通过 additionalProperties 自定义触发器
           visible: {
             type: 'boolean',
             title: '受控',
             'x-component': 'SideNavBar',
+            additionalProperties: {
+              type: 'void',
+              'x-component': 'Cell',
+              'x-component-props': { title: '触发器' },
+            },
           },
         },
       }}

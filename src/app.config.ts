@@ -11,6 +11,7 @@ export default defineAppConfig({
 
     'pages/components/index',
     'pages/components/base/button/index',
+    'pages/components/base/trigger/index',
     // 'pages/components/base/cell/index',
     // 'pages/components/base/image/index',
 

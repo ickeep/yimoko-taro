@@ -1,7 +1,7 @@
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { SideNavBarProps as NSideNavBarProps, SideNavBar as NSideNavBar, SubSideNavBar as NSubSideNavBar, SideNavBarItem as NSideNavBarItem } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
-import { ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ITriggerRender, Trigger, TriggerProps, useNavigate } from '@/library';
 
@@ -40,12 +40,36 @@ export const SideNavBar = (props: SideNavBarProps) => {
     }
   }, [curValue]);
 
+  const trig = useCallback((e: any) => {
+    if (curValue === undefined) {
+      setCurVisible(!curVisible);
+    } else {
+      onChange?.(!curValue, e);
+    }
+  }, [curValue, curVisible, onChange]);
+
   const curTrigger = useMemo(() => {
     if ((trigger === undefined || trigger === null) && !judgeIsEmpty(additionalProperties)) {
-      return <RecursionField name={name} onlyRenderProperties schema={{ type: 'void', properties: { trigger: additionalProperties } }} />;
+      const { 'x-decorator': decorator, 'x-decorator-props': decoratorProps, ...args } = additionalProperties;
+      return <RecursionField name={name} onlyRenderProperties schema={{
+        type: 'void', properties: {
+          trigger: {
+            ...args,
+            // 触发器必须挂载在 decorator 上，否则无法给 children 传递 onTrig
+            'x-decorator': 'Trigger',
+            'x-decorator-props': {
+              ...decoratorProps,
+              onTrig: trig,
+              children: title,
+            },
+          },
+        },
+      }}
+      />;
     }
-    return trigger;
-  }, [additionalProperties, trigger, name]);
+
+    return <Trigger render={curTrigger} trigEvent={trigEvent} onTrig={trig} text={title} />;
+  }, [trigger, additionalProperties, trigEvent, trig, title, name]);
 
   const renderData = (arr: any[]) => arr.map((item, i) => {
     if (item.children?.length) {
@@ -58,14 +82,6 @@ export const SideNavBar = (props: SideNavBarProps) => {
     return <NSideNavBarItem key={i} value={item?.value} title={item?.title} onClick={() => item?.url && navigate(item.url)} />;
   });
 
-  const trig = (e: any) => {
-    if (curValue === undefined) {
-      setCurVisible(!curVisible);
-    } else {
-      onChange?.(!curValue, e);
-    }
-  };
-
   const close = () => {
     onClose?.();
     if (curValue === undefined) {
@@ -77,7 +93,7 @@ export const SideNavBar = (props: SideNavBarProps) => {
 
   return (
     <>
-      <Trigger render={curTrigger} trigEvent={trigEvent} onTrig={trig} >{title}</Trigger>
+      {curTrigger}
       <NSideNavBar {...rest} visible={curVisible} onClose={close} >
         {renderData(data)}
         {curChildren}
