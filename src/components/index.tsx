@@ -11,6 +11,7 @@ import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
 
 import { Cascader } from './in/cascader';
+import { Checkbox } from './in/checkbox';
 import { Form, FormItem } from './in/form';
 import { Input } from './in/input';
 import { Divider } from './layout/divider';
@@ -67,6 +68,7 @@ export const components = {
   // 数据录入
   // Address
   Cascader,
+  Checkbox,
   Form,
   FormItem,
   Input,

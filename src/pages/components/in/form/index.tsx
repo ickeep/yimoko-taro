@@ -31,6 +31,16 @@ function Index() {
                 'x-decorator': 'FormItem',
                 'x-component': 'Input',
               },
+              bool: {
+                type: 'boolean',
+                title: '布尔值',
+                required: true,
+                'x-decorator': 'FormItem',
+                'x-component': 'Checkbox',
+                'x-component-props': {
+                  label: '布尔值',
+                },
+              },
             },
           },
         },
