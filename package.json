@@ -90,6 +90,6 @@
   "templateInfo": {
     "name": "react-NutUI",
     "typescript": true,
-    "css": "less"
+    "css": "sass"
   }
 }
