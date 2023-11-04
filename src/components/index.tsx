@@ -15,6 +15,7 @@ import { Checkbox } from './in/checkbox';
 import { Form, FormItem } from './in/form';
 import { Input } from './in/input';
 import { InputNumber } from './in/input-number';
+import { Menu } from './in/menu';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -74,4 +75,5 @@ export const components = {
   FormItem,
   Input,
   InputNumber,
+  Menu,
 };
