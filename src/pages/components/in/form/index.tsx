@@ -31,10 +31,15 @@ function Index() {
                 'x-decorator': 'FormItem',
                 'x-component': 'Input',
               },
+              num: {
+                type: 'number',
+                title: '数字',
+                'x-decorator': 'FormItem',
+                'x-component': 'InputNumber',
+              },
               bool: {
                 type: 'boolean',
                 title: '布尔值',
-                required: true,
                 'x-decorator': 'FormItem',
                 'x-component': 'Checkbox',
                 'x-component-props': {

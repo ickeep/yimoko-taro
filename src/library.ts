@@ -31,6 +31,8 @@ export * from './components/in/cascader';
 export * from './components/in/checkbox';
 export * from './components/in/form';
 export * from './components/in/input';
+export * from './components/in/input-number';
+
 
 export * from './components/index';
 
