@@ -2,7 +2,7 @@ import { Text } from '@tarojs/components';
 
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { CascaderProps as NCascaderProps, Cascader as NCascader } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
@@ -37,7 +37,7 @@ export const Cascader = (props: CascaderProps) => {
     if (Array.isArray(value)) {
       return value;
     }
-    return value?.split(splitter ?? ',') ?? [];
+    return strToArr(value, splitter);
   }, [value, splitter]);
 
   const valText = useMemo(() => {

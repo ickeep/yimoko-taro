@@ -1,6 +1,6 @@
 import { observer } from '@formily/react';
 import { CheckboxProps as NCheckboxProps, Checkbox as NCheckbox, CheckboxGroupProps as NCheckboxGroupProps } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, strToArr, useAPIOptions } from '@yimoko/store';
 import { useMemo } from 'react';
 
 export interface CheckboxProps extends Omit<NCheckboxProps, 'onChange' | 'value'> {
@@ -51,7 +51,7 @@ const CheckboxGroup = observer((props: CheckboxGroupProps) => {
     if (Array.isArray(value)) {
       return value;
     }
-    return value?.split?.(splitter) ?? [];
+    return strToArr(value, splitter);
   }, [value, splitter]);
 
   return (
