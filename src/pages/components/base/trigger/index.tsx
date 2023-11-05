@@ -32,6 +32,30 @@ function Index() {
               children: '自定义组件',
             },
           },
+          children: {
+            type: 'void',
+            'x-component': 'Trigger',
+            'x-component-props': {
+              text: '基础',
+              onTrig: '{{curStore.runAPI}}',
+            },
+            properties: {
+              cell: {
+                type: 'void',
+                'x-component': 'Cell',
+                'x-component-props': {
+                  children: '自定义组件',
+                },
+              },
+              Btn: {
+                type: 'void',
+                'x-component': 'Button',
+                'x-component-props': {
+                  children: 'Btn',
+                },
+              },
+            },
+          },
         },
       }}
     />

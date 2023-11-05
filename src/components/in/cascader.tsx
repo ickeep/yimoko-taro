@@ -27,7 +27,7 @@ export const Cascader = (props: CascaderProps) => {
   } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
   const [curVisible, setCurVisible] = useState(visible ?? false);
-  const { name, title: sTitle, additionalProperties } = useFieldSchema();
+  const { name, title: sTitle, additionalProperties } = useFieldSchema() ?? {};
 
   const curTitle = title ?? sTitle;
 

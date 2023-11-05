@@ -31,7 +31,8 @@ export const Picker = (props: PickerProps) => {
   } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey) as any[];
   const [curVisible, setCurVisible] = useState(visible ?? false);
-  const { name, title: sTitle, additionalProperties } = useFieldSchema();
+  const schema = useFieldSchema();
+  const { name, title: sTitle, properties } = schema ?? {};
 
   const curTitle = title ?? sTitle;
 
@@ -93,29 +94,32 @@ export const Picker = (props: PickerProps) => {
   // eslint-disable-next-line complexity
   const curTrigger = useMemo(() => {
     const text = judgeIsEmpty(valText) ? (placeholder ?? curTitle) : valText;
-    if ((trigger === undefined || trigger === null) && !judgeIsEmpty(additionalProperties)) {
-      const { 'x-decorator': decorator, 'x-decorator-props': decoratorProps, ...args } = additionalProperties;
-      return (
-        <RecursionField name={name} onlyRenderProperties schema={{
-          type: 'void', properties: {
-            trigger: {
-              ...args,
-              // 触发器必须挂载在 decorator 上，否则无法给 children 传递 onTrig
+    const tempTrigger = trigger ?? children;
+    if ((tempTrigger === undefined || tempTrigger === null) && !judgeIsEmpty(properties)) {
+      return schema?.reduceProperties?.((arr: any[], cur) => {
+        arr.push(<RecursionField name={name} onlyRenderProperties schema={{
+          type: 'void',
+          properties: {
+            [`${cur.name}`]: {
+              ...cur,
               'x-decorator': 'Trigger',
               'x-decorator-props': {
-                ...decoratorProps,
+                ...cur['x-decorator-props'],
                 onTrig: trig,
-                children: text,
+                trigEvent,
+                // TODO text 无法更新
+                text,
               },
             },
           },
         }}
-        />
-      );
+        />);
+        return arr;
+      }, []);
     }
 
-    return <Trigger render={trigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
-  }, [valText, placeholder, curTitle, trigger, additionalProperties, trigEvent, trig, name]);
+    return <Trigger render={tempTrigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
+  }, [valText, placeholder, curTitle, trigger, children, properties, trigEvent, trig, schema, name]);
 
   return (
     <>
