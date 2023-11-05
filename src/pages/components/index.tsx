@@ -55,6 +55,7 @@ const data = [
       { title: '级联选择器 - Cascader', path: '/pages/components/in/cascader/index' },
       { title: '表单 - Form', path: '/pages/components/in/form/index' },
       { title: '菜单 - Menu', path: '/pages/components/in/menu/index' },
+      { title: '选择器 - Picker', path: '/pages/components/in/picker/index' },
     ],
   },
 ];

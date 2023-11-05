@@ -31,6 +31,7 @@ export default defineAppConfig({
     'pages/components/in/cascader/index',
     'pages/components/in/form/index',
     'pages/components/in/menu/index',
+    'pages/components/in/picker/index',
 
     'pages/adapter/index',
     'pages/about/index',

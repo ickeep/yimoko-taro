@@ -1,27 +1,27 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { Menu, MenuItem } from '@/library';
-
+import { Menu } from '@/library';
 
 function Index() {
   const store = useStore({
     defaultValues: {
-      base: {
-        m1: '',
-      },
+      base: { m1: '1', m2: '' },
+      // 顶层
+      topLayer: '2',
     },
   });
-  console.log('index', store.values.base);
+  console.log('base', store.values.base);
+  console.log('topLayer', store.values.topLayer);
 
   return (
     <>
       <Menu>
-        <MenuItem value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
-        <MenuItem value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
+        <Menu.Item value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
+        <Menu.Item value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
       </Menu>
       <Menu>
-        <MenuItem value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
+        <Menu.Item value={0} options={[{ text: '全部商品', value: 0 }, { text: '新款商品', value: 1 }, { text: '活动商品', value: 2 }]} />
       </Menu>
       <StorePage
         store={store}
@@ -29,13 +29,13 @@ function Index() {
           type: 'object',
           properties: {
             base: {
-              type: 'void',
+              type: 'object',
               'x-component': 'Menu',
               properties: {
                 m1: {
-                  title: '菜单一',
+                  // title: '菜单一',
                   type: 'string',
-                  'x-component': 'MenuItem',
+                  'x-component': 'Menu.Item',
                   enum: [
                     { text: '选项 1', value: '1' },
                     { text: '选项 2', value: '2' },
@@ -44,7 +44,21 @@ function Index() {
                 m2: {
                   title: '菜单二',
                   type: 'string',
-                  'x-component': 'MenuItem',
+                  'x-component': 'Menu.Item',
+                  enum: [
+                    { text: '选项 1', value: '1' },
+                    { text: '选项 2', value: '2' },
+                  ],
+                },
+              },
+            },
+            topLayer: {
+              type: 'void',
+              'x-component': 'Menu',
+              properties: {
+                topLayer: {
+                  type: 'string',
+                  'x-component': 'Menu.Item',
                   enum: [
                     { text: '选项 1', value: '1' },
                     { text: '选项 2', value: '2' },

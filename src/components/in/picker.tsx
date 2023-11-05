@@ -1,13 +1,16 @@
 import { Text } from '@tarojs/components';
 
 import { RecursionField, useFieldSchema } from '@formily/react';
-import { CascaderProps as NCascaderProps, Cascader as NCascader } from '@nutui/nutui-react-taro';
+import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions } from '@yimoko/store';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
 
-export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
+// 将 onChange 改为 onOptionChange，onChange 时机为 onConfirm
+export type PickerProps = Omit<Partial<NPickerProps>, 'value' | 'onChange'> & React.RefAttributes<unknown> & {
+  // TODO 子组件 如有作为触发器
+  children?: ReactNode,
   // 触发器
   trigger?: ITriggerRender,
   trigEvent?: TriggerProps['trigEvent'],
@@ -16,16 +19,17 @@ export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
   value?: string | any[]
   placeholder?: string,
   onChange?: (value: string | any[], selectedOptions?: any[]) => void,
+  onOptionChange?: NPickerProps['onChange'],
 } & IOptionsAPIProps;
 
-export const Cascader = (props: CascaderProps) => {
+export const Picker = (props: PickerProps) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
     title, trigger, trigEvent = 'onClick',
-    visible, onClose, onChange, ...rest
+    children, visible, onClose, onChange, onOptionChange, onConfirm, ...rest
   } = props;
-  const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
+  const [data] = useAPIOptions(options, api, keys, splitter, childrenKey) as any[];
   const [curVisible, setCurVisible] = useState(visible ?? false);
   const { name, title: sTitle, additionalProperties } = useFieldSchema();
 
@@ -40,8 +44,8 @@ export const Cascader = (props: CascaderProps) => {
 
   const valText = useMemo(() => {
     const textArr: string[] = [];
-    const valKey = rest.optionKey?.valueKey ?? 'value';
-    const childKey = rest.optionKey?.childrenKey ?? childrenKey;
+    const valKey = 'value';
+    const childKey = childrenKey;
     const find = (arr: any[]) => {
       for (const item of arr) {
         if (curValue.includes(item[valKey])) {
@@ -54,8 +58,9 @@ export const Cascader = (props: CascaderProps) => {
       }
     };
     find(data);
+
     return textArr.join('/');
-  }, [rest.optionKey, childrenKey, data, curValue]);
+  }, [childrenKey, data, curValue]);
 
   useEffect(() => {
     if (visible !== undefined) {
@@ -69,16 +74,17 @@ export const Cascader = (props: CascaderProps) => {
     }
   }, [curVisible, visible]);
 
-  const close: CascaderProps['onClose'] = () => {
+  const close: PickerProps['onClose'] = (option, val) => {
     if (visible === undefined) {
       setCurVisible(false);
     }
-    onClose?.();
+    onClose?.(option, val);
   };
 
-  const change: NCascaderProps['onChange'] = (val, selectedOptions) => {
+  const change: NPickerProps['onConfirm'] = (selectedOptions, val) => {
+    onConfirm?.(selectedOptions, val);
     if (valueType === 'string') {
-      onChange?.(val?.join?.(splitter ?? ','));
+      onChange?.(val?.join?.(splitter ?? ','), selectedOptions);
     } else {
       onChange?.(val, selectedOptions);
     }
@@ -108,14 +114,22 @@ export const Cascader = (props: CascaderProps) => {
       );
     }
 
-    // TODO 默认 trigger 考虑是使用 Text 还是 Cell
     return <Trigger render={trigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
   }, [valText, placeholder, curTitle, trigger, additionalProperties, trigEvent, trig, name]);
 
   return (
     <>
       {curTrigger}
-      <NCascader  {...rest} title={curTitle} value={curValue} visible={curVisible} options={data} onClose={close} onChange={change} />
+      <NPicker
+        {...rest}
+        title={curTitle}
+        value={curValue}
+        visible={curVisible}
+        options={data}
+        onClose={close}
+        onChange={onOptionChange}
+        onConfirm={change}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Schema, observer, useField } from '@formily/react';
+import { observer, useField, useForm } from '@formily/react';
 import { MenuItemProps as NMenuItemProps, Menu as NMenu, MenuProps } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions } from '@yimoko/store';
 import { useMemo } from 'react';
@@ -6,6 +6,7 @@ import { isFragment } from 'react-is';
 
 export const Menu = (props: Partial<MenuProps>) => {
   const { icon, children, ...rest } = props;
+  const form = useForm();
 
   const curChildren = useMemo(() => {
     if (Array.isArray(children)) {
@@ -14,23 +15,31 @@ export const Menu = (props: Partial<MenuProps>) => {
     if (children && !isFragment(children)) {
       return children;
     }
-    if (!judgeIsEmpty(children)) {
+    if (!judgeIsEmpty(children) && typeof children === 'object') {
       // schema 中 MenuItem 被其他组件包裹 会导致无法渲染，必须提至最外层
       const arr = children?.props?.children?.[0]?.props?.children;
       return arr.map((item, index) => {
         const { schema, basePath, name } = item?.props ?? {};
-        console.log('schema', schema);
+        const field = form.createField({ basePath, name });
 
-        // const formSchema = new Schema(schema)
-        const field = schema.compile();
-        console.log('field', field);
-
-
-        return <MenuItem key={index} title={schema?.title} options={schema?.enum} {...schema?.['x-component-props']} />;
+        return (
+          <MenuItem
+            key={index}
+            title={schema?.title}
+            options={schema?.enum}
+            // 限制 Menu properties 的子组件只能是 MenuItem 并且必须是 x-component
+            {...schema?.['x-component-props']}
+            value={field.value}
+            onChange={(v) => {
+              field?.onInput(v);
+              schema?.['x-component-props']?.onChange?.(v);
+            }}
+          />
+        );
       });
     }
     return null;
-  }, [children]);
+  }, [children, form]);
 
   return (
     <NMenu {...rest} icon={icon} >{curChildren}</NMenu>
@@ -41,7 +50,7 @@ export type MenuItemProps = Omit<Partial<NMenuItemProps>, 'onChange'> & Omit<IOp
   onChange?: (value?: string | number) => void
 };
 
-export const MenuItem = observer((props: MenuItemProps) => {
+const MenuItem = observer((props: MenuItemProps) => {
   const { options, api, keys, splitter = ',', title, value, onChange, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
   const field = useField() ?? {};
