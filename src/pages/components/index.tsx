@@ -1,4 +1,4 @@
-import { Cell, router, Divider } from '@/library';
+import { Cell, router, Divider } from '@/library'
 
 const data = [
   {
@@ -33,6 +33,15 @@ const data = [
 
     ],
   },
+  {
+    title: '数据录入',
+    children: [
+      {
+        title: '地址 - Address',
+        path: '/pages/components/records/address/index',
+      },
+    ],
+  },
 ];
 
 function Index() {
@@ -51,7 +60,7 @@ function Index() {
         </Cell.Group>
       ))}
     </div>
-  );
+  )
 }
 
-export default Index;
+export default Index

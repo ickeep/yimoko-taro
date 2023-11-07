@@ -18,7 +18,7 @@ import { Elevator } from './navigation/elevator';
 import { FixedNav } from './navigation/fixed_nav';
 import { Link } from './navigation/link';
 import { NavBar } from './navigation/nav_bar';
-
+import { Address } from './records/address';
 export const components = {
   // store 相关组件
   StorePageContent,
@@ -48,4 +48,7 @@ export const components = {
   FixedNav,
   Link,
   NavBar,
+
+  // 数据录入
+  Address,
 };

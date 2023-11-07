@@ -29,3 +29,5 @@ export * from './hooks/use-router';
 export * from './store/config';
 
 export * from './tools/compiler';
+
+export * from './components/records/address';
