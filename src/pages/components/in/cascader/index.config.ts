@@ -1,4 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: 'Loading',
+  navigationBarTitleText: '级联选择器',
   enableShareAppMessage: true,
 });

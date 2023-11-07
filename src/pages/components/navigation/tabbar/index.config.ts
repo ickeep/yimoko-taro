@@ -1,4 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: 'Loading',
+  navigationBarTitleText: '标签栏',
   enableShareAppMessage: true,
 });

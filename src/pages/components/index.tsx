@@ -8,6 +8,10 @@ const data = [
         title: '按钮 - Button',
         path: '/pages/components/base/button/index',
       },
+      {
+        title: '触发器 - Trigger',
+        path: '/pages/components/base/trigger/index',
+      },
     ],
   },
   {
@@ -27,10 +31,31 @@ const data = [
     title: '导航组件',
     children: [
       {
-        title: 'NavBar - 头部导航',
+        title: '头部导航 - NavBar',
         path: '/pages/components/navigation/nav_bar/index',
       },
+      {
+        title: '侧边栏导航 - SideNavBar',
+        path: '/pages/components/navigation/side_nav_bar/index',
+      },
+      {
+        title: '标签栏 - TabBar',
+        path: '/pages/components/navigation/tabbar/index',
+      },
+      {
+        title: '选项卡切换 - Tabs',
+        path: '/pages/components/navigation/tabs/index',
+      },
+    ],
+  },
 
+  {
+    title: '数据录入',
+    children: [
+      { title: '级联选择器 - Cascader', path: '/pages/components/in/cascader/index' },
+      { title: '表单 - Form', path: '/pages/components/in/form/index' },
+      { title: '菜单 - Menu', path: '/pages/components/in/menu/index' },
+      { title: '选择器 - Picker', path: '/pages/components/in/picker/index' },
     ],
   },
   {

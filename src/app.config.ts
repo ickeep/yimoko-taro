@@ -11,6 +11,7 @@ export default defineAppConfig({
 
     'pages/components/index',
     'pages/components/base/button/index',
+    'pages/components/base/trigger/index',
     // 'pages/components/base/cell/index',
     // 'pages/components/base/image/index',
 
@@ -23,6 +24,14 @@ export default defineAppConfig({
     'pages/components/layout/grid/index',
 
     'pages/components/navigation/nav_bar/index',
+    'pages/components/navigation/side_nav_bar/index',
+    'pages/components/navigation/tabbar/index',
+    'pages/components/navigation/tabs/index',
+
+    'pages/components/in/cascader/index',
+    'pages/components/in/form/index',
+    'pages/components/in/menu/index',
+    'pages/components/in/picker/index',
 
     'pages/adapter/index',
     'pages/about/index',

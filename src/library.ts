@@ -5,6 +5,8 @@ export * from './adapter/toast';
 export * from './components/base/button';
 export * from './components/base/cell';
 export * from './components/base/image';
+export * from './components/base/overlay';
+export * from './components/base/trigger';
 
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';
@@ -21,6 +23,17 @@ export * from './components/navigation/elevator';
 export * from './components/navigation/fixed_nav';
 export * from './components/navigation/link';
 export * from './components/navigation/nav_bar';
+export * from './components/navigation/side_nav_bar';
+export * from './components/navigation/tabbar';
+export * from './components/navigation/tabs';
+
+export * from './components/in/cascader';
+export * from './components/in/checkbox';
+export * from './components/in/form';
+export * from './components/in/input';
+export * from './components/in/input-number';
+export * from './components/in/menu';
+export * from './components/in/picker';
 
 export * from './components/index';
 
