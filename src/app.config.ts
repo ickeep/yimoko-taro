@@ -32,13 +32,12 @@ export default defineAppConfig({
     'pages/components/in/form/index',
     'pages/components/in/menu/index',
     'pages/components/in/picker/index',
+    'pages/components/in/calendar/index',
 
     'pages/adapter/index',
     'pages/about/index',
 
     'pages/web-view/index',
-
-    'pages/components/records/address/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',

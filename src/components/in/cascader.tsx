@@ -107,7 +107,7 @@ export const Cascader = (props: CascaderProps) => {
         />
       );
     }
-
+    console.log(trigger, 'trigger')
     // TODO 默认 trigger 考虑是使用 Text 还是 Cell
     return <Trigger render={trigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
   }, [valText, placeholder, curTitle, trigger, additionalProperties, trigEvent, trig, name]);

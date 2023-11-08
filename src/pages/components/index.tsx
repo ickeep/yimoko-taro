@@ -56,15 +56,7 @@ const data = [
       { title: '表单 - Form', path: '/pages/components/in/form/index' },
       { title: '菜单 - Menu', path: '/pages/components/in/menu/index' },
       { title: '选择器 - Picker', path: '/pages/components/in/picker/index' },
-    ],
-  },
-  {
-    title: '数据录入',
-    children: [
-      {
-        title: '地址 - Address',
-        path: '/pages/components/records/address/index',
-      },
+      { title: '日历 - Calendar', path: '/pages/components/in/calendar/index' },
     ],
   },
 ];
