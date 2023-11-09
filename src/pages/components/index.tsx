@@ -57,6 +57,7 @@ const data = [
       { title: '菜单 - Menu', path: '/pages/components/in/menu/index' },
       { title: '选择器 - Picker', path: '/pages/components/in/picker/index' },
       { title: '日历 - Calendar', path: '/pages/components/in/calendar/index' },
+      { title: '数字键盘 - NumberKeyboard', path: '/pages/components/in/number-keyboard/index' },
     ],
   },
 ];

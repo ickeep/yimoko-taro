@@ -1,11 +1,10 @@
-import { Text } from '@tarojs/components'
-
 import { RecursionField, useFieldSchema, IRecursionFieldProps } from '@formily/react'
 import { Calendar as NCalendar, CalendarProps as NCalendarProps } from '@nutui/nutui-react-taro'
-import { judgeIsEmpty } from '@yimoko/store'
 import { ReactNode, useCallback, useMemo, useState } from 'react'
 
-import { ITriggerRender, Trigger, TriggerProps } from '@/library'
+import { ITriggerRender, TriggerProps } from '@/library'
+
+import { useTrigger } from '../../hooks/use-trigger'
 
 
 export type CalendarProps = NCalendarProps & {
@@ -25,8 +24,7 @@ export const Calendar = (props: CalendarProps) => {
     children, visible, onClose, onConfirm, onChange, ...rest
   } = props
   const schema = useFieldSchema()
-  const { name, title: sTitle, properties } = schema ?? {}
-  const curTitle = title ?? sTitle
+  const { name } = schema ?? {}
   const [curVisible, setCurVisible] = useState(visible ?? false)
   const trig = useCallback(() => {
     if (visible === undefined) {
@@ -50,33 +48,9 @@ export const Calendar = (props: CalendarProps) => {
     return ''
   }, [rest.type, value])
   // eslint-disable-next-line complexity
-  const curTrigger = useMemo(() => {
-    const text = judgeIsEmpty(valText) ? (placeholder ?? curTitle) : valText
-    const tempTrigger = trigger ?? children
-    if ((tempTrigger === undefined || tempTrigger === null) && !judgeIsEmpty(properties)) {
-      return schema?.reduceProperties?.((arr: any[], cur) => {
-        arr.push(<RecursionField name={name} onlyRenderProperties schema={{
-          type: 'void',
-          properties: {
-            [`${cur.name}`]: {
-              ...cur,
-              'x-decorator': 'Trigger',
-              'x-decorator-props': {
-                ...cur['x-decorator-props'],
-                onTrig: trig,
-                trigEvent,
-                // TODO text 无法更新
-                text,
-              },
-            },
-          },
-        }}
-        />)
-        return arr
-      }, [])
-    }
-    return <Trigger render={tempTrigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />
-  }, [children, curTitle, name, placeholder, properties, schema, trig, trigEvent, trigger, valText])
+  const curTrigger = useTrigger({
+    trigger, children, placeholder, valText, triggerTitle: title, trigEvent, onTrig: trig,
+  })
   // eslint-disable-next-line complexity
   const change = ((param: unknown) => {
     onConfirm?.(param as unknown as string)

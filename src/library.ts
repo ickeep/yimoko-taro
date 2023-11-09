@@ -35,6 +35,7 @@ export * from './components/in/input-number';
 export * from './components/in/menu';
 export * from './components/in/picker';
 export * from './components/in/calendar';
+export * from './components/in/number-keyboard';
 
 export * from './components/index';
 

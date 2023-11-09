@@ -31,6 +31,7 @@ import { NavBar } from './navigation/nav_bar'
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar'
 import { Tabbar } from './navigation/tabbar'
 import { Tabs } from './navigation/tabs'
+import { NumberKeyboard } from './in/number-keyboard'
 
 export const components = {
   // store 相关组件
@@ -84,4 +85,5 @@ export const components = {
   RangeCalendar,
   MultipleCalendar,
   WeekCalendar,
+  NumberKeyboard,
 }
