@@ -1,9 +1,7 @@
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { AddressProps as NAddressProps, Address as NAddress } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-
-import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
 
 export type AddressProps = NAddressProps & {
   // 子组件

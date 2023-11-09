@@ -1,5 +1,5 @@
 import { createSchemaField, Schema } from '@formily/react';
-import { ConfigStoreProvider, SchemaComponentsProvider, SchemaFieldProvider } from '@yimoko/store';
+import { ConfigStoreProvider, SchemaFieldProvider } from '@yimoko/store';
 
 import { compiler, components, configStore, defaultConfig } from '@/library';
 
@@ -20,11 +20,9 @@ configStore.setConfig({
 function App(props) {
   return (
     <ConfigStoreProvider value={configStore}>
-      <SchemaComponentsProvider value={components}>
-        <SchemaFieldProvider value={SchemaField}>
-          {props.children}
-        </SchemaFieldProvider>
-      </SchemaComponentsProvider>
+      <SchemaFieldProvider value={SchemaField}>
+        {props.children}
+      </SchemaFieldProvider>
     </ConfigStoreProvider>
   );
 }

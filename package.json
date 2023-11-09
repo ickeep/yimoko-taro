@@ -24,7 +24,7 @@
     "@formily/reactive": "^2.2.21",
     "@formily/reactive-react": "^2.2.21",
     "@nutui/nutui-react-taro": "^2.0.21",
-    "@yimoko/store": "^2.0.1",
+    "@yimoko/store": "^2.0.5",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react": "^18.0.0",

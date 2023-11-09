@@ -21,7 +21,6 @@ function Index() {
               placeholder: '请选择地址',
               closeable: true,
             },
-
             enum: [
               {
                 text: '浙江',

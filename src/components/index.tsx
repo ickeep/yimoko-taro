@@ -1,11 +1,10 @@
-import { StorePageContent } from '@yimoko/store';
+import { StorePageContent, Trigger } from '@yimoko/store';
 
 import { Button } from './base/button';
 import { Cell } from './base/cell';
 import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
-import { Trigger } from './base/trigger';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -34,13 +33,14 @@ import { Tabs } from './navigation/tabs';
 export const components = {
   // store 相关组件
   StorePageContent,
+  Trigger,
+
 
   // 基础
   Button,
   Cell,
   Image,
   Overlay,
-  Trigger,
 
   // 操作反馈
   ErrorContent,

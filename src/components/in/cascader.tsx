@@ -2,10 +2,8 @@ import { Text } from '@tarojs/components';
 
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { CascaderProps as NCascaderProps, Cascader as NCascader } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-
-import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
 
 export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
   // 触发器
