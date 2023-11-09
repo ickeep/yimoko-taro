@@ -8,10 +8,6 @@ const data = [
         title: '按钮 - Button',
         path: '/pages/components/base/button/index',
       },
-      {
-        title: '触发器 - Trigger',
-        path: '/pages/components/base/trigger/index',
-      },
     ],
   },
   {

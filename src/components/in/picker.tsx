@@ -2,10 +2,8 @@ import { Text } from '@tarojs/components';
 
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-
-import { ITriggerRender, Trigger, TriggerProps } from '../base/trigger';
 
 // 将 onChange 改为 onOptionChange，onChange 时机为 onConfirm
 export type PickerProps = Omit<Partial<NPickerProps>, 'value' | 'onChange'> & React.RefAttributes<unknown> & {

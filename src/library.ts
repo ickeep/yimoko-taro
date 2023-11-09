@@ -6,7 +6,6 @@ export * from './components/base/button';
 export * from './components/base/cell';
 export * from './components/base/image';
 export * from './components/base/overlay';
-export * from './components/base/trigger';
 
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';

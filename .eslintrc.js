@@ -13,6 +13,7 @@ module.exports = {
     'react-hooks',
   ],
   rules: {
+    'no-constant-condition': 'warn',
     "@typescript-eslint/no-misused-promises": "off",
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
