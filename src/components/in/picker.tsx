@@ -1,17 +1,13 @@
-import { Text } from '@tarojs/components';
-
-import { RecursionField, useFieldSchema } from '@formily/react';
+import { useFieldSchema } from '@formily/react';
 import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
+import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 // 将 onChange 改为 onOptionChange，onChange 时机为 onConfirm
 export type PickerProps = Omit<Partial<NPickerProps>, 'value' | 'onChange'> & React.RefAttributes<unknown> & {
-  // TODO 子组件 如有作为触发器
   children?: ReactNode,
   // 触发器
-  trigger?: ITriggerRender,
-  trigEvent?: TriggerProps['trigEvent'],
+  trigger?: TriggerProps,
   // 数据
   childrenKey?: string,
   value?: string | any[]
@@ -24,13 +20,15 @@ export const Picker = (props: PickerProps) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
-    title, trigger, trigEvent = 'onClick',
+    title, trigger,
     children, visible, onClose, onChange, onOptionChange, onConfirm, ...rest
   } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey) as any[];
   const [curVisible, setCurVisible] = useState(visible ?? false);
   const schema = useFieldSchema();
-  const { name, title: sTitle, properties } = schema ?? {};
+  const { title: sTitle } = schema ?? {};
+  const curChildren = useChildrenNullishCoalescing(children);
+
 
   const curTitle = title ?? sTitle;
 
@@ -89,39 +87,25 @@ export const Picker = (props: PickerProps) => {
     }
   };
 
-  // eslint-disable-next-line complexity
-  const curTrigger = useMemo(() => {
+  const triggerEl = useMemo(() => {
     const text = judgeIsEmpty(valText) ? (placeholder ?? curTitle) : valText;
-    const tempTrigger = trigger ?? children;
-    if ((tempTrigger === undefined || tempTrigger === null) && !judgeIsEmpty(properties)) {
-      return schema?.reduceProperties?.((arr: any[], cur) => {
-        arr.push(<RecursionField name={name} onlyRenderProperties schema={{
-          type: 'void',
-          properties: {
-            [`${cur.name}`]: {
-              ...cur,
-              'x-decorator': 'Trigger',
-              'x-decorator-props': {
-                ...cur['x-decorator-props'],
-                onTrig: trig,
-                trigEvent,
-                // TODO text 无法更新
-                text,
-              },
-            },
-          },
+    return (
+      <Trigger
+        text={text}
+        {...trigger}
+        onTrig={(...args) => {
+          trig();
+          trigger?.onTrig?.(...args);
         }}
-        />);
-        return arr;
-      }, []);
-    }
-
-    return <Trigger render={tempTrigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
-  }, [valText, placeholder, curTitle, trigger, children, properties, trigEvent, trig, schema, name]);
+      >
+        {curChildren}
+      </Trigger >
+    );
+  }, [valText, placeholder, curTitle, trigger, curChildren, trig]);
 
   return (
     <>
-      {curTrigger}
+      {triggerEl}
       <NPicker
         {...rest}
         title={curTitle}
