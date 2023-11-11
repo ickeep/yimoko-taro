@@ -1,4 +1,4 @@
-import { Cell, router, Divider } from '@/library'
+import { Cell, router, Divider } from '@/library';
 
 const data = [
   {
@@ -74,7 +74,7 @@ function Index() {
         </Cell.Group>
       ))}
     </div>
-  )
+  );
 }
 
-export default Index
+export default Index;

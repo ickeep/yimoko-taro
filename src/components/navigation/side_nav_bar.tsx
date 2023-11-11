@@ -1,10 +1,9 @@
-import { RecursionField, useFieldSchema } from '@formily/react';
+import { useFieldSchema } from '@formily/react';
 import { SideNavBarProps as NSideNavBarProps, SideNavBar as NSideNavBar, SubSideNavBar as NSubSideNavBar, SideNavBarItem as NSideNavBarItem } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
+import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
-
 
 export const SubSideNavBar = NSubSideNavBar;
 
@@ -17,19 +16,18 @@ export type SideNavBarProps = NSideNavBarProps & {
   // 子组件
   children?: ReactNode,
   // 触发器
-  trigger?: ITriggerRender,
-  trigEvent?: TriggerProps['trigEvent'],
+  trigger?: TriggerProps,
   // 数据
   childrenKey?: string,
 } & Omit<IOptionsAPIProps, 'valueType'>;
 
 export const SideNavBar = (props: SideNavBarProps) => {
-  const { options, api, keys, splitter, children, value, childrenKey = 'children', visible, trigger, trigEvent = 'onClick', onChange, onClose, ...rest } = props;
+  const { options, api, keys, splitter, children, value, childrenKey = 'children', visible, trigger, onChange, onClose, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
   const curChildren = useChildrenNullishCoalescing(children);
   const navigate = useNavigate();
   const schema = useFieldSchema();
-  const { additionalProperties, name, title } = schema ?? {};
+  const { title } = schema ?? {};
   const curValue = visible ?? value;
 
   const [curVisible, setCurVisible] = useState(curValue ?? false);
@@ -40,36 +38,24 @@ export const SideNavBar = (props: SideNavBarProps) => {
     }
   }, [curValue]);
 
-  const trig = useCallback((e: any) => {
+  const trig = useCallback((...args: any) => {
     if (curValue === undefined) {
       setCurVisible(!curVisible);
     } else {
-      onChange?.(!curValue, e);
+      onChange?.(!curValue, ...args);
     }
   }, [curValue, curVisible, onChange]);
 
-  const curTrigger = useMemo(() => {
-    if ((trigger === undefined || trigger === null) && !judgeIsEmpty(additionalProperties)) {
-      const { 'x-decorator': decorator, 'x-decorator-props': decoratorProps, ...args } = additionalProperties;
-      return <RecursionField name={name} onlyRenderProperties schema={{
-        type: 'void', properties: {
-          trigger: {
-            ...args,
-            // 触发器必须挂载在 decorator 上，否则无法给 children 传递 onTrig
-            'x-decorator': 'Trigger',
-            'x-decorator-props': {
-              ...decoratorProps,
-              onTrig: trig,
-              children: title,
-            },
-          },
-        },
+  const triggerEl = useMemo(() => (
+    <Trigger
+      text={title}
+      {...trigger}
+      onTrig={(...args) => {
+        trig(...args);
+        trigger?.onTrig?.(...args);
       }}
-      />;
-    }
-
-    return <Trigger render={trigger} trigEvent={trigEvent} onTrig={trig} text={title} />;
-  }, [trigger, additionalProperties, trigEvent, trig, title, name]);
+    />
+  ), [title, trigger, trig]);
 
   const renderData = (arr: any[]) => arr.map((item, i) => {
     if (item.children?.length) {
@@ -93,7 +79,7 @@ export const SideNavBar = (props: SideNavBarProps) => {
 
   return (
     <>
-      {curTrigger}
+      {triggerEl}
       <NSideNavBar {...rest} visible={curVisible} onClose={close} >
         {renderData(data)}
         {curChildren}

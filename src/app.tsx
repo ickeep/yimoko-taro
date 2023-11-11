@@ -17,6 +17,12 @@ configStore.setConfig({
   ],
 });
 
+// 设置默认组件
+configStore.components = {
+  ...components,
+  ...configStore.components,
+};
+
 function App(props) {
   return (
     <ConfigStoreProvider value={configStore}>

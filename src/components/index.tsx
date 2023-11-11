@@ -9,28 +9,28 @@ import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
 
-import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar'
-import { Cascader } from './in/cascader'
-import { Checkbox } from './in/checkbox'
-import { Form, FormItem } from './in/form'
-import { Input } from './in/input'
-import { InputNumber } from './in/input-number'
-import { Menu } from './in/menu'
-import { Picker } from './in/picker'
-import { Divider } from './layout/divider'
-import { Grid } from './layout/grid'
-import { Col, Layout, Row } from './layout/layout'
-import { Space } from './layout/space'
-import { Sticky } from './layout/sticky'
-import { BackTop } from './navigation/back_top'
-import { Elevator } from './navigation/elevator'
-import { FixedNav } from './navigation/fixed_nav'
-import { Link } from './navigation/link'
-import { NavBar } from './navigation/nav_bar'
-import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar'
-import { Tabbar } from './navigation/tabbar'
-import { Tabs } from './navigation/tabs'
-import { NumberKeyboard } from './in/number-keyboard'
+import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
+import { Cascader } from './in/cascader';
+import { Checkbox } from './in/checkbox';
+import { Form, FormItem } from './in/form';
+import { Input } from './in/input';
+import { InputNumber } from './in/input-number';
+import { Menu } from './in/menu';
+import { NumberKeyboard } from './in/number-keyboard';
+import { Picker } from './in/picker';
+import { Divider } from './layout/divider';
+import { Grid } from './layout/grid';
+import { Col, Layout, Row } from './layout/layout';
+import { Space } from './layout/space';
+import { Sticky } from './layout/sticky';
+import { BackTop } from './navigation/back_top';
+import { Elevator } from './navigation/elevator';
+import { FixedNav } from './navigation/fixed_nav';
+import { Link } from './navigation/link';
+import { NavBar } from './navigation/nav_bar';
+import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
+import { Tabbar } from './navigation/tabbar';
+import { Tabs } from './navigation/tabs';
 
 export const components = {
   // store 相关组件
@@ -86,4 +86,4 @@ export const components = {
   MultipleCalendar,
   WeekCalendar,
   NumberKeyboard,
-}
+};

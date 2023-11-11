@@ -19,12 +19,12 @@
     "ios >= 8"
   ],
   "dependencies": {
-    "@formily/core": "^2.2.21",
-    "@formily/react": "^2.2.21",
-    "@formily/reactive": "^2.2.21",
-    "@formily/reactive-react": "^2.2.21",
-    "@nutui/nutui-react-taro": "^2.0.22",
-    "@yimoko/store": "^2.0.5",
+    "@formily/core": "^2.3.0",
+    "@formily/react": "^2.3.0",
+    "@formily/reactive": "^2.3.0",
+    "@formily/reactive-react": "^2.3.0",
+    "@nutui/nutui-react-taro": "^2.0.21",
+    "@yimoko/store": "^2.0.6",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react": "^18.0.0",

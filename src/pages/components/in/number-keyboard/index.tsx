@@ -1,9 +1,9 @@
-import { observer } from '@formily/react'
-import { StorePage, useStore } from '@yimoko/store'
+import { observer } from '@formily/react';
+import { StorePage, useStore } from '@yimoko/store';
 
 
 function Index() {
-  const store = useStore({})
+  const store = useStore({});
 
   return (
     <>
@@ -12,26 +12,60 @@ function Index() {
         schema={{
           type: 'object',
           properties: {
-            single: {
+            base: {
               type: 'string',
-              title: '选择单个日期',
+              title: '基础用法',
               'x-component': 'NumberKeyboard',
-              'x-decorator': 'Cell',
               'x-component-props': {
-                placeholder: '选择单个日期',
+                trigger: {
+                  component: 'Cell',
+                  title: '基础用法',
+                },
               },
-              // properties: {
-              //   cell: {
-              //     type: 'void',
-              //     'x-component': 'Cell',
-              //   },
-              // },
+            },
+            length: {
+              type: 'string',
+              title: '长度',
+              'x-component': 'NumberKeyboard',
+              'x-component-props': {
+                length: 6,
+                trigger: {
+                  component: 'Cell',
+                  title: '长度',
+                },
+              },
+            },
+            rightColumn: {
+              type: 'string',
+              title: '右侧键盘',
+              'x-component': 'NumberKeyboard',
+              'x-component-props': {
+                type: 'rightColumn',
+                custom: ['.', 'x'],
+                trigger: {
+                  component: 'Cell',
+                  title: '右侧键盘',
+                },
+              },
+            },
+            title: {
+              type: 'string',
+              title: '标题',
+              'x-component': 'NumberKeyboard',
+              'x-component-props': {
+                title: '标题',
+                custom: ['.'],
+                trigger: {
+                  component: 'Cell',
+                  title: '标题',
+                },
+              },
             },
           },
         }}
       />
     </>
-  )
+  );
 }
 
-export default observer(Index)
+export default observer(Index);

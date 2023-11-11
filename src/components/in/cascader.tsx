@@ -1,14 +1,13 @@
-import { Text } from '@tarojs/components';
 
-import { RecursionField, useFieldSchema } from '@formily/react';
+import { useFieldSchema } from '@formily/react';
 import { CascaderProps as NCascaderProps, Cascader as NCascader } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, ITriggerRender, Trigger, TriggerProps } from '@yimoko/store';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
   // 触发器
-  trigger?: ITriggerRender,
-  trigEvent?: TriggerProps['trigEvent'],
+  trigger?: TriggerProps,
+  children?: ReactNode,
   // 数据
   childrenKey?: string,
   value?: string | any[]
@@ -20,12 +19,13 @@ export const Cascader = (props: CascaderProps) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
-    title, trigger, trigEvent = 'onClick',
+    title, trigger, children,
     visible, onClose, onChange, ...rest
   } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
   const [curVisible, setCurVisible] = useState(visible ?? false);
-  const { name, title: sTitle, additionalProperties } = useFieldSchema() ?? {};
+  const { title: sTitle } = useFieldSchema() ?? {};
+  const curChildren = useChildrenNullishCoalescing(children);
 
   const curTitle = title ?? sTitle;
 
@@ -82,37 +82,25 @@ export const Cascader = (props: CascaderProps) => {
     }
   };
 
-  // eslint-disable-next-line complexity
-  const curTrigger = useMemo(() => {
+  const triggerEl = useMemo(() => {
     const text = judgeIsEmpty(valText) ? (placeholder ?? curTitle) : valText;
-    if ((trigger === undefined || trigger === null) && !judgeIsEmpty(additionalProperties)) {
-      const { 'x-decorator': decorator, 'x-decorator-props': decoratorProps, ...args } = additionalProperties;
-      return (
-        <RecursionField name={name} onlyRenderProperties schema={{
-          type: 'void', properties: {
-            trigger: {
-              ...args,
-              // 触发器必须挂载在 decorator 上，否则无法给 children 传递 onTrig
-              'x-decorator': 'Trigger',
-              'x-decorator-props': {
-                ...decoratorProps,
-                onTrig: trig,
-                children: text,
-              },
-            },
-          },
+    return (
+      <Trigger
+        text={text}
+        {...trigger}
+        onTrig={(...args) => {
+          trig();
+          trigger?.onTrig?.(...args);
         }}
-        />
-      );
-    }
-    console.log(trigger, 'trigger')
-    // TODO 默认 trigger 考虑是使用 Text 还是 Cell
-    return <Trigger render={trigger ?? Text} trigEvent={trigEvent} onTrig={trig} text={text} />;
-  }, [valText, placeholder, curTitle, trigger, additionalProperties, trigEvent, trig, name]);
+      >
+        {curChildren}
+      </Trigger >
+    );
+  }, [valText, placeholder, curTitle, trigger, curChildren, trig]);
 
   return (
     <>
-      {curTrigger}
+      {triggerEl}
       <NCascader  {...rest} title={curTitle} value={curValue} visible={curVisible} options={data} onClose={close} onChange={change} />
     </>
   );

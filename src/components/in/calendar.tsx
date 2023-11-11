@@ -1,18 +1,12 @@
 import { RecursionField, useFieldSchema, IRecursionFieldProps } from '@formily/react'
 import { Calendar as NCalendar, CalendarProps as NCalendarProps } from '@nutui/nutui-react-taro'
-import { ReactNode, useCallback, useMemo, useState } from 'react'
-
-import { ITriggerRender, TriggerProps } from '@/library'
-
-import { useTrigger } from '../../hooks/use-trigger'
+import { Trigger, TriggerProps, judgeIsEmpty } from '@yimoko/store';
+import { useCallback, useMemo, useState } from 'react'
 
 
 export type CalendarProps = NCalendarProps & {
-  // TODO 子组件 如有作为触发器
-  children?: ReactNode,
   // 触发器
-  trigger?: ITriggerRender,
-  trigEvent?: TriggerProps['trigEvent'],
+  trigger?: TriggerProps,
   placeholder?: string,
   value?: string | string[],
   onChange?: (value: string | string[]) => void,
@@ -20,17 +14,18 @@ export type CalendarProps = NCalendarProps & {
 }
 export const Calendar = (props: CalendarProps) => {
   const {
-    value, placeholder = '请选择', title, trigger, trigEvent = 'onClick',
-    children, visible, onClose, onConfirm, onChange, ...rest
+    value, title, trigger, placeholder = '请选择',
+    visible, onClose, onConfirm, onChange, ...rest
   } = props
   const schema = useFieldSchema()
-  const { name } = schema ?? {}
+  const { name, title: sTitle } = schema ?? {}
   const [curVisible, setCurVisible] = useState(visible ?? false)
   const trig = useCallback(() => {
     if (visible === undefined) {
       setCurVisible(!curVisible)
     }
   }, [curVisible, visible])
+  const curTitle = title ?? sTitle;
   // eslint-disable-next-line complexity
   const valText = useMemo(() => {
     if (rest.type === 'range') {
@@ -48,9 +43,17 @@ export const Calendar = (props: CalendarProps) => {
     return ''
   }, [rest.type, value])
   // eslint-disable-next-line complexity
-  const curTrigger = useTrigger({
-    trigger, children, placeholder, valText, triggerTitle: title, trigEvent, onTrig: trig,
-  })
+  const triggerEl = useMemo(() => {
+    const text = judgeIsEmpty(valText) ? (placeholder ?? curTitle) : valText;
+    return <Trigger
+      text={text}
+      {...trigger}
+      onTrig={(...args) => {
+        trig();
+        trigger?.onTrig?.(...args);
+      }}
+    />
+  }, [valText, placeholder, curTitle, trigger, trig]);
   // eslint-disable-next-line complexity
   const change = ((param: unknown) => {
     onConfirm?.(param as unknown as string)
@@ -94,7 +97,7 @@ export const Calendar = (props: CalendarProps) => {
   }, [name, rest.renderDayBottom])
   return (
     <>
-      <>{curTrigger}</>
+      <>{triggerEl}</>
       <NCalendar
         {...rest}
         renderDayBottom={renderDayBottom}

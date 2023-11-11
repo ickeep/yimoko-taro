@@ -1,32 +1,61 @@
-import { NumberKeyboard as NNumberKeyboard, NumberKeyboardProps as NNumberKeyboardProps } from '@nutui/nutui-react-taro'
-import { ReactNode, useState } from 'react'
-
-import { useTrigger, UseTriggerProps } from '../../hooks/use-trigger'
+import { useFieldSchema } from '@formily/react';
+import { NumberKeyboard as NNumberKeyboard, NumberKeyboardProps as NNumberKeyboardProps } from '@nutui/nutui-react-taro';
+import { TriggerProps, Trigger } from '@yimoko/store';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export type NumberKeyboardProps = NNumberKeyboardProps & {
-  // TODO 子组件 如有作为触发器
-  children?: ReactNode,
   // 触发器
-  trigger?: UseTriggerProps['trigger'],
-  trigEvent?: UseTriggerProps['trigEvent'],
-  triggerTitle?: UseTriggerProps['triggerTitle'],
+  trigger?: TriggerProps,
   placeholder?: string,
   value?: string,
+  // 数字长度
+  length?: number,
+  // 记忆模式，是否记忆上次输入的值，用来限制输入的长度，如果输入的长度超过了length的长度，会自动截取，默认开启
+  memory?: boolean,
 }
 export const NumberKeyboard = (props: NumberKeyboardProps) => {
-  const { value, placeholder = '请输入', title, trigger, trigEvent = 'onClick', triggerTitle, children, ...rest } = props
-  const [curVisible, setCurVisible] = useState(false)
-  const trig = () => {
-    if (rest.visible === undefined) {
-      setCurVisible(!curVisible)
+  const { value, trigger, memory = true, length, visible, ...rest } = props;
+  const [curVisible, setCurVisible] = useState(false);
+  const schema = useFieldSchema();
+  const { title } = schema ?? {};
+  useEffect(() => {
+    if (visible !== undefined) {
+      setCurVisible(visible);
     }
-  }
-  const valText = value
-  const curTrigger = useTrigger({
-    trigger, children, placeholder, valText, triggerTitle, trigEvent, onTrig: trig,
-  })
+  }, [visible]);
+  const trig = useCallback(() => {
+    if (visible === undefined) {
+      setCurVisible(!curVisible);
+    }
+  }, [curVisible, visible]);
+  const triggerEl = useMemo(() => (
+    <Trigger
+      text={title}
+      {...trigger}
+      onTrig={(...args) => {
+        trig();
+        trigger?.onTrig?.(...args);
+      }}
+    />
+  ), [title, trigger, trig]);
+  const change = (param: string) => {
+    if (memory) {
+      // 追加模式
+      const curVal = value || '';
+      let newVal = curVal + param;
+      if (length && newVal.length > length) {
+        newVal = newVal.slice(0, length);
+      }
+      props.onChange?.(newVal);
+    } else {
+      props.onChange?.(param);
+    }
+  };
+  const close = () => {
+    setCurVisible(false);
+  };
   return <>
-    {curTrigger}
-    <NNumberKeyboard {...props} />
-  </>
-}
+    {triggerEl}
+    <NNumberKeyboard {...rest} visible={curVisible} onChange={change} onClose={close} />
+  </>;
+};
