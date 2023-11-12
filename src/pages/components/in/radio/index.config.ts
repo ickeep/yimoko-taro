@@ -1,4 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '开关',
+  navigationBarTitleText: '单选框',
   enableShareAppMessage: true,
 });

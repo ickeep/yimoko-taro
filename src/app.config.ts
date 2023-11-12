@@ -33,6 +33,8 @@ export default defineAppConfig({
     'pages/components/in/picker/index',
     'pages/components/in/calendar/index',
     'pages/components/in/number-keyboard/index',
+    'pages/components/in/switch/index',
+    'pages/components/in/radio/index',
 
     'pages/adapter/index',
     'pages/about/index',

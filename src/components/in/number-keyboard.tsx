@@ -1,6 +1,6 @@
 import { useFieldSchema } from '@formily/react';
 import { NumberKeyboard as NNumberKeyboard, NumberKeyboardProps as NNumberKeyboardProps } from '@nutui/nutui-react-taro';
-import { TriggerProps, Trigger } from '@yimoko/store';
+import { TriggerProps, Trigger, judgeIsEmpty } from '@yimoko/store';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export type NumberKeyboardProps = NNumberKeyboardProps & {
@@ -14,7 +14,7 @@ export type NumberKeyboardProps = NNumberKeyboardProps & {
   memory?: boolean,
 }
 export const NumberKeyboard = (props: NumberKeyboardProps) => {
-  const { value, trigger, memory = true, length, visible, ...rest } = props;
+  const { value, trigger, memory = true, length, visible, placeholder, ...rest } = props;
   const [curVisible, setCurVisible] = useState(false);
   const schema = useFieldSchema();
   const { title } = schema ?? {};
@@ -28,16 +28,17 @@ export const NumberKeyboard = (props: NumberKeyboardProps) => {
       setCurVisible(!curVisible);
     }
   }, [curVisible, visible]);
-  const triggerEl = useMemo(() => (
-    <Trigger
-      text={title}
+  const triggerEl = useMemo(() => {
+    const text = judgeIsEmpty(value) ? (placeholder ?? title) : value;
+    return <Trigger
+      text={text}
       {...trigger}
       onTrig={(...args) => {
         trig();
         trigger?.onTrig?.(...args);
       }}
-    />
-  ), [title, trigger, trig]);
+    />;
+  }, [value, placeholder, title, trigger, trig]);
   const change = (param: string) => {
     if (memory) {
       // 追加模式
@@ -46,6 +47,7 @@ export const NumberKeyboard = (props: NumberKeyboardProps) => {
       if (length && newVal.length > length) {
         newVal = newVal.slice(0, length);
       }
+      console.log(newVal);
       props.onChange?.(newVal);
     } else {
       props.onChange?.(param);

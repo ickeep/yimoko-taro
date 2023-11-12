@@ -18,6 +18,8 @@ import { InputNumber } from './in/input-number';
 import { Menu } from './in/menu';
 import { NumberKeyboard } from './in/number-keyboard';
 import { Picker } from './in/picker';
+import { Radio, RadioGroup } from './in/radio';
+import { Switch } from './in/switch';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -86,4 +88,7 @@ export const components = {
   MultipleCalendar,
   WeekCalendar,
   NumberKeyboard,
+  Switch,
+  Radio,
+  RadioGroup,
 };

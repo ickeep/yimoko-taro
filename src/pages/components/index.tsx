@@ -54,6 +54,8 @@ const data = [
       { title: '选择器 - Picker', path: '/pages/components/in/picker/index' },
       { title: '日历 - Calendar', path: '/pages/components/in/calendar/index' },
       { title: '数字键盘 - NumberKeyboard', path: '/pages/components/in/number-keyboard/index' },
+      { title: '开关 - Switch', path: '/pages/components/in/switch/index' },
+      { title: '单选框 - Radio', path: '/pages/components/in/radio/index' },
     ],
   },
 ];

@@ -1,70 +1,80 @@
 import { observer } from '@formily/react';
-import { StorePage } from '@yimoko/store';
+import { StorePage, useStore } from '@yimoko/store';
 
+const options = [
+  {
+    label: '选项一',
+    value: '1',
+  },
+  {
+    label: '选项二',
+    value: '2',
+  },
+  {
+    label: '选项三',
+    value: '3',
+  },
+];
 function Index() {
+  const store = useStore({});
+
   return (
     <>
       <StorePage
-        store={{  }}
+        store={store}
         schema={{
           type: 'object',
           properties: {
             base: {
               type: 'void',
-              'x-component': 'Switch',
+              'x-component': 'Radio',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
-                label: '非受控',
-              },
-              'x-component-props': {
-                checked: true,
-                // defaultChecked: true,
-              },
-            },
-            controlled: {
-              type: 'void',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '受控',
+                label: 'Radio',
               },
               'x-component-props': {
                 checked: true,
               },
             },
-            disabled: {
+            group: {
               type: 'void',
-              'x-component': 'Switch',
+              'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
-                label: '禁用',
+                label: 'RadioGroup',
               },
               'x-component-props': {
-                disabled: true,
+                value: '1',
+                options,
               },
             },
-            style: {
+            labelTrigger: {
               type: 'void',
-              'x-component': 'Switch',
+              'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
-                label: '自定义颜色',
+                label: '自定义文本',
               },
               'x-component-props': {
-                style: { '--nutui-switch-open-background-color': 'blue' },
+                value: '1',
+                options,
+                labelTrigger: {
+                  component: 'Switch',
+                  value: true,
+                },
               },
             },
-            // 自定义文字
-            text: {
+            horizontal: {
               type: 'void',
-              'x-component': 'Switch',
+              'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
-                label: '自定义文字',
+                label: '水平排列',
               },
               'x-component-props': {
-                activeText: '开',
-                inactiveText: '关',
+                value: '1',
+                options,
+                direction: 'horizontal',
               },
             },
           },
@@ -75,4 +85,3 @@ function Index() {
 }
 
 export default observer(Index);
-
