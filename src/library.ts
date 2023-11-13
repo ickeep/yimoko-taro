@@ -33,6 +33,10 @@ export * from './components/in/input';
 export * from './components/in/input-number';
 export * from './components/in/menu';
 export * from './components/in/picker';
+export * from './components/in/calendar';
+export * from './components/in/number-keyboard';
+export * from './components/in/switch';
+export * from './components/in/radio';
 
 export * from './components/index';
 
@@ -41,3 +45,5 @@ export * from './hooks/use-router';
 export * from './store/config';
 
 export * from './tools/compiler';
+
+export * from './tools/lang';

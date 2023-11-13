@@ -9,13 +9,17 @@ import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
 
+import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
 import { Cascader } from './in/cascader';
 import { Checkbox } from './in/checkbox';
 import { Form, FormItem } from './in/form';
 import { Input } from './in/input';
 import { InputNumber } from './in/input-number';
 import { Menu } from './in/menu';
+import { NumberKeyboard } from './in/number-keyboard';
 import { Picker } from './in/picker';
+import { Radio, RadioGroup } from './in/radio';
+import { Switch } from './in/switch';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -69,7 +73,7 @@ export const components = {
   Tabs,
 
   // 数据录入
-  // Address
+  // Address,
   Cascader,
   Checkbox,
   Form,
@@ -78,4 +82,13 @@ export const components = {
   InputNumber,
   Menu,
   Picker,
+  Calendar,
+  SingleCalendar,
+  RangeCalendar,
+  MultipleCalendar,
+  WeekCalendar,
+  NumberKeyboard,
+  Switch,
+  Radio,
+  RadioGroup,
 };

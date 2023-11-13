@@ -10,7 +10,6 @@ export interface CheckboxProps extends Omit<NCheckboxProps, 'onChange' | 'value'
 }
 export const Checkbox = (props: CheckboxProps) => {
   const { value, values, onChange, checked, ...rest } = props;
-
   const curValue = useMemo(() => {
     if (checked !== undefined) {
       return checked;
