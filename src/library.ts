@@ -45,3 +45,5 @@ export * from './hooks/use-router';
 export * from './store/config';
 
 export * from './tools/compiler';
+
+export * from './tools/lang';

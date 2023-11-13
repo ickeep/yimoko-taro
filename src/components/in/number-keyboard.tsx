@@ -12,7 +12,7 @@ export type NumberKeyboardProps = NNumberKeyboardProps & {
   length?: number,
   // 记忆模式，是否记忆上次输入的值，用来限制输入的长度，如果输入的长度超过了length的长度，会自动截取，默认开启
   memory?: boolean,
-}
+};
 export const NumberKeyboard = (props: NumberKeyboardProps) => {
   const { value, trigger, memory = true, length, visible, placeholder, ...rest } = props;
   const [curVisible, setCurVisible] = useState(false);

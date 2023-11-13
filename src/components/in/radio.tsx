@@ -1,6 +1,6 @@
 import { ISchema, RecursionField, useFieldSchema } from '@formily/react';
 import { Radio as NRadio, RadioProps as NRadioProps, RadioGroup as NRadioGroup, RadioGroupProps as NRadioGroupProps } from '@nutui/nutui-react-taro';
-import { TriggerProps, Trigger } from '@yimoko/store';
+import { TriggerProps, Trigger, IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 import { isObject } from 'lodash-es';
 import { ReactNode, isValidElement, useMemo } from 'react';
 
@@ -9,7 +9,7 @@ export type RadioProps = NRadioProps & {
   onChange?: (val: boolean) => void,
 };
 
-export type RadioGroupProps = NRadioGroupProps & {
+export type RadioGroupProps = NRadioGroupProps & IOptionsAPIProps & {
   labelTrigger?: TriggerProps;
   children?: ReactNode | ISchema;
 };
@@ -17,17 +17,16 @@ export type RadioGroupProps = NRadioGroupProps & {
 export const Radio = (props: RadioProps) => {
   const { value, checked, onChange, ...rest } = props;
   return <NRadio {...rest} checked={checked} />;
-}
-
+};
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const { value, onChange, labelTrigger, children, options, ...rest } = props;
+  const { value, onChange, labelTrigger, children, options, api, keys, splitter, valueType, ...rest } = props;
   const schema = useFieldSchema();
   const { name } = schema ?? {};
   const change = (val: string | number) => {
     onChange?.(val);
   };
-  // eslint-disable-next-line complexity
+  const [data] = useAPIOptions(options, api, keys, splitter) as any[];
   const curChildren = useMemo(() => {
     if (isValidElement(children)) {
       return children;
@@ -35,11 +34,11 @@ export const RadioGroup = (props: RadioGroupProps) => {
     if (isObject(children)) {
       return <RecursionField schema={children as ISchema} name={name} />;
     }
-    if (isObject(labelTrigger) && Array.isArray(options)) {
-      return options.map((item, index) => <NRadio key={index} {...item}><Trigger text={item.label} {...labelTrigger} /></NRadio>);
+    if (isObject(labelTrigger) && Array.isArray(data)) {
+      return data.map((item, index) => <NRadio key={index} {...item}><Trigger text={item.label} {...labelTrigger} /></NRadio>);
     }
     return children;
-  }, [children, labelTrigger, name, options]);
+  }, [children, labelTrigger, name, data]);
 
-  return <NRadioGroup {...rest} value={value} options={isObject(labelTrigger) ? undefined : options} onChange={change}>{curChildren}</NRadioGroup>;
-}
+  return <NRadioGroup {...rest} value={value} options={isObject(labelTrigger) ? undefined : data} onChange={change}>{curChildren}</NRadioGroup>;
+};

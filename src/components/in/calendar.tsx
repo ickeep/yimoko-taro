@@ -11,7 +11,7 @@ export type CalendarProps = NCalendarProps & {
   value?: string | string[],
   onChange?: (value: string | string[]) => void,
   renderDayBottom?: NCalendarProps['renderDayBottom'] | IRecursionFieldProps['schema']
-}
+};
 export const Calendar = (props: CalendarProps) => {
   const {
     value, title, trigger, placeholder = '请选择',
@@ -111,14 +111,14 @@ export const Calendar = (props: CalendarProps) => {
   );
 };
 
-export type SingleCalendarProps = Omit<CalendarProps, 'type'>
+export type SingleCalendarProps = Omit<CalendarProps, 'type'>;
 export const SingleCalendar = (props: SingleCalendarProps) => (
   <Calendar {...props} type='single' />
 );
 
 export type RangeCalendarProps = Omit<CalendarProps, 'type' | 'value'> & {
   value?: string[],
-}
+};
 export const RangeCalendar = (props: RangeCalendarProps) => {
   const { value = [], ...rest } = props;
   const curValue = Array.isArray(value) ? value : [];
@@ -134,7 +134,7 @@ export const RangeCalendar = (props: RangeCalendarProps) => {
 // 选择多个日期
 export type MultipleCalendarProps = Omit<CalendarProps, 'type' | 'value'> & {
   value?: string[],
-}
+};
 
 export const MultipleCalendar = (props: MultipleCalendarProps) => {
   const { value = [], ...rest } = props;
@@ -152,7 +152,7 @@ export const MultipleCalendar = (props: MultipleCalendarProps) => {
 // 周选择
 export type WeekCalendarProps = Omit<CalendarProps, 'type' | 'value'> & {
   value?: string[],
-}
+};
 
 export const WeekCalendar = (props: WeekCalendarProps) => {
   const { value = [], ...rest } = props;
