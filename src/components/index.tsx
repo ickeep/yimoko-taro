@@ -5,6 +5,7 @@ import { Cell } from './base/cell';
 import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
+import { ActionSheet } from './feedback/action-sheet';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -47,6 +48,7 @@ export const components = {
   Overlay,
 
   // 操作反馈
+  ActionSheet,
   ErrorContent,
   Loading,
   PageLoading,

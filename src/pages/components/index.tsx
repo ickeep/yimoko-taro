@@ -23,6 +23,7 @@ const data = [
       },
     ],
   },
+
   {
     title: '导航组件',
     children: [
@@ -56,6 +57,15 @@ const data = [
       { title: '数字键盘 - NumberKeyboard', path: '/pages/components/in/number-keyboard/index' },
       { title: '开关 - Switch', path: '/pages/components/in/switch/index' },
       { title: '单选框 - Radio', path: '/pages/components/in/radio/index' },
+    ],
+  },
+  {
+    title: '操作反馈',
+    children: [
+      {
+        title: '动作面板 - ActionSheet',
+        path: '/pages/components/feedback/action-sheet/index',
+      },
     ],
   },
 ];

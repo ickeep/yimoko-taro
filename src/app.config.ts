@@ -14,6 +14,7 @@ export default defineAppConfig({
     // 'pages/components/base/cell/index',
     // 'pages/components/base/image/index',
 
+    'pages/components/feedback/action-sheet/index',
     // 'pages/components/feedback/error-content/index',
     // 'pages/components/feedback/loading/index',
     // 'pages/components/feedback/skeleton/index',

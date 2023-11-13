@@ -7,6 +7,7 @@ export * from './components/base/cell';
 export * from './components/base/image';
 export * from './components/base/overlay';
 
+export * from './components/feedback/action-sheet';
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';
 export * from './components/feedback/skeleton';
