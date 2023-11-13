@@ -14,10 +14,10 @@ export const Checkbox = (props: CheckboxProps) => {
     if (checked !== undefined) {
       return checked;
     }
-    if (values) {
-      return value === values.true;
-    }
     if (value !== undefined) {
+      if (values) {
+        return value === values.true;
+      }
       return value;
     }
     return undefined;
