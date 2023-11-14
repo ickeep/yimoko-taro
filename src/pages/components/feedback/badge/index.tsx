@@ -15,14 +15,12 @@ function Index() {
       </Badge>
 
       <Divider>Schema 用法</Divider>
-
       <StorePage
         store={store}
         schema={{
           type: 'object',
           properties: {
             v1: {
-              title: 'schema',
               type: 'number',
               'x-component': 'Badge',
               properties: {
@@ -31,6 +29,15 @@ function Index() {
                   'x-component': 'Avatar',
                 },
               },
+            },
+            d: {
+              type: 'void',
+              'x-decorator': 'Badge',
+              'x-decorator-props': {
+                value: 200,
+                max: 99,
+              },
+              'x-component': 'Avatar',
             },
           },
         }}
