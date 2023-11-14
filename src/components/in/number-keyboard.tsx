@@ -13,6 +13,8 @@ export type NumberKeyboardProps = NNumberKeyboardProps & {
   // 记忆模式，是否记忆上次输入的值，用来限制输入的长度，如果输入的长度超过了length的长度，会自动截取，默认开启
   memory?: boolean,
 };
+
+// TODO 日历,短密码，签名，上传组件先不处理
 export const NumberKeyboard = (props: NumberKeyboardProps) => {
   const { value, trigger, memory = true, length, visible, placeholder, ...rest } = props;
   const [curVisible, setCurVisible] = useState(false);
@@ -56,8 +58,20 @@ export const NumberKeyboard = (props: NumberKeyboardProps) => {
   const close = () => {
     setCurVisible(false);
   };
+  const del = () => {
+    if (memory) {
+      const curVal = value || '';
+      const newVal = curVal.slice(0, curVal.length - 1);
+      props.onChange?.(newVal);
+    } else {
+      props.onChange?.('');
+    }
+  };
+  const confirm = () => {
+    trig();
+  };
   return <>
     {triggerEl}
-    <NNumberKeyboard {...rest} visible={curVisible} onChange={change} onClose={close} />
+    <NNumberKeyboard {...rest} visible={curVisible} onChange={change} onClose={close} onDelete={del} onConfirm={confirm} />
   </>;
 };

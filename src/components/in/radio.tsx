@@ -5,8 +5,9 @@ import { isObject } from 'lodash-es';
 import { ReactNode, isValidElement, useMemo } from 'react';
 
 export type RadioProps = NRadioProps & {
-  value?: NRadioProps['value'],
-  onChange?: (val: boolean) => void,
+  value?: any,
+  values?: { true: unknown, false: unknown },
+  onChange?: (val: unknown) => void,
 };
 
 export type RadioGroupProps = NRadioGroupProps & IOptionsAPIProps & {
@@ -15,8 +16,24 @@ export type RadioGroupProps = NRadioGroupProps & IOptionsAPIProps & {
 };
 
 export const Radio = (props: RadioProps) => {
-  const { value, checked, onChange, ...rest } = props;
-  return <NRadio {...rest} checked={checked} />;
+  const { value, checked, onChange, values, ...rest } = props;
+  const curVal = useMemo(() => {
+    if (checked !== undefined) {
+      return checked;
+    }
+    if (values) {
+      return value === values.true;
+    }
+    return value ?? undefined;
+  }, [checked, value, values]);
+  return <NRadio {...rest} checked={curVal} onChange={(val) => {
+    if (values) {
+      onChange?.(val ? values.true : values.false);
+    } else {
+      onChange?.(val);
+    }
+  }}
+  />;
 };
 
 export const RadioGroup = (props: RadioGroupProps) => {
