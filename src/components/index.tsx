@@ -5,7 +5,9 @@ import { Cell } from './base/cell';
 import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
+import { Avatar } from './display/avatar';
 import { ActionSheet } from './feedback/action-sheet';
+import { Badge } from './feedback/badge';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -21,11 +23,13 @@ import { NumberKeyboard } from './in/number-keyboard';
 import { Picker } from './in/picker';
 import { Radio, RadioGroup } from './in/radio';
 import { Switch } from './in/switch';
+
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
 import { Space } from './layout/space';
 import { Sticky } from './layout/sticky';
+
 import { BackTop } from './navigation/back_top';
 import { Elevator } from './navigation/elevator';
 import { FixedNav } from './navigation/fixed_nav';
@@ -49,6 +53,7 @@ export const components = {
 
   // 操作反馈
   ActionSheet,
+  Badge,
   ErrorContent,
   Loading,
   PageLoading,
@@ -93,4 +98,7 @@ export const components = {
   Switch,
   Radio,
   RadioGroup,
+
+  // 数据展示
+  Avatar,
 };
