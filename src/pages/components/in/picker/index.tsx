@@ -55,6 +55,9 @@ function Index() {
                 cell: {
                   type: 'void',
                   'x-component': 'Cell',
+                  'x-component-props': {
+                    children: '自定义组件',
+                  },
                 },
               },
             },

@@ -16,7 +16,14 @@ const options = [
   },
 ];
 function Index() {
-  const store = useStore({});
+  const store = useStore({
+    defaultValues: {
+      base: true,
+      group: '1',
+      labelTrigger: '1',
+      horizontal: '1',
+    },
+  });
 
   return (
     <>
@@ -26,7 +33,7 @@ function Index() {
           type: 'object',
           properties: {
             base: {
-              type: 'void',
+              type: 'boolean',
               'x-component': 'Radio',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
@@ -37,26 +44,24 @@ function Index() {
               },
             },
             group: {
-              type: 'void',
+              type: 'string',
               'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
                 label: 'RadioGroup',
               },
               'x-component-props': {
-                value: '1',
                 options,
               },
             },
             labelTrigger: {
-              type: 'void',
+              type: 'string',
               'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
                 label: '自定义文本',
               },
               'x-component-props': {
-                value: '1',
                 options,
                 labelTrigger: {
                   component: 'Switch',
@@ -65,14 +70,13 @@ function Index() {
               },
             },
             horizontal: {
-              type: 'void',
+              type: 'string',
               'x-component': 'RadioGroup',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
                 label: '水平排列',
               },
               'x-component-props': {
-                value: '1',
                 options,
                 direction: 'horizontal',
               },
