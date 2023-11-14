@@ -61,6 +61,19 @@ function Index() {
                 },
               },
             },
+            // 非记忆模式
+            memory: {
+              type: 'string',
+              title: '非记忆模式',
+              'x-component': 'NumberKeyboard',
+              'x-component-props': {
+                memory: false,
+                trigger: {
+                  component: 'Cell',
+                  title: '非记忆模式',
+                },
+              },
+            },
           },
         }}
       />

@@ -10,6 +10,7 @@ function Index() {
   const store = useStore({
     defaultValues: {
       values: '关闭是0',
+      controlled: true,
     },
   });
   return (
@@ -29,7 +30,6 @@ function Index() {
               },
               'x-component-props': {
                 defaultChecked: true,
-                // defaultChecked: true,
               },
             },
             controlled: {
@@ -40,7 +40,7 @@ function Index() {
                 label: '受控',
               },
               'x-component-props': {
-                value: true,
+
               },
             },
             disabled: {
@@ -67,7 +67,7 @@ function Index() {
             },
             // 自定义文字
             text: {
-              type: 'boolean',
+              type: 'string',
               'x-component': 'Switch',
               'x-decorator': 'FormItem',
               'x-decorator-props': {
@@ -80,7 +80,7 @@ function Index() {
             },
             // 自定义值
             values: {
-              type: 'boolean',
+              type: 'string',
               'x-component': 'Switch',
               'x-decorator': 'ExtraCell',
               'x-decorator-props': {
@@ -88,7 +88,10 @@ function Index() {
                 extra: '{{curStore.values.values}}',
               },
               'x-component-props': {
-                values: ['关闭是0', '打开是1'],
+                values: {
+                  true: '开启是1',
+                  false: '关闭是0',
+                },
               },
             },
           },
