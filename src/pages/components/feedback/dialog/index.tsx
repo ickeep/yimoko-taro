@@ -2,29 +2,33 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { Avatar, Dialog, TabPane, Tabs } from '@/library';
+import { Avatar, Dialog, Tabs } from '@/library';
 
 function Index() {
-  const store = useStore({ defaultValues: { v1: false, v2: false } });
+  const store = useStore({ defaultValues: { tab: 'JSX', v1: false, v2: false } });
+  const { tab } = store.values;
   return (
-    <Tabs defaultValue='jsx'>
-      <TabPane title='JSX' value='jsx'>
+    <div>
+      {/* Dialog 在 TabPane 里时 高度有问题 待官方修复  */}
+      <Tabs
+        value={tab}
+        options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
+        onChange={value => store.setValues({ tab: `${value}` })}
+      />
+      {tab === 'JSX' ? (
         <Dialog value={store.values.visible} trigger={{ children: '对话框', onClick: () => store.setValues({ v1: true }) }}  >
           <Avatar shape='square' />
         </Dialog>
-      </TabPane>
-      <TabPane title='Schema' value='schema' >
+      ) : (
         <StorePage
           store={store}
           schema={{
             type: 'object',
             properties: {
               v2: {
+                title: '对话框',
                 type: 'boolean',
                 'x-component': 'Dialog',
-                'x-component-props': {
-                  title: '对话框',
-                },
                 properties: {
                   avatar: {
                     type: 'void',
@@ -40,9 +44,8 @@ function Index() {
               },
             },
           }}
-        />
-      </TabPane>
-    </Tabs >
+        />)}
+    </div>
   );
 }
 

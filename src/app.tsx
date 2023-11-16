@@ -3,6 +3,8 @@ import { ConfigStoreProvider, SchemaFieldProvider } from '@yimoko/store';
 
 import { compiler, components, configStore, defaultConfig } from '@/library';
 
+import './app.css';
+
 Schema.registerCompiler(compiler);
 const SchemaField = createSchemaField({ components, scope: { configStore } });
 
