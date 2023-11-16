@@ -8,6 +8,8 @@ export * from './components/base/image';
 export * from './components/base/overlay';
 
 export * from './components/feedback/action-sheet';
+export * from './components/feedback/badge';
+export * from './components/feedback/dialog';
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';
 export * from './components/feedback/skeleton';
@@ -38,6 +40,8 @@ export * from './components/in/calendar';
 export * from './components/in/number-keyboard';
 export * from './components/in/switch';
 export * from './components/in/radio';
+
+export * from './components/display/avatar';
 
 export * from './components/index';
 
