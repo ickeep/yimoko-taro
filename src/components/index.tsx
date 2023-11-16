@@ -8,6 +8,7 @@ import { Overlay } from './base/overlay';
 import { Avatar } from './display/avatar';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
+import { Dialog } from './feedback/dialog';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -37,7 +38,7 @@ import { Link } from './navigation/link';
 import { NavBar } from './navigation/nav_bar';
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 import { Tabbar } from './navigation/tabbar';
-import { Tabs } from './navigation/tabs';
+import { TabPane, Tabs } from './navigation/tabs';
 
 export const components = {
   // store 相关组件
@@ -54,6 +55,7 @@ export const components = {
   // 操作反馈
   ActionSheet,
   Badge,
+  Dialog,
   ErrorContent,
   Loading,
   PageLoading,
@@ -78,6 +80,7 @@ export const components = {
   SideNavBarItem,
   Tabbar,
   Tabs,
+  TabPane,
 
   // 数据录入
   // Address,
