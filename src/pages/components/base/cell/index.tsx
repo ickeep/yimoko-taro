@@ -5,7 +5,7 @@ import { StorePage, useStore } from '@yimoko/store';
 import { Cell, Switch, Tabs } from '@/library';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'JSX', v1: false, v2: false } });
+  const store = useStore({ defaultValues: { tab: 'JSX' } });
   const { tab } = store.values;
   return (
     <div>

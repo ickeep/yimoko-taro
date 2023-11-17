@@ -12,6 +12,10 @@ const data = [
         title: '单元格 - Cell',
         path: '/pages/components/base/cell/index',
       },
+      {
+        title: '图片 - Image',
+        path: '/pages/components/base/image/index',
+      },
     ],
   },
   {

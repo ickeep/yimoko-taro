@@ -1,11 +1,10 @@
 import { observer } from '@formily/react';
-import { Col } from '@nutui/nutui-react-taro';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { Button, Cell, Row, Space, Tabs } from '@/library';
+import { Button, Cell, Col, Row, Space, Tabs } from '@/library';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'JSX', v1: false, v2: false } });
+  const store = useStore({ defaultValues: { tab: 'JSX' } });
   const { tab } = store.values;
   return (
     <div>
