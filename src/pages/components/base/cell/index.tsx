@@ -1,16 +1,14 @@
 
 import { observer } from '@formily/react';
-import { Row, Space } from '@nutui/nutui-react-taro';
 import { StorePage, useStore } from '@yimoko/store';
 
 import { Cell, Switch, Tabs } from '@/library';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'Schma', v1: false, v2: false } });
+  const store = useStore({ defaultValues: { tab: 'JSX', v1: false, v2: false } });
   const { tab } = store.values;
   return (
     <div>
-      {/* Cell 在 TabPane 里时 高度有问题 待官方修复  */}
       <Tabs
         value={tab}
         options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
