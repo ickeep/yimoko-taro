@@ -7,7 +7,7 @@ export type SwitchProps = NSwitchProps & {
   values?: { true: unknown, false: unknown },
 };
 
-export const Switch = (props: SwitchProps) => {
+export const Switch = (props: Partial<SwitchProps>) => {
   const { value, onChange, checked, values, ...rest } = props;
   const curValue = useMemo(() => {
     if (checked !== undefined) {
