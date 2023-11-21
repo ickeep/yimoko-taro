@@ -8,6 +8,14 @@ const data = [
         title: '按钮 - Button',
         path: '/pages/components/base/button/index',
       },
+      {
+        title: '单元格 - Cell',
+        path: '/pages/components/base/cell/index',
+      },
+      {
+        title: '图片 - Image',
+        path: '/pages/components/base/image/index',
+      },
     ],
   },
   {
