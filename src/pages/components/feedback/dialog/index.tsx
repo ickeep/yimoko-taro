@@ -2,50 +2,201 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { Avatar, Dialog, Tabs } from '@/library';
+import { Cell, Dialog, Tabs } from '@/library';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'JSX', v1: false, v2: false } });
-  const { tab } = store.values;
+  const store = useStore({
+    defaultValues: {
+      tab: 'JSX',
+      v1: false,
+    },
+  });
+  const { tab, v1 } = store.values;
+  const { setValues } = store;
+
   return (
     <div>
       {/* Dialog 在 TabPane 里时 高度有问题 待官方修复  */}
       <Tabs
         value={tab}
         options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
-        onChange={value => store.setValues({ tab: `${value}` })}
+        onChange={value => setValues({ tab: `${value}` })}
       />
       {tab === 'JSX' ? (
-        <Dialog value={store.values.visible} trigger={{ children: '对话框', onClick: () => store.setValues({ v1: true }) }}  >
-          <Avatar shape='square' />
-        </Dialog>
+        <>
+
+          <Cell.Group title='弹出对话框'>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '触发器调用',
+              }}
+              closeOnOverlayClick
+            >展示内容</Dialog>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '锁背景滚动',
+              }}
+              lockScroll
+            >展示内容</Dialog>
+            <Dialog
+              value={v1}
+              trigger={{
+                component: Cell,
+                children: '提示弹框',
+                onClick: () => setValues({ v1: true }),
+              }}
+              onConfirm={() => setValues({ v1: false })}
+              onClose={() => setValues({ v1: false })}
+              confirmText='请确认'
+              hideCancelButton
+            >展示内容</Dialog>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '底部按钮垂直',
+              }}
+              footerDirection='vertical'
+            >展示内容</Dialog>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '底部 Footer 为 Button 时，点击遮罩不关闭',
+              }}
+              closeOnOverlayClick={false}
+            >展示内容</Dialog>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '无底部 Footer 区域',
+              }}
+              footer={null}
+            >展示内容</Dialog>
+            <Dialog
+              trigger={{
+                component: Cell,
+                children: '点击取消时，拦截',
+              }}
+              beforeCancel={() => {
+                console.log('stop close')
+                return false
+              }}
+            >展示内容</Dialog>
+          </Cell.Group>
+        </>
       ) : (
         <StorePage
           store={store}
           schema={{
             type: 'object',
             properties: {
-              v2: {
-                title: '对话框',
-                type: 'boolean',
-                'x-component': 'Dialog',
+              cell: {
+                type: 'void',
+                'x-component': 'Cell.Group',
+                'x-component-props': {
+                  title: '弹出对话框',
+                },
                 properties: {
-                  avatar: {
+
+                  d1: {
                     type: 'void',
-                    'x-component': 'Avatar',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '触发器调用',
+                      },
+                      children: '展示内容',
+                    },
+                  },
+                  d2: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '锁背景滚动',
+                      },
+                      lockScroll: true,
+                      children: '展示内容',
+                    },
+                  },
+                  d3: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      value: v1,
+                      trigger: {
+                        component: Cell,
+                        children: '提示弹框',
+                        onClick: () => setValuesByField('v1', true),
+                      },
+                      onConfirm: () => setValuesByField('v1', false),
+                      onClose: () => setValuesByField('v1', false),
+                      confirmText: '请确认',
+                      hideCancelButton: true,
+                      children: '展示内容',
+                    },
+                  },
+                  d4: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '底部按钮垂直',
+                      },
+                      footerDirection: 'vertical',
+                      children: '展示内容',
+                    },
+                  },
+                  d5: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '底部 Footer 为 Button 时，点击遮罩不关闭',
+                      },
+                      closeOnOverlayClick: false,
+                      children: '展示内容',
+                    },
+                  },
+                  d6: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '无底部 Footer 区域',
+                      },
+                      footer: null,
+                      children: '展示内容',
+                    },
+                  },
+                  d7: {
+                    type: 'void',
+                    'x-component': 'Dialog',
+                    'x-component-props': {
+                      trigger: {
+                        component: Cell,
+                        children: '点击取消时，拦截',
+                      },
+                      beforeCancel: () => {
+                        console.log('stop close')
+                        return false
+                      },
+                      children: '展示内容',
+                    },
                   },
                 },
               },
-              d: {
-                type: 'void',
-                'x-decorator': 'Dialog',
-                'x-decorator-props': {},
-                'x-component': 'Avatar',
-              },
             },
           }}
-        />)}
-    </div>
+        />)
+      }
+    </div >
   );
 }
 

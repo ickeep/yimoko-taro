@@ -13,7 +13,7 @@ export type DialogProps = NDialogProps & {
   trigger?: TriggerProps,
 };
 
-export const Dialog = (props: DialogProps) => {
+export const Dialog = (props: Partical<DialogProps>) => {
   const { children, value, visible, trigger, onChange, onClose, ...rest } = props;
   const curChildren = useChildrenNullishCoalescing(children);
   const schema = useFieldSchema();
