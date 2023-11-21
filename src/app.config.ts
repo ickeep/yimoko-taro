@@ -35,6 +35,11 @@ export default defineAppConfig({
     'pages/components/in/number-keyboard/index',
     'pages/components/in/switch/index',
     'pages/components/in/radio/index',
+    'pages/components/in/text-area/index',
+    'pages/components/in/range/index',
+    'pages/components/in/rate/index',
+    'pages/components/in/signature/index',
+    'pages/components/in/search-bar/index',
 
     'pages/adapter/index',
     'pages/about/index',
