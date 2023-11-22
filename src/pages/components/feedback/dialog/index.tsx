@@ -12,7 +12,7 @@ function Index() {
     },
   });
   const { tab, v1 } = store.values;
-  const { setValues } = store;
+  const { setValues, setValuesByField } = store;
 
   return (
     <div>
