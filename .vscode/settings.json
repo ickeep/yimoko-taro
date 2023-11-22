@@ -11,5 +11,9 @@
     "html",
     "typescript",
     "typescriptreact"
+  ],
+  "cSpell.words": [
+    "formily",
+    "yimoko"
   ]
 }
