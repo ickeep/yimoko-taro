@@ -25,6 +25,7 @@ export default defineAppConfig({
     'pages/components/layout/divider/index',
     // 'pages/components/layout/space/index',
     'pages/components/layout/grid/index',
+    'pages/components/layout/layout/index',
 
     'pages/components/navigation/nav_bar/index',
     'pages/components/navigation/side_nav_bar/index',

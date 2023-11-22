@@ -29,6 +29,10 @@ const data = [
         title: '宫格 - Grid',
         path: '/pages/components/layout/grid/index',
       },
+      {
+        title: '布局 - Layout',
+        path: '/pages/components/layout/layout/index',
+      },
     ],
   },
 

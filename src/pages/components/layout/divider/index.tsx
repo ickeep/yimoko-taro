@@ -6,7 +6,7 @@ import { Cell, Divider, Tabs } from '@/library';
 function Index() {
   const store = useStore({
     defaultValues: {
-      tab: 'JSX'
+      tab: 'JSX',
     },
   });
   const { tab } = store.values;
@@ -14,7 +14,6 @@ function Index() {
 
   return (
     <div>
-      {/* Dialog 在 TabPane 里时 高度有问题 待官方修复  */}
       <Tabs
         value={tab}
         options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
@@ -32,10 +31,10 @@ function Index() {
               <Divider>文本内容</Divider>
             </Cell>
             <Cell>
-              <Divider contentPosition="left">文本位置</Divider>
+              <Divider contentPosition='left'>文本位置</Divider>
             </Cell>
             <Cell>
-              <Divider contentPosition="right">文本位置</Divider>
+              <Divider contentPosition='right'>文本位置</Divider>
             </Cell>
           </Cell.Group>
           <Cell.Group title='样式'>
@@ -49,10 +48,10 @@ function Index() {
           <Cell.Group title='垂直分割线'>
             <Cell>
               文本
-              <Divider direction="vertical" />
-              <a href="#" style={{ color: '#1989fa' }}>链接</a>
-              <Divider direction="vertical" />
-              <a href="#" style={{ color: '#1989fa' }}>链接</a>
+              <Divider direction='vertical' />
+              <a href='#' style={{ color: '#1989fa' }}>链接</a>
+              <Divider direction='vertical' />
+              <a href='#' style={{ color: '#1989fa' }}>链接</a>
             </Cell>
           </Cell.Group>
         </>
@@ -67,7 +66,7 @@ function Index() {
                 'x-component': 'Cell',
                 'x-decorator': 'Cell.Group',
                 'x-decorator-props': {
-                  title: '基础用法'
+                  title: '基础用法',
                 },
                 properties: {
                   d: {
@@ -80,7 +79,7 @@ function Index() {
                 type: 'void',
                 'x-component': 'Cell.Group',
                 'x-component-props': {
-                  title: '文本内容'
+                  title: '文本内容',
                 },
                 properties: {
                   d1: {
@@ -88,7 +87,7 @@ function Index() {
                     'x-decorator': 'Cell',
                     'x-component': 'Divider',
                     'x-component-props': {
-                      children: '文本内容'
+                      children: '文本内容',
                     },
                   },
                   d2: {
@@ -97,7 +96,7 @@ function Index() {
                     'x-component': 'Divider',
                     'x-component-props': {
                       contentPosition: 'left',
-                      children: '文本位置'
+                      children: '文本位置',
                     },
                   },
                   d3: {
@@ -106,7 +105,7 @@ function Index() {
                     'x-component': 'Divider',
                     'x-component-props': {
                       contentPosition: 'right',
-                      children: '文本位置'
+                      children: '文本位置',
                     },
                   },
                 },
@@ -115,7 +114,7 @@ function Index() {
                 type: 'void',
                 'x-component': 'Cell.Group',
                 'x-component-props': {
-                  title: '样式'
+                  title: '样式',
                 },
                 properties: {
                   d1: {
@@ -124,9 +123,9 @@ function Index() {
                     'x-component': 'Divider',
                     'x-component-props': {
                       style: {
-                        borderStyle: 'dashed'
+                        borderStyle: 'dashed',
                       },
-                      children: '虚线'
+                      children: '虚线',
                     },
                   },
                   d2: {
@@ -138,9 +137,9 @@ function Index() {
                         color: '#1989fa',
                         borderColor: '#1989fa',
                         padding: '0 16px',
-                        borderStyle: 'dashed'
+                        borderStyle: 'dashed',
                       },
-                      children: '文本'
+                      children: '文本',
                     },
                   },
                 },
@@ -150,21 +149,21 @@ function Index() {
                 'x-component': 'Cell',
                 'x-decorator': 'Cell.Group',
                 'x-decorator-props': {
-                  title: '垂直分割线'
+                  title: '垂直分割线',
                 },
                 properties: {
                   d1: {
                     type: 'void',
                     'x-component': 'text',
                     'x-component-props': {
-                      children: '文本'
+                      children: '文本',
                     },
                   },
                   d2: {
                     type: 'void',
                     'x-component': 'Divider',
                     'x-component-props': {
-                      direction: 'vertical'
+                      direction: 'vertical',
                     },
                   },
                   d3: {
@@ -173,16 +172,16 @@ function Index() {
                     'x-component-props': {
                       href: '#',
                       style: {
-                        color: '#1989fa'
+                        color: '#1989fa',
                       },
-                      children: '链接'
+                      children: '链接',
                     },
                   },
                   d4: {
                     type: 'void',
                     'x-component': 'Divider',
                     'x-component-props': {
-                      direction: 'vertical'
+                      direction: 'vertical',
                     },
                   },
                   d5: {
@@ -191,9 +190,9 @@ function Index() {
                     'x-component-props': {
                       href: '#',
                       style: {
-                        color: '#1989fa'
+                        color: '#1989fa',
                       },
-                      children: '链接'
+                      children: '链接',
                     },
                   },
                 },

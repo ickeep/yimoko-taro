@@ -79,8 +79,8 @@ function Index() {
                 children: '点击取消时，拦截',
               }}
               beforeCancel={() => {
-                console.log('stop close')
-                return false
+                console.log('stop close');
+                return false;
               }}
             >展示内容</Dialog>
           </Cell.Group>
@@ -184,8 +184,8 @@ function Index() {
                         children: '点击取消时，拦截',
                       },
                       beforeCancel: () => {
-                        console.log('stop close')
-                        return false
+                        console.log('stop close');
+                        return false;
                       },
                       children: '展示内容',
                     },

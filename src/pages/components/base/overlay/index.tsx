@@ -10,7 +10,7 @@ function Index() {
       tab: 'JSX',
       v1: false,
       v2: false,
-    }
+    },
   });
   const { tab, v1, v2 } = store.values;
   const { setValues } = store;
@@ -60,10 +60,10 @@ function Index() {
                 }}
                 duration={2500}
                 afterShow={() => {
-                  console.log('afterShow')
+                  console.log('afterShow');
                 }}
                 afterClose={() => {
-                  console.log('afterClose')
+                  console.log('afterClose');
                 }}
               />
             </Cell>
@@ -76,8 +76,8 @@ function Index() {
                   children: '显示遮罩层',
                 }}
               >
-                <div className="wrapper" style={WrapperStyle}>
-                  <div className="content" style={ContentStyle}>这里是正文</div>
+                <div className='wrapper' style={WrapperStyle}>
+                  <div className='content' style={ContentStyle}>这里是正文</div>
                 </div>
               </Overlay>
             </Cell>
@@ -93,8 +93,8 @@ function Index() {
                 }}
                 closeOnOverlayClick={false}
               >
-                <div className="wrapper" style={WrapperStyle}>
-                  <div className="content" style={ContentStyle} onClick={() => setValues({ v2: false })}>这里是正文</div>
+                <div className='wrapper' style={WrapperStyle}>
+                  <div className='content' style={ContentStyle} onClick={() => setValues({ v2: false })}>这里是正文</div>
                 </div>
               </Overlay>
             </Cell>
@@ -170,10 +170,10 @@ function Index() {
                       },
                       duration: 2500,
                       afterShow: () => {
-                        console.log('afterShow')
+                        console.log('afterShow');
                       },
                       afterClose: () => {
-                        console.log('afterClose')
+                        console.log('afterClose');
                       },
                     },
                   },
@@ -195,8 +195,8 @@ function Index() {
                         component: Cell,
                         children: '显示遮罩层',
                       },
-                      children: <div className="wrapper" style={WrapperStyle}>
-                        <div className="content" style={ContentStyle}>这里是正文</div>
+                      children: <div className='wrapper' style={WrapperStyle}>
+                        <div className='content' style={ContentStyle}>这里是正文</div>
                       </div>,
                     },
                   },
@@ -219,8 +219,8 @@ function Index() {
                         children: '显示遮罩层',
                       },
                       closeOnOverlayClick: false,
-                      children: <div className="wrapper" style={WrapperStyle}>
-                        <div className="content" style={ContentStyle} onClick={() => setValues({ v2: false })}>这里是正文</div>
+                      children: <div className='wrapper' style={WrapperStyle}>
+                        <div className='content' style={ContentStyle} onClick={() => setValues({ v2: false })}>这里是正文</div>
                       </div>,
                     },
                   },
@@ -239,8 +239,8 @@ const WrapperStyle = {
   display: 'flex',
   height: '100%',
   alignItems: 'center',
-  justifyContent: 'center'
-}
+  justifyContent: 'center',
+};
 const ContentStyle = {
   display: 'flex',
   width: '150px',
@@ -249,5 +249,5 @@ const ContentStyle = {
   borderRadius: '8px',
   alignItems: 'center',
   justifyContent: 'center',
-  color: 'red'
-}
+  color: 'red',
+};
