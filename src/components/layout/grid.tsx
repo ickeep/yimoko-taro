@@ -33,14 +33,13 @@ export const Grid = (props: Partial<GridProps> & Omit<IOptionsAPIProps, 'valueTy
       }
     }
     if (Array.isArray(tmpChildren)) {
-      tmpChildren = tmpChildren.map((item, index) => {
+      return tmpChildren.map((item, index) => {
         // 判断是不是用 RecursionField 渲染 如果是则处理进 item的方式
         if (item.type === RecursionField) {
           const { schema: itemSchema, ...args } = item.props;
-          const itemProps = ItemSchemaToProps(itemSchema, 'Grid.Item', args, index);
+          const itemProps = ItemSchemaToProps(itemSchema, 'Grid.Item', args);
           return (
-            <Item key={index} text={itemSchema.title} {...itemProps} >
-            </Item >
+            <Item key={index} text={itemSchema.title} {...itemProps} />
           );
         }
         return item;
@@ -77,10 +76,11 @@ export const Grid = (props: Partial<GridProps> & Omit<IOptionsAPIProps, 'valueTy
   );
 };
 
+// 父组件有侵入性，不可使用 useChildrenNullishCoalescing， 会导致读取的schema为父组件的schema
 const Item = (props: Partial<GridItemProps> & { value?: ReactNode }) => {
-  const { value, text, children, ...rest } = props;
-  const curChildren = useChildrenNullishCoalescing(children);
-  return <NGrid.Item {...rest} text={text ?? value} >{curChildren}</NGrid.Item>;
+  const { value, text, ...rest } = props;
+
+  return <NGrid.Item {...rest} text={text ?? value} />;
 };
 
 Grid.Item = Item;
