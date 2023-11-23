@@ -8,16 +8,18 @@ export interface CheckboxProps extends Omit<NCheckboxProps, 'onChange' | 'value'
   values?: { true: any, false: any }
   value?: any
 }
+
 export const Checkbox = (props: CheckboxProps) => {
   const { value, values, onChange, checked, ...rest } = props;
+
   const curValue = useMemo(() => {
     if (checked !== undefined) {
       return checked;
     }
-    if (values) {
-      return value === values.true;
-    }
     if (value !== undefined) {
+      if (values) {
+        return value === values.true;
+      }
       return value;
     }
     return undefined;
@@ -46,6 +48,7 @@ export type CheckboxGroupProps = Omit<NCheckboxGroupProps, 'onChange' | 'value'>
 const CheckboxGroup = observer((props: CheckboxGroupProps) => {
   const { options, api, keys, splitter = ',', valueType, value, onChange, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
+
   const curValue = useMemo(() => {
     if (Array.isArray(value)) {
       return value;

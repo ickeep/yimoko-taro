@@ -11,9 +11,13 @@ export default defineAppConfig({
 
     'pages/components/index',
     'pages/components/base/button/index',
-    // 'pages/components/base/cell/index',
-    // 'pages/components/base/image/index',
+    'pages/components/base/cell/index',
+    'pages/components/base/image/index',
+    'pages/components/base/overlay/index',
 
+    'pages/components/feedback/action-sheet/index',
+    'pages/components/feedback/badge/index',
+    'pages/components/feedback/dialog/index',
     // 'pages/components/feedback/error-content/index',
     // 'pages/components/feedback/loading/index',
     // 'pages/components/feedback/skeleton/index',
@@ -21,6 +25,7 @@ export default defineAppConfig({
     'pages/components/layout/divider/index',
     // 'pages/components/layout/space/index',
     'pages/components/layout/grid/index',
+    'pages/components/layout/layout/index',
 
     'pages/components/navigation/nav_bar/index',
     'pages/components/navigation/side_nav_bar/index',

@@ -1,10 +1,9 @@
 import { useFieldSchema } from '@formily/react';
-import { OverlayProps as NOverlayProps, Overlay as NOverlay } from '@nutui/nutui-react-taro';
+import { DialogProps as NDialogProps, Dialog as NDialog } from '@nutui/nutui-react-taro';
 import { useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
-
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-export type OverlayProps = NOverlayProps & {
+export type DialogProps = NDialogProps & {
   // 值
   value?: boolean,
   onChange?: (value: boolean, e?: any) => void,
@@ -14,8 +13,8 @@ export type OverlayProps = NOverlayProps & {
   trigger?: TriggerProps,
 };
 
-export const Overlay = (props: Partial<OverlayProps & { value?: boolean }>) => {
-  const { children, value, visible, trigger, onChange, onClick, ...rest } = props;
+export const Dialog = (props: Partial<DialogProps>) => {
+  const { children, value, visible, trigger, onChange, onClose, ...rest } = props;
   const curChildren = useChildrenNullishCoalescing(children);
   const schema = useFieldSchema();
   const { title } = schema ?? {};
@@ -48,8 +47,9 @@ export const Overlay = (props: Partial<OverlayProps & { value?: boolean }>) => {
     />
   ), [title, trigger, trig]);
 
-  const click = () => {
-    onClick?.();
+
+  const close = () => {
+    onClose?.();
     if (curValue === undefined) {
       setCurVisible(false);
     } else {
@@ -60,9 +60,10 @@ export const Overlay = (props: Partial<OverlayProps & { value?: boolean }>) => {
   return (
     <>
       {triggerEl}
-      <NOverlay visible={curVisible} onClick={click} {...rest}>
+      <NDialog {...rest} visible={curVisible} onClose={close} >
         {curChildren}
-      </NOverlay>
+      </NDialog>
     </>
   );
 };
+

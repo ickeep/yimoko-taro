@@ -8,6 +8,14 @@ const data = [
         title: '按钮 - Button',
         path: '/pages/components/base/button/index',
       },
+      {
+        title: '单元格 - Cell',
+        path: '/pages/components/base/cell/index',
+      },
+      {
+        title: '图片 - Image',
+        path: '/pages/components/base/image/index',
+      },
     ],
   },
   {
@@ -21,8 +29,13 @@ const data = [
         title: '宫格 - Grid',
         path: '/pages/components/layout/grid/index',
       },
+      {
+        title: '布局 - Layout',
+        path: '/pages/components/layout/layout/index',
+      },
     ],
   },
+
   {
     title: '导航组件',
     children: [
@@ -61,6 +74,15 @@ const data = [
       { title: '评分 - Rate', path: '/pages/components/in/rate/index' },
       { title: '签名 - Signature', path: '/pages/components/in/signature/index' },
       { title: '搜索栏 - SearchBar', path: '/pages/components/in/search-bar/index' },
+    ],
+  },
+  {
+    title: '操作反馈',
+    children: [
+      { title: '动作面板 - ActionSheet', path: '/pages/components/feedback/action-sheet/index' },
+      { title: '徽标 - Badge', path: '/pages/components/feedback/badge/index' },
+      { title: '对话框 - Dialog', path: '/pages/components/feedback/dialog/index' },
+
     ],
   },
 ];

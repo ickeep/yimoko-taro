@@ -15,7 +15,6 @@ function Index() {
         onChange={(value: any) => store.setValues({ arr: value })}
         options={options}
       >
-        {/* 子节点可当触发器 */}
         <Cell />
       </Picker>
       <StorePage
@@ -23,26 +22,26 @@ function Index() {
         schema={{
           type: 'object',
           properties: {
-            // arr: {
-            //   type: 'array',
-            //   title: '受控',
-            //   enum: options,
-            //   'x-decorator': 'Cell',
-            //   'x-component': 'Picker',
-            //   'x-component-props': {
-            //     placeholder: '请选择地址 - 默认触发器 Text',
-            //     closeable: true,
-            //   },
-            // },
-            // // 自定义触发器
-            // customize: {
-            //   type: 'void',
-            //   title: '自定义触发器',
-            //   'x-component': 'Divider',
-            //   'x-component-props': {
-            //     children: 'schema 自定义触发器',
-            //   },
-            // },
+            arr: {
+              type: 'array',
+              title: '受控',
+              enum: options,
+              'x-decorator': 'Cell',
+              'x-component': 'Picker',
+              'x-component-props': {
+                placeholder: '请选择地址 - 默认触发器 Text',
+                closeable: true,
+              },
+            },
+            // 自定义触发器
+            customize: {
+              type: 'void',
+              title: '自定义触发器',
+              'x-component': 'Divider',
+              'x-component-props': {
+                children: 'schema 自定义触发器',
+              },
+            },
             arr2: {
               type: 'array',
               title: '受控',

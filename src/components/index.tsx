@@ -5,6 +5,10 @@ import { Cell } from './base/cell';
 import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
+import { Avatar } from './display/avatar';
+import { ActionSheet } from './feedback/action-sheet';
+import { Badge } from './feedback/badge';
+import { Dialog } from './feedback/dialog';
 import { ErrorContent } from './feedback/error-content';
 import { Loading, PageLoading } from './feedback/loading';
 import { Skeleton } from './feedback/skeleton';
@@ -24,12 +28,14 @@ import { Rate } from './in/rate';
 import { SearchBar } from './in/search-bar';
 import { Signature } from './in/signature';
 import { Switch } from './in/switch';
+
 import { TextArea } from './in/text-area';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
 import { Space } from './layout/space';
 import { Sticky } from './layout/sticky';
+
 import { BackTop } from './navigation/back_top';
 import { Elevator } from './navigation/elevator';
 import { FixedNav } from './navigation/fixed_nav';
@@ -37,7 +43,7 @@ import { Link } from './navigation/link';
 import { NavBar } from './navigation/nav_bar';
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 import { Tabbar } from './navigation/tabbar';
-import { Tabs } from './navigation/tabs';
+import { TabPane, Tabs } from './navigation/tabs';
 
 export const components = {
   // store 相关组件
@@ -52,6 +58,9 @@ export const components = {
   Overlay,
 
   // 操作反馈
+  ActionSheet,
+  Badge,
+  Dialog,
   ErrorContent,
   Loading,
   PageLoading,
@@ -76,6 +85,7 @@ export const components = {
   SideNavBarItem,
   Tabbar,
   Tabs,
+  TabPane,
 
   // 数据录入
   // Address,
@@ -101,4 +111,7 @@ export const components = {
   Rate,
   Signature,
   SearchBar,
+
+  // 数据展示
+  Avatar,
 };

@@ -7,6 +7,9 @@ export * from './components/base/cell';
 export * from './components/base/image';
 export * from './components/base/overlay';
 
+export * from './components/feedback/action-sheet';
+export * from './components/feedback/badge';
+export * from './components/feedback/dialog';
 export * from './components/feedback/error-content';
 export * from './components/feedback/loading';
 export * from './components/feedback/skeleton';
@@ -42,6 +45,8 @@ export * from './components/in/range';
 export * from './components/in/rate';
 export * from './components/in/signature';
 export * from './components/in/search-bar';
+
+export * from './components/display/avatar';
 
 export * from './components/index';
 
