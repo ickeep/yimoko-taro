@@ -40,6 +40,11 @@ export * from './components/in/calendar';
 export * from './components/in/number-keyboard';
 export * from './components/in/switch';
 export * from './components/in/radio';
+export * from './components/in/text-area';
+export * from './components/in/range';
+export * from './components/in/rate';
+export * from './components/in/signature';
+export * from './components/in/search-bar';
 
 export * from './components/display/avatar';
 
@@ -52,3 +57,4 @@ export * from './store/config';
 export * from './tools/compiler';
 
 export * from './tools/lang';
+

@@ -69,6 +69,11 @@ const data = [
       { title: '数字键盘 - NumberKeyboard', path: '/pages/components/in/number-keyboard/index' },
       { title: '开关 - Switch', path: '/pages/components/in/switch/index' },
       { title: '单选框 - Radio', path: '/pages/components/in/radio/index' },
+      { title: '文本域 - TextArea', path: '/pages/components/in/text-area/index' },
+      { title: '区间选择 - Range', path: '/pages/components/in/range/index' },
+      { title: '评分 - Rate', path: '/pages/components/in/rate/index' },
+      { title: '签名 - Signature', path: '/pages/components/in/signature/index' },
+      { title: '搜索栏 - SearchBar', path: '/pages/components/in/search-bar/index' },
     ],
   },
   {

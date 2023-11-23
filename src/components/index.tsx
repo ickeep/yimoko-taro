@@ -23,8 +23,13 @@ import { Menu } from './in/menu';
 import { NumberKeyboard } from './in/number-keyboard';
 import { Picker } from './in/picker';
 import { Radio, RadioGroup } from './in/radio';
+import { Range } from './in/range';
+import { Rate } from './in/rate';
+import { SearchBar } from './in/search-bar';
+import { Signature } from './in/signature';
 import { Switch } from './in/switch';
 
+import { TextArea } from './in/text-area';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -101,6 +106,11 @@ export const components = {
   Switch,
   Radio,
   RadioGroup,
+  TextArea,
+  Range,
+  Rate,
+  Signature,
+  SearchBar,
 
   // 数据展示
   Avatar,
