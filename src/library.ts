@@ -10,8 +10,12 @@ export * from './components/base/overlay';
 export * from './components/feedback/action-sheet';
 export * from './components/feedback/badge';
 export * from './components/feedback/dialog';
+export * from './components/feedback/empty';
 export * from './components/feedback/error-content';
+export * from './components/feedback/infinite-loading';
 export * from './components/feedback/loading';
+export * from './components/feedback/notice-bar';
+export * from './components/feedback/notify';
 export * from './components/feedback/skeleton';
 
 export * from './components/layout/divider';

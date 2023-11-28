@@ -9,8 +9,12 @@ import { Avatar } from './display/avatar';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
+import { Empty } from './feedback/empty';
 import { ErrorContent } from './feedback/error-content';
+import { InfiniteLoading } from './feedback/infinite-loading';
 import { Loading, PageLoading } from './feedback/loading';
+import { NoticeBar } from './feedback/notice-bar';
+import { Notify } from './feedback/notify';
 import { Skeleton } from './feedback/skeleton';
 
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
@@ -60,8 +64,12 @@ export const components = {
   ActionSheet,
   Badge,
   Dialog,
+  Empty,
   ErrorContent,
+  InfiniteLoading,
   Loading,
+  NoticeBar,
+  Notify,
   PageLoading,
   Skeleton,
   // 布局

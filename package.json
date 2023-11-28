@@ -47,7 +47,6 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-is": "^18.2.0"
   },
   "devDependencies": {
@@ -102,6 +101,17 @@
     "vite": "^4.5.0",
     "vite-plugin-dts": "^3.6.0",
     "webpack": "^5.78.0"
+  },
+  "peerDependencies": {
+    "@formily/core": "^2.3.0",
+    "@formily/react": "^2.3.0",
+    "@formily/reactive": "^2.3.0",
+    "@formily/reactive-react": "^2.3.0",
+    "@nutui/nutui-react-taro": "^2.2.0",
+    "@yimoko/store": "^2.0.7",
+    "lodash-es": "^4.17.21",
+    "react": "^18.0.0",
+    "react-is": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"
