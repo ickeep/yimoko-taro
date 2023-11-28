@@ -50,7 +50,6 @@ export const components = {
   StorePageContent,
   Trigger,
 
-
   // 基础
   Button,
   Cell,
@@ -88,7 +87,6 @@ export const components = {
   TabPane,
 
   // 数据录入
-  // Address,
   Cascader,
   Checkbox,
   Form,
@@ -97,21 +95,27 @@ export const components = {
   InputNumber,
   Menu,
   Picker,
-  Calendar,
-  SingleCalendar,
-  RangeCalendar,
-  MultipleCalendar,
-  WeekCalendar,
-  NumberKeyboard,
   Switch,
   Radio,
   RadioGroup,
   TextArea,
   Range,
   Rate,
-  Signature,
-  SearchBar,
 
   // 数据展示
   Avatar,
+};
+
+export const componentsPlus = {
+  // 数据录入
+  // Address,
+  Calendar,
+  SingleCalendar,
+  RangeCalendar,
+  MultipleCalendar,
+  WeekCalendar,
+  NumberKeyboard,
+
+  Signature,
+  SearchBar,
 };

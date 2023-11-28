@@ -1,5 +1,5 @@
 import { observer } from '@formily/react';
-import { StorePage, compiler, useStore } from '@yimoko/store';
+import { StorePage, useStore } from '@yimoko/store';
 
 function Index() {
   const store = useStore({
@@ -110,7 +110,7 @@ function Index() {
         },
       }}
     />
-    </>);
+  </>);
 }
 
 export default observer(Index);

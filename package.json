@@ -1,10 +1,29 @@
 {
-  "name": "taro",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@yimoko/taro",
+  "version": "1.0.0",
+  "private": false,
   "description": "yimoko-taro",
   "license": "MIT",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ickeep/yimoko-taro.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/yimoko-taro.es.js",
+      "require": "./dist/yimoko-taro.cjs.js",
+      "default": "./src/library.ts"
+    }
+  },
+  "main": "src/library.ts",
+  "types": "types/library.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "types",
+    "README.md"
+  ],
+  "author": "i@ickeep.com",
   "scripts": {
     "lint": "eslint ./src --fix --ext ts,tsx",
     "library": "vite build",
