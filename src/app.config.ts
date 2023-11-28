@@ -23,10 +23,14 @@ export default defineAppConfig({
     // 'pages/components/feedback/skeleton/index',
 
     'pages/components/layout/divider/index',
-    // 'pages/components/layout/space/index',
+    'pages/components/layout/space/index',
     'pages/components/layout/grid/index',
     'pages/components/layout/layout/index',
+    'pages/components/layout/sticky/index',
 
+    'pages/components/navigation/back_top/index',
+    'pages/components/navigation/elevator/index',
+    'pages/components/navigation/fixed_nav/index',
     'pages/components/navigation/nav_bar/index',
     'pages/components/navigation/side_nav_bar/index',
     'pages/components/navigation/tabbar/index',
