@@ -1,72 +1,87 @@
+import Taro from '@tarojs/taro';
+
+import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
+import { Cell, NavBar, Tabs } from '@/library';
+
 function Index() {
-  const store = useStore({});
+  const store = useStore({
+    defaultValues: {
+      tab: 'JSX',
+    },
+  });
+  const { tab } = store.values;
+  const { setValues } = store;
+
   return (
-    <StorePage
-      store={store}
-      schema={{
-        type: 'void',
-        properties: {
-          base: {
-            type: 'void',
-            title: '基础用法',
-            'x-component': 'NavBar',
-            'x-component-props': {
-              children: '标题',
-              right: 'right',
-              left: 'left',
-              back: '返回',
-            },
-          },
-          custom: {
-            type: 'void',
-            title: '自定义',
-            'x-component': 'NavBar',
+    <div>
+      <Tabs
+        value={tab}
+        options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
+        onChange={value => setValues({ tab: `${value}` })}
+      />
+      {tab === 'JSX' ? (
+        <>
+          <Cell.Group title='基础用法'>
+            <Cell>
+              <NavBar
+                back={<span>返回</span>}
+                left={<span>关闭</span>}
+                right={<span onClick={_e => Taro.showToast({ title: 'icon' })}>分享</span>}
+                onBackClick={_e => Taro.showToast({ title: '返回' })}
+              >
+                <span onClick={_e => Taro.showToast({ title: '标题' })}>
+                  订单详情
+                </span>
+              </NavBar>
+            </Cell>
+          </Cell.Group>
+        </>
+      ) : (
+        <StorePage
+          store={store}
+          schema={{
+            type: 'object',
             properties: {
-              link: {
+              c1: {
                 type: 'void',
-                title: '链接',
-                'x-component': 'Link',
-                'x-component-props': {
-                  to: '/pages/components/base/button/index',
-                  children: '链接',
+                'x-decorator': 'Cell.Group',
+                'x-decorator-props': {
+                  title: '基础用法',
                 },
-              },
-            },
-            additionalProperties: {
-              properties: {
-                back: {
-                  type: 'void',
-                  title: '返回',
-                  'x-component': 'Button',
-                  'x-component-props': {
-                    children: '返回',
-                  },
-                },
-                left: {
-                  type: 'void',
-                  title: '左侧',
-                  'x-component': 'Button',
-                  'x-component-props': {
-                    children: '左侧',
-                  },
-                },
-                right: {
-                  type: 'void',
-                  title: '右侧',
-                  'x-component': 'Button',
-                  'x-component-props': {
-                    children: '右侧',
+                'x-component': 'Cell',
+                properties: {
+                  n1: {
+                    type: 'void',
+                    'x-component': 'NavBar',
+                    'x-component-props': {
+                      title: '订单详情',
+                      back: <span>返回</span>,
+                      left: <span>关闭</span>,
+                      right: <span onClick={_e => Taro.showToast({ title: 'icon' })}>分享</span>,
+                      onBackClick: _e => Taro.showToast({ title: '返回' }),
+                    },
+                    properties: {
+                      s1: {
+                        type: 'void',
+                        'x-component': 'span',
+                        'x-component-props': {
+                          onClick: _e => Taro.showToast({ title: '标题' }),
+                          children: '订单详情',
+                        },
+                      },
+                    },
                   },
                 },
               },
             },
-          },
-        },
-      }}
-    />
+          }
+          }
+        />)
+      }
+    </div >
   );
 }
 
-export default Index;
+export default observer(Index);
