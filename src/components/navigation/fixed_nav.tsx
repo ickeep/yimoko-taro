@@ -9,8 +9,6 @@ export const FixedNav = (props: Partial<FixedNavProps> & Omit<IOptionsAPIProps, 
   const navigate = useNavigate();
   const curChildren = useChildrenNullishCoalescing(children);
 
-  console.log(props);
-
   return (
     <NFixedNav
       {...rest}
