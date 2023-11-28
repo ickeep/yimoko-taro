@@ -14,8 +14,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0(@types/react-dom@18.2.14)(@types/react@18.2.29)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
   '@nutui/nutui-react-taro':
-    specifier: ^2.1.0
-    version: 2.1.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.2.0
+    version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
   '@yimoko/store':
     specifier: ^2.0.7
     version: 2.0.7(@types/react-dom@18.2.14)(@types/react@18.2.29)(typescript@4.9.5)
@@ -2271,8 +2271,8 @@ packages:
     resolution: {integrity: sha512-29XhXpYb1x/lsWGKudho0sKTQZi1B9bbMDo70UxfxSD34rNiHIthHJeLcKc++aLMxu88cVPWD+qwt4AQQf8lBw==}
     dev: false
 
-  /@nutui/nutui-react-taro@2.1.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dFeMtylNzdD0L7jZWCEcd7OqhcQjIJuQruhya9EHGx5gbjt8c9Fv/A1LD/1o1SKgqNtgTE4a5rIpUauODbv+Qw==}
+  /@nutui/nutui-react-taro@2.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-OiLnyi2Hk4sUvDu75na6xcYDFGqg2vVBjstu9OB/q5zAKU//ZpAU+lOBm01UJMQglD1HNClkmJq08RWh9Dcq9Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
