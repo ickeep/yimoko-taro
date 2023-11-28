@@ -81,6 +81,18 @@ function Index() {
                 direction: 'horizontal',
               },
             },
+            disabled: {
+              type: 'string',
+              'x-component': 'RadioGroup',
+              'x-decorator': 'FormItem',
+              'x-decorator-props': {
+                label: '禁用',
+              },
+              'x-component-props': {
+                options,
+                disabled: true,
+              },
+            },
           },
         }}
       />

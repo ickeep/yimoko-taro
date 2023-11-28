@@ -9,8 +9,12 @@ import { Avatar } from './display/avatar';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
+import { Empty } from './feedback/empty';
 import { ErrorContent } from './feedback/error-content';
+import { InfiniteLoading } from './feedback/infinite-loading';
 import { Loading, PageLoading } from './feedback/loading';
+import { NoticeBar } from './feedback/notice-bar';
+import { Notify } from './feedback/notify';
 import { Skeleton } from './feedback/skeleton';
 
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
@@ -23,8 +27,13 @@ import { Menu } from './in/menu';
 import { NumberKeyboard } from './in/number-keyboard';
 import { Picker } from './in/picker';
 import { Radio, RadioGroup } from './in/radio';
+import { Range } from './in/range';
+import { Rate } from './in/rate';
+import { SearchBar } from './in/search-bar';
+import { Signature } from './in/signature';
 import { Switch } from './in/switch';
 
+import { TextArea } from './in/text-area';
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -45,7 +54,6 @@ export const components = {
   StorePageContent,
   Trigger,
 
-
   // 基础
   Button,
   Cell,
@@ -56,8 +64,12 @@ export const components = {
   ActionSheet,
   Badge,
   Dialog,
+  Empty,
   ErrorContent,
+  InfiniteLoading,
   Loading,
+  NoticeBar,
+  Notify,
   PageLoading,
   Skeleton,
   // 布局
@@ -83,7 +95,6 @@ export const components = {
   TabPane,
 
   // 数据录入
-  // Address,
   Cascader,
   Checkbox,
   Form,
@@ -92,16 +103,27 @@ export const components = {
   InputNumber,
   Menu,
   Picker,
+  Switch,
+  Radio,
+  RadioGroup,
+  TextArea,
+  Range,
+  Rate,
+
+  // 数据展示
+  Avatar,
+};
+
+export const componentsPlus = {
+  // 数据录入
+  // Address,
   Calendar,
   SingleCalendar,
   RangeCalendar,
   MultipleCalendar,
   WeekCalendar,
   NumberKeyboard,
-  Switch,
-  Radio,
-  RadioGroup,
 
-  // 数据展示
-  Avatar,
+  Signature,
+  SearchBar,
 };

@@ -10,8 +10,12 @@ export * from './components/base/overlay';
 export * from './components/feedback/action-sheet';
 export * from './components/feedback/badge';
 export * from './components/feedback/dialog';
+export * from './components/feedback/empty';
 export * from './components/feedback/error-content';
+export * from './components/feedback/infinite-loading';
 export * from './components/feedback/loading';
+export * from './components/feedback/notice-bar';
+export * from './components/feedback/notify';
 export * from './components/feedback/skeleton';
 
 export * from './components/layout/divider';
@@ -40,6 +44,11 @@ export * from './components/in/calendar';
 export * from './components/in/number-keyboard';
 export * from './components/in/switch';
 export * from './components/in/radio';
+export * from './components/in/text-area';
+export * from './components/in/range';
+export * from './components/in/rate';
+export * from './components/in/signature';
+export * from './components/in/search-bar';
 
 export * from './components/display/avatar';
 
@@ -52,3 +61,4 @@ export * from './store/config';
 export * from './tools/compiler';
 
 export * from './tools/lang';
+
