@@ -197,12 +197,12 @@ export default observer(Index);
 
 const MyContent = () => (
   <>
-    <SubSideNavBar title='一级标题' key='1-0' >
-      <SideNavBarItem title='一级内容1' key='1-01' />
-      <SideNavBarItem title='一级内容2' key='1-02' />
-      <SubSideNavBar title='二级标题' key='2-0'>
-        <SideNavBarItem title='二级内容1' key='2-01' />
-        <SideNavBarItem title='二级内容2' key='2-02' />
+    <SubSideNavBar title='一级标题' key='1-0' value={0} >
+      <SideNavBarItem title='一级内容1' key='1-01' value={1} />
+      <SideNavBarItem title='一级内容2' key='1-02' value={2} />
+      <SubSideNavBar title='二级标题' key='2-0' value={3}>
+        <SideNavBarItem title='二级内容1' key='2-01' value={4} />
+        <SideNavBarItem title='二级内容2' key='2-02' value={5} />
       </SubSideNavBar>
     </SubSideNavBar>
   </>
