@@ -35,12 +35,32 @@ const data = [
         title: '布局 - Layout',
         path: '/pages/components/layout/layout/index',
       },
+      {
+        title: '间距 - Space',
+        path: '/pages/components/layout/space/index',
+      },
+      {
+        title: '粘性布局 - Sticky',
+        path: '/pages/components/layout/sticky/index',
+      },
     ],
   },
 
   {
     title: '导航组件',
     children: [
+      {
+        title: '返回顶部 - BackTop',
+        path: '/pages/components/navigation/back_top/index',
+      },
+      {
+        title: '电梯楼层 - Elevator',
+        path: '/pages/components/navigation/elevator/index',
+      },
+      {
+        title: '悬浮导航 - FixedNav',
+        path: '/pages/components/navigation/fixed_nav/index',
+      },
       {
         title: '头部导航 - NavBar',
         path: '/pages/components/navigation/nav_bar/index',

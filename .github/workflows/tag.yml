@@ -1,0 +1,56 @@
+name: Tag
+# 监听 tag v* 的 push 事件
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  # 编译并发布 npm
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - run: npm install --global pnpm
+      - run: pnpm i
+      # - run: pnpm run test:unit
+      - run: npm run library
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      # 创建 release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          # 根据提交信息自动生成 release 内容
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
+            ${{ steps.contributors.outputs.contributors }}
+          draft: false
+          prerelease: false
+
+      # 查看当前文件
+      - name: List files
+        run: ls -all
+      # 生成 dist zip 包
+      - name: Zip dist
+        run: zip -r dist.zip dist
+      # 上传 release 资源
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist.zip
+          asset_name: ${{ github.ref }}
+          asset_content_type: application/zip

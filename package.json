@@ -1,10 +1,29 @@
 {
-  "name": "taro",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@yimoko/taro",
+  "version": "1.0.0",
+  "private": false,
   "description": "yimoko-taro",
   "license": "MIT",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ickeep/yimoko-taro.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/yimoko-taro.es.js",
+      "require": "./dist/yimoko-taro.cjs.js",
+      "default": "./src/library.ts"
+    }
+  },
+  "main": "src/library.ts",
+  "types": "types/library.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "types",
+    "README.md"
+  ],
+  "author": "i@ickeep.com",
   "scripts": {
     "lint": "eslint ./src --fix --ext ts,tsx",
     "library": "vite build",
@@ -23,12 +42,11 @@
     "@formily/react": "^2.3.0",
     "@formily/reactive": "^2.3.0",
     "@formily/reactive-react": "^2.3.0",
-    "@nutui/nutui-react-taro": "^2.1.0",
+    "@nutui/nutui-react-taro": "^2.2.0",
     "@yimoko/store": "^2.0.7",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-is": "^18.2.0"
   },
   "devDependencies": {
@@ -83,6 +101,17 @@
     "vite": "^4.5.0",
     "vite-plugin-dts": "^3.6.0",
     "webpack": "^5.78.0"
+  },
+  "peerDependencies": {
+    "@formily/core": "^2.3.0",
+    "@formily/react": "^2.3.0",
+    "@formily/reactive": "^2.3.0",
+    "@formily/reactive-react": "^2.3.0",
+    "@nutui/nutui-react-taro": "^2.2.0",
+    "@yimoko/store": "^2.0.7",
+    "lodash-es": "^4.17.21",
+    "react": "^18.0.0",
+    "react-is": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"

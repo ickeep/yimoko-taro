@@ -7,7 +7,7 @@ interface DisabledProps {
 }
 
 const Disabled: React.FC<DisabledProps> = ({ children, disabled }) => (
-    <div style={{ opacity: disabled ? 0.5 : 1 }} onClick={() => {
+    <div style={{ opacity: disabled ? 0.5 : 1 }} onClick={(e) => {
       console.log('onClick disabled');
     }} onTouchStart={(e) => {
       console.log('onTouchStart disabled');
@@ -17,7 +17,7 @@ const Disabled: React.FC<DisabledProps> = ({ children, disabled }) => (
       console.log('onTouchMove disabled');
       e.preventDefault();
       e.stopPropagation();
-    }} onMouseEnter={() => {
+    }} onMouseEnter={(e) => {
       console.log('onMouseEnter disabled');
     }}
     >

@@ -14,8 +14,12 @@ import { ImagePreview } from './display/image-preview';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
+import { Empty } from './feedback/empty';
 import { ErrorContent } from './feedback/error-content';
+import { InfiniteLoading } from './feedback/infinite-loading';
 import { Loading, PageLoading } from './feedback/loading';
+import { NoticeBar } from './feedback/notice-bar';
+import { Notify } from './feedback/notify';
 import { Skeleton } from './feedback/skeleton';
 
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
@@ -55,7 +59,6 @@ export const components = {
   StorePageContent,
   Trigger,
 
-
   // 基础
   Button,
   Cell,
@@ -66,8 +69,12 @@ export const components = {
   ActionSheet,
   Badge,
   Dialog,
+  Empty,
   ErrorContent,
+  InfiniteLoading,
   Loading,
+  NoticeBar,
+  Notify,
   PageLoading,
   Skeleton,
   // 布局
@@ -93,7 +100,6 @@ export const components = {
   TabPane,
 
   // 数据录入
-  // Address,
   Cascader,
   Checkbox,
   Form,
@@ -102,20 +108,12 @@ export const components = {
   InputNumber,
   Menu,
   Picker,
-  Calendar,
-  SingleCalendar,
-  RangeCalendar,
-  MultipleCalendar,
-  WeekCalendar,
-  NumberKeyboard,
   Switch,
   Radio,
   RadioGroup,
   TextArea,
   Range,
   Rate,
-  Signature,
-  SearchBar,
 
   // 数据展示
   Avatar,
@@ -124,4 +122,18 @@ export const components = {
   CountDown,
   Ellipsis,
   ImagePreview,
+};
+
+export const componentsPlus = {
+  // 数据录入
+  // Address,
+  Calendar,
+  SingleCalendar,
+  RangeCalendar,
+  MultipleCalendar,
+  WeekCalendar,
+  NumberKeyboard,
+
+  Signature,
+  SearchBar,
 };

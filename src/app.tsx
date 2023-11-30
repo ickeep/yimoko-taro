@@ -1,15 +1,16 @@
 import { createSchemaField, Schema } from '@formily/react';
-import { ConfigStoreProvider, SchemaFieldProvider } from '@yimoko/store';
+import { ConfigStoreProvider, SchemaFieldProvider, compiler } from '@yimoko/store';
 
 import React from 'react';
 
-import { compiler, components, configStore, defaultConfig } from '@/library';
+import { components, componentsPlus, configStore, defaultConfig } from '@/library';
 
 import './app.css';
 
 
 Schema.registerCompiler(compiler);
-const SchemaField = createSchemaField({ components, scope: { configStore } });
+const useComponents = { ...components, ...componentsPlus };
+const SchemaField = createSchemaField({ components: useComponents, scope: { configStore } });
 
 configStore.setConfig({
   ...defaultConfig,
@@ -24,7 +25,7 @@ configStore.setConfig({
 
 // 设置默认组件
 configStore.components = {
-  ...components,
+  ...useComponents,
   ...configStore.components,
 };
 

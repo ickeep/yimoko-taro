@@ -111,7 +111,7 @@ function Index() {
         },
       }}
     />
-    </>);
+  </>);
 }
 
 export default observer(Index);

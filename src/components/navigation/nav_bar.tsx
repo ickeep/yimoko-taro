@@ -4,7 +4,7 @@ import React, { ReactNode, useMemo } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
-export const NavBar = (props: NavBarProps & { value?: ReactNode }) => {
+export const NavBar = (props: Partial<NavBarProps> & { value?: ReactNode }) => {
   const { value, children, right, left, back, onBackClick, ...rest } = props;
   const navigate = useNavigate();
   const schema = useFieldSchema();
