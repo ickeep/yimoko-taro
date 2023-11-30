@@ -1,5 +1,10 @@
 import { useFieldSchema } from '@formily/react';
-import { SideNavBarProps as NSideNavBarProps, SideNavBar as NSideNavBar, SubSideNavBar as NSubSideNavBar, SideNavBarItem as NSideNavBarItem } from '@nutui/nutui-react-taro';
+import {
+  SideNavBarProps as NSideNavBarProps,
+  SideNavBar as NSideNavBar,
+  SubSideNavBar as NSubSideNavBar,
+  SideNavBarItem as NSideNavBarItem,
+} from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
 import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -9,7 +14,7 @@ export const SubSideNavBar = NSubSideNavBar;
 
 export const SideNavBarItem = NSideNavBarItem;
 
-export type SideNavBarProps = NSideNavBarProps & {
+export type SideNavBarProps = Partial<NSideNavBarProps> & {
   // 值
   value?: boolean,
   onChange?: (value: boolean, e?: any) => void,
@@ -21,7 +26,7 @@ export type SideNavBarProps = NSideNavBarProps & {
   childrenKey?: string,
 } & Omit<IOptionsAPIProps, 'valueType'>;
 
-export const SideNavBar = (props: SideNavBarProps) => {
+export const SideNavBar = (props: Partial<SideNavBarProps>) => {
   const { options, api, keys, splitter, children, value, childrenKey = 'children', visible, trigger, onChange, onClose, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
   const curChildren = useChildrenNullishCoalescing(children);
