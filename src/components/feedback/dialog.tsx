@@ -1,7 +1,7 @@
 import { useFieldSchema } from '@formily/react';
 import { DialogProps as NDialogProps, Dialog as NDialog } from '@nutui/nutui-react-taro';
 import { useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 export type DialogProps = NDialogProps & {
   // 值

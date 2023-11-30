@@ -1,4 +1,5 @@
 import { AvatarProps, Avatar as NAvatar } from '@nutui/nutui-react-taro';
+import React from 'react';
 
 export const Avatar = (props: Partial<AvatarProps> & { value?: string }) => {
   const { src, value, ...rest } = props;

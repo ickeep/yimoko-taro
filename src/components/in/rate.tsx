@@ -1,7 +1,7 @@
 import { ISchema, RecursionField, useFieldSchema } from '@formily/react';
 import { Rate as NRate, RateProps as NRateProps } from '@nutui/nutui-react-taro';
 import { isObject } from 'lodash-es';
-import { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 export type RateProps = NRateProps & {
   checkedIcon?: ISchema | ReactNode,

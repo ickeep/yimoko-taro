@@ -1,6 +1,6 @@
 import { Button, Signature as NSignature, SignatureProps as NSignatureProps, Space } from '@nutui/nutui-react-taro';
 import { Trigger, TriggerProps } from '@yimoko/store';
-import { useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 
 export type SignatureProps = Partial<NSignatureProps> & {
   confrimTrigger?: TriggerProps,

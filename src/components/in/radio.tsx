@@ -2,7 +2,7 @@ import { ISchema, RecursionField, useFieldSchema } from '@formily/react';
 import { Radio as NRadio, RadioProps as NRadioProps, RadioGroup as NRadioGroup, RadioGroupProps as NRadioGroupProps } from '@nutui/nutui-react-taro';
 import { TriggerProps, Trigger, IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 import { isObject } from 'lodash-es';
-import { ReactNode, isValidElement, useMemo } from 'react';
+import React, { ReactNode, isValidElement, useMemo } from 'react';
 
 export type RadioProps = NRadioProps & {
   value?: any,

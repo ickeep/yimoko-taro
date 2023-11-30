@@ -1,7 +1,7 @@
 import { observer, useField, useForm } from '@formily/react';
 import { MenuItemProps as NMenuItemProps, Menu as NMenu, MenuProps } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions } from '@yimoko/store';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { isFragment } from 'react-is';
 
 export const Menu = (props: Partial<MenuProps>) => {

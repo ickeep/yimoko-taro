@@ -1,5 +1,6 @@
 import { LoadingProps, Overlay, Loading as TLoading } from '@nutui/nutui-react-taro';
 import { withValueChildren } from '@yimoko/store';
+import React from 'react';
 
 export const Loading = withValueChildren(TLoading);
 

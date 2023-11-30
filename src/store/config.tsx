@@ -1,5 +1,7 @@
 import { ConfigStore, INotifier, useConfig as useConfigOld } from '@yimoko/store';
 
+import React from 'react';
+
 import { httpRequest } from '../adapter/http';
 import { showToast } from '../adapter/toast';
 import { ErrorContent } from '../components/feedback/error-content';
