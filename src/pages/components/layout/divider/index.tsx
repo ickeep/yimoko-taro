@@ -1,6 +1,8 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
+import React from 'react';
+
 import { Cell, Divider, Tabs } from '@/library';
 
 function Index() {

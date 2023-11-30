@@ -1,5 +1,6 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
+import React from 'react';
 
 // TODO Tabs 初始时设置值无效
 function Index() {

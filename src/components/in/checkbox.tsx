@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { CheckboxProps as NCheckboxProps, Checkbox as NCheckbox, CheckboxGroupProps as NCheckboxGroupProps } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, strToArr, useAPIOptions } from '@yimoko/store';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 export interface CheckboxProps extends Omit<NCheckboxProps, 'onChange' | 'value'> {
   onChange?: (value: any,) => void

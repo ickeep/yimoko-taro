@@ -1,7 +1,9 @@
 import {  observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
+import React from 'react';
 
 import './index.scss';
+
 
 function Index() {
   const store = useStore({});

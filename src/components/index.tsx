@@ -5,7 +5,12 @@ import { Cell } from './base/cell';
 import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
+import { Animate } from './display/animate';
 import { Avatar } from './display/avatar';
+import { CircleProgress } from './display/circle-progress';
+import { CountDown } from './display/count-down';
+import { Ellipsis } from './display/ellipsis';
+import { ImagePreview } from './display/image-preview';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -114,4 +119,9 @@ export const components = {
 
   // 数据展示
   Avatar,
+  Animate,
+  CircleProgress,
+  CountDown,
+  Ellipsis,
+  ImagePreview,
 };

@@ -50,6 +50,13 @@ export default defineAppConfig({
     'pages/about/index',
 
     'pages/web-view/index',
+
+    'pages/components/display/avatar/index',
+    'pages/components/display/circle-progress/index',
+    'pages/components/display/count-down/index',
+    'pages/components/display/image-preview/index',
+    'pages/components/display/animate/index',
+    'pages/components/display/ellipsis/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',

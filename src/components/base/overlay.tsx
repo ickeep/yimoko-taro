@@ -1,8 +1,10 @@
+import { ITouchEvent } from '@tarojs/components';
+
 import { useFieldSchema } from '@formily/react';
 import { OverlayProps as NOverlayProps, Overlay as NOverlay } from '@nutui/nutui-react-taro';
 import { useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 export type OverlayProps = NOverlayProps & {
   // 值
@@ -48,8 +50,8 @@ export const Overlay = (props: Partial<OverlayProps & { value?: boolean }>) => {
     />
   ), [title, trigger, trig]);
 
-  const click = () => {
-    onClick?.();
+  const click = (e: ITouchEvent) => {
+    onClick?.(e);
     if (curValue === undefined) {
       setCurVisible(false);
     } else {

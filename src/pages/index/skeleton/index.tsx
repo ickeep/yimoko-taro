@@ -1,6 +1,6 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { Divider } from '@/library';
 

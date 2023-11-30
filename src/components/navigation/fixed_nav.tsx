@@ -1,6 +1,8 @@
 import { FixedNavProps, FixedNav as NFixedNav } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 
+import React from 'react';
+
 import { useNavigate } from '../../hooks/use-router';
 
 export const FixedNav = (props: FixedNavProps & Omit<IOptionsAPIProps, 'valueType'> & { value?: boolean }) => {

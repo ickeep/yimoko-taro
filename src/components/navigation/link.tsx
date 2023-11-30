@@ -1,6 +1,6 @@
 import { TextProps, Text } from '@tarojs/components';
 
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 

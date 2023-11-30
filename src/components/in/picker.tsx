@@ -1,7 +1,7 @@
 import { useFieldSchema } from '@formily/react';
 import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 // 将 onChange 改为 onOptionChange，onChange 时机为 onConfirm
 export type PickerProps = Omit<Partial<NPickerProps>, 'value' | 'onChange'> & React.RefAttributes<unknown> & {

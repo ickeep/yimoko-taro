@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Cell, router, Divider } from '@/library';
 
 const data = [

@@ -1,6 +1,8 @@
 import { ElevatorProps, Elevator as NElevator } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 
+import React from 'react';
+
 import { useNavigate } from '../../hooks/use-router';
 
 // 渲染数据支持 value 和 options 两种方式 优先级 value > options

@@ -1,4 +1,5 @@
 import { ShortPassword as NShortPassword, ShortPasswordProps as NShortPasswordProps } from '@nutui/nutui-react-taro';
+import React from 'react';
 
 export type ShortPasswordProps = NShortPasswordProps & {};
 
