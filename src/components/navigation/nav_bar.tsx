@@ -1,6 +1,6 @@
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { NavBarProps, NavBar as NNavBar } from '@nutui/nutui-react-taro';
-import { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 

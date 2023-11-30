@@ -51,6 +51,11 @@ export * from './components/in/signature';
 export * from './components/in/search-bar';
 
 export * from './components/display/avatar';
+export * from './components/display/circle-progress';
+export * from './components/display/count-down';
+export * from './components/display/image-preview';
+export * from './components/display/animate';
+export * from './components/display/ellipsis';
 
 export * from './components/index';
 

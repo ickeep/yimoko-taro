@@ -1,7 +1,7 @@
 import { useFieldSchema } from '@formily/react';
 import { NumberKeyboard as NNumberKeyboard, NumberKeyboardProps as NNumberKeyboardProps } from '@nutui/nutui-react-taro';
 import { TriggerProps, Trigger, judgeIsEmpty } from '@yimoko/store';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 export type NumberKeyboardProps = NNumberKeyboardProps & {
   // 触发器

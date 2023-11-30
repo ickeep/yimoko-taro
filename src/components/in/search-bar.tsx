@@ -1,7 +1,7 @@
 import { ISchema, RecursionField, SchemaKey, useFieldSchema } from '@formily/react';
 import { SearchBar as NSearchBar, SearchBarProps as NSearchBarProps } from '@nutui/nutui-react-taro';
 import { isObject } from 'lodash-es';
-import { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 export type SearchBarProps = NSearchBarProps & {
   left?: ReactNode| ISchema,
@@ -30,6 +30,5 @@ export const SearchBar = (props: SearchBarProps) => {
   const curRight = useRenderSchema(right);
   const curLeftIn = useRenderSchema(leftIn);
   const curRightIn = useRenderSchema(rightIn);
-  console.log('curLeft', curLeft, curRight, curLeftIn, curRightIn);
   return <NSearchBar {...rest} left={curLeft} right={curRight} leftIn={curLeftIn} rightIn={curRightIn} />;
 };

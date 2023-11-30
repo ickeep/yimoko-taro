@@ -1,5 +1,5 @@
 import { Switch as NSwitch, SwitchProps as NSwitchProps } from '@nutui/nutui-react-taro';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 export type SwitchProps = NSwitchProps & {
   value?: NSwitchProps['checked'],

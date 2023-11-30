@@ -1,9 +1,12 @@
 import { createSchemaField, Schema } from '@formily/react';
 import { ConfigStoreProvider, SchemaFieldProvider, compiler } from '@yimoko/store';
 
+import React from 'react';
+
 import { components, componentsPlus, configStore, defaultConfig } from '@/library';
 
 import './app.css';
+
 
 Schema.registerCompiler(compiler);
 const useComponents = { ...components, ...componentsPlus };

@@ -1,5 +1,6 @@
 import { ISchema, RecursionField, SchemaKey } from '@formily/react';
 import { judgeIsEmpty } from '@yimoko/store';
+import React from 'react';
 // TODO 待迁移至 @yimoko/store
 // 在很多场景组件对子组件有侵入性 必须放在顶层,需要将 schema 的配置转为子组件的 props
 // eslint-disable-next-line complexity

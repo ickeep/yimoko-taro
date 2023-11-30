@@ -1,6 +1,6 @@
 import { Button, Empty, Space } from '@nutui/nutui-react-taro';
 import { ErrorProps, judgeIsNetworkError } from '@yimoko/store';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { router } from '../../hooks/use-router';
 import { useConfig } from '../../store/config';

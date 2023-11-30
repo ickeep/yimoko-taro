@@ -1,19 +1,18 @@
 import { useFieldSchema } from '@formily/react';
 import {
   SideNavBarProps as NSideNavBarProps,
-  SubSideNavBarProps as NSSubSideNavBarProps,
   SideNavBar as NSideNavBar,
   SubSideNavBar as NSubSideNavBar,
   SideNavBarItem as NSideNavBarItem,
 } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing, Trigger, TriggerProps } from '@yimoko/store';
-import { FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
-export const SubSideNavBar: FC<Partial<NSSubSideNavBarProps>> = NSubSideNavBar;
+export const SubSideNavBar = NSubSideNavBar;
 
-export const SideNavBarItem: FC<Partial<NSSubSideNavBarProps>> = NSideNavBarItem;
+export const SideNavBarItem = NSideNavBarItem;
 
 export type SideNavBarProps = Partial<NSideNavBarProps> & {
   // 值

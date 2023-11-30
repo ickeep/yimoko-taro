@@ -1,5 +1,6 @@
 import { TabbarProps, Tabbar as NTabbar } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
+import React from 'react';
 
 export const Tabbar = (props: TabbarProps & Omit<IOptionsAPIProps, 'valueType'> & { onChange?: (value: number) => void }) => {
   const { options, api, keys, splitter, value, onChange, onSwitch, children, ...rest } = props;

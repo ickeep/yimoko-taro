@@ -2,7 +2,7 @@ import { RecordScope, RecursionField, observer, useFieldSchema } from '@formily/
 import { TabsProps, Tabs as NTabs } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 import { pick } from 'lodash-es';
-import { FC, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 
 export const TabPane = observer((props: any) => {
   const { children, ...rest } = props;

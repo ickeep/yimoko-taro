@@ -5,8 +5,10 @@ import { Field } from '@formily/core';
 import { observer, useExpressionScope, useField } from '@formily/react';
 import { Cell, CellProps } from '@nutui/nutui-react-taro';
 import { IStore, useCurForm } from '@yimoko/store';
+import React from 'react';
 
 import './form.scss';
+
 
 // 使用 nutui 表单后增加了 30+KB 左右
 // 且 Form.Item 会对子节点进行拦截，会修改 value 并 onChange 触发不到
