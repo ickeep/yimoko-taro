@@ -1,6 +1,11 @@
-import { Add } from "@nutui/icons-react-taro";
-import React from "react";
+import { IconFont as NIconFont, StarFill, Star, My, Share } from '@nutui/icons-react-taro';
+import React from 'react';
 
 export const icons = {
-    ADD: <Add />,
-}
+  StarFill: <StarFill />,
+  Star: <Star />,
+  My: <My />,
+  Share: <Share />,
+};
+
+export const Icon = NIconFont;

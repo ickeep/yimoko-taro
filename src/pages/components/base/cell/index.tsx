@@ -6,6 +6,8 @@ import React from 'react';
 
 import { Cell, Switch, Tabs } from '@/library';
 
+import { icons } from '../../../../icons';
+
 function Index() {
   const store = useStore({ defaultValues: { tab: 'JSX' } });
   const { tab } = store.values;
@@ -40,7 +42,10 @@ function Index() {
           <Cell.Group title='自定义标题区域'>
             <Cell
               title={
-                <div style={{ display: 'inline-flex', alignItems: 'center' }}>我是标题</div>
+                <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  {icons.My}
+                  我是标题
+                </div>
               }
               description={
                 <span>我是描述<b style={{ color: 'red' }}>1</b></span>
@@ -145,7 +150,7 @@ function Index() {
                     type: 'void',
                     'x-component': 'Cell',
                     'x-component-props': {
-                      title: <div style={{ display: 'inline-flex', alignItems: 'center' }}>我是标题</div>,
+                      title: <div style={{ display: 'inline-flex', alignItems: 'center' }}>{icons.My}我是标题</div>,
                       description: <span>我是描述<b style={{ color: 'red' }}>1</b></span>,
                       extra: '描述文字',
                     },
