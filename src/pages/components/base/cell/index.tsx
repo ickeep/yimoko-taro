@@ -6,7 +6,7 @@ import React from 'react';
 
 import { Cell, Switch, Tabs } from '@/library';
 
-import { icons } from '../../../../icons';
+import { icons } from '@/src/icons';
 
 function Index() {
   const store = useStore({ defaultValues: { tab: 'JSX' } });

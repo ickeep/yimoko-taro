@@ -1,4 +1,5 @@
 import { RecordScope, RecursionField, observer, useFieldSchema } from '@formily/react';
+import { My } from '@nutui/icons-react-taro';
 import { TabsProps, Tabs as NTabs } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 import { pick } from 'lodash-es';
@@ -15,7 +16,7 @@ export const TabPane = observer((props: any) => {
   );
 });
 
-export const Tabs: FC<Partial<TabsProps> & Omit<IOptionsAPIProps, 'valueType'>> = observer((props) => {
+const MyTabs: FC<Partial<TabsProps> & Omit<IOptionsAPIProps, 'valueType'>> = observer((props) => {
   const { options, api, keys, splitter, children, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter);
   const curChildren = useChildrenNullishCoalescing(children);
@@ -49,4 +50,10 @@ export const Tabs: FC<Partial<TabsProps> & Omit<IOptionsAPIProps, 'valueType'>> 
     </NTabs>
   );
 });
+
+export const Tabs: typeof MyTabs & {
+  TabPane: typeof TabPane;
+} = MyTabs as any;
+
+Tabs.TabPane = TabPane;
 

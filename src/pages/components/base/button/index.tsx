@@ -5,7 +5,7 @@ import React from 'react';
 
 import { Button, Cell, Col, Row, Space, Tabs } from '@/library';
 
-import { Icon, icons } from '../../../../icons';
+import { Icon, icons } from '@/src/icons';
 
 function Index() {
   const store = useStore({ defaultValues: { tab: 'JSX' } });
