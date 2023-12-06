@@ -15,7 +15,7 @@ export type RadioGroupProps = NRadioGroupProps & IOptionsAPIProps & {
   children?: ReactNode | ISchema;
 };
 
-export const Radio = (props: RadioProps) => {
+export const Radio = (props: Partial<RadioProps>) => {
   const { value, checked, onChange, values, ...rest } = props;
   const curVal = useMemo(() => {
     if (checked !== undefined) {
@@ -36,7 +36,7 @@ export const Radio = (props: RadioProps) => {
   />;
 };
 
-export const RadioGroup = (props: RadioGroupProps) => {
+export const RadioGroup = (props: Partial<RadioGroupProps>) => {
   const { value, onChange, labelTrigger, children, options, api, keys, splitter, valueType, ...rest } = props;
   const schema = useFieldSchema();
   const { name } = schema ?? {};
