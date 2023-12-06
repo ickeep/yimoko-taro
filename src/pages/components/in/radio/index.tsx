@@ -8,7 +8,7 @@ import { Icon, icons } from '@/src/icons';
 function Index() {
   const store = useStore({
     defaultValues: {
-      tab: 'JS',
+      tab: 'JSX',
       v1: 1,
     },
   });
