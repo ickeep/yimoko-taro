@@ -17,6 +17,7 @@ const config = {
   },
   alias: {
     "@/library": path.resolve(__dirname, '..', 'src/library'),
+    "@/src": path.resolve(__dirname, '..', 'src'),
   },
   cache: {
     // enable: true,

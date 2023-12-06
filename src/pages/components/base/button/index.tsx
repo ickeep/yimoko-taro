@@ -5,6 +5,8 @@ import React from 'react';
 
 import { Button, Cell, Col, Row, Space, Tabs } from '@/library';
 
+import { Icon, icons } from '@/src/icons';
+
 function Index() {
   const store = useStore({ defaultValues: { tab: 'JSX' } });
   const { tab } = store.values;
@@ -97,10 +99,10 @@ function Index() {
             <Cell>
               <Row type='flex' wrap='wrap'>
                 <Space>
-                  <Button shape='square' type='primary' fill='outline' icon='star-fill'>
+                  <Button shape='square' type='primary' fill='outline' icon={icons.StarFill}>
                     收集
                   </Button>
-                  <Button shape='square' type='primary' icon='star'>
+                  <Button shape='square' type='primary' icon={icons.Star}>
                     收藏
                   </Button>
                 </Space>
@@ -108,7 +110,7 @@ function Index() {
                   shape='round'
                   type='primary'
                   size='large'
-                  icon='star'
+                  icon={icons.Star}
                 >
                   收藏
                 </Button>
@@ -137,10 +139,27 @@ function Index() {
               </Row>
             </Cell>
           </Cell.Group>
+          <Cell.Group title='自定义颜色'>
+            <Cell>
+              <Row type='flex' wrap='wrap'>
+                <Space>
+                  <Button color='#7232dd'>单色按钮</Button>
+                  <Button color='#7232dd' fill='outline'>单色按钮</Button>
+                </Space>
+                <Space>
+                  <Button color='rgba(10,101,208,0.75)'>单色按钮</Button>
+                  <Button color='linear-gradient(to right, #ff6034, #ee0a24)'>
+                    渐变色按钮
+                  </Button>
+                </Space>
+              </Row>
+            </Cell>
+          </Cell.Group>
         </>
       ) : (
         <StorePage
           store={store}
+          scope={{ icons, Icon }}
           schema={{
             type: 'object',
             properties: {
@@ -454,7 +473,7 @@ function Index() {
                               type: 'primary',
                               shape: 'square',
                               fill: 'outline',
-                              icon: 'star-fill',
+                              icon: '{{icons.StarFill}}',
                               children: '收集',
                             },
                           },
@@ -464,7 +483,7 @@ function Index() {
                             'x-component-props': {
                               type: 'primary',
                               shape: 'square',
-                              icon: 'star',
+                              icon: '{{icons.Star}}',
                               children: '收集',
                             },
                           },
@@ -476,7 +495,7 @@ function Index() {
                         'x-component-props': {
                           type: 'primary',
                           shape: 'round',
-                          icon: 'star',
+                          icon: <Icon name='star' color='#fff' />,
                           size: 'large',
                           children: '收集',
                         },
@@ -570,6 +589,71 @@ function Index() {
                               type: 'primary',
                               block: true,
                               children: '块级元素',
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              cell10: {
+                type: 'void',
+                'x-decorator': 'Cell.Group',
+                'x-decorator-props': {
+                  title: '自定义颜色',
+                },
+                'x-component': 'Cell',
+                properties: {
+                  r: {
+                    type: 'void',
+                    'x-component': 'Row',
+                    'x-component-props': {
+                      type: 'flex',
+                      wrap: 'wrap',
+                    },
+                    properties: {
+                      s1: {
+                        type: 'void',
+                        'x-component': 'Space',
+                        properties: {
+                          btn1: {
+                            type: 'void',
+                            'x-component': 'Button',
+                            'x-component-props': {
+                              color: '#7232dd',
+                              children: '单色按钮',
+                            },
+                          },
+                          btn2: {
+                            type: 'void',
+                            'x-component': 'Button',
+                            'x-component-props': {
+                              color: '#7232dd',
+                              fill: 'outline',
+                              children: '单色按钮',
+                            },
+                          },
+                        },
+                      },
+                      s2: {
+                        type: 'void',
+                        'x-component': 'Space',
+                        properties: {
+                          btn1: {
+                            type: 'void',
+                            'x-component': 'Button',
+                            'x-component-props': {
+                              color: 'rgba(10,101,208,0.75)',
+                              children: '单色按钮',
+                            },
+                          },
+                          btn2: {
+                            type: 'void',
+                            'x-component': 'Button',
+                            'x-component-props': {
+                              color: 'linear-gradient(to right, #ff6034, #ee0a24)',
+                              children: '渐变色按钮',
                             },
                           },
                         },

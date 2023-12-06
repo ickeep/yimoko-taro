@@ -3,6 +3,9 @@
     "paths": {
       "@/library": [
         "src/library"
+      ],
+      "@/src/*": [
+        "src/*"
       ]
     }
   }

@@ -5,6 +5,7 @@ import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
 import { Cell, NavBar, Tabs } from '@/library';
+import { Icon, icons } from '@/src/icons';
 
 function Index() {
   const store = useStore({
@@ -27,9 +28,18 @@ function Index() {
           <Cell.Group title='基础用法'>
             <Cell>
               <NavBar
-                back={<span>返回</span>}
-                left={<span>关闭</span>}
-                right={<span onClick={_e => Taro.showToast({ title: 'icon' })}>分享</span>}
+                back={
+                  <>
+                    <Icon name='left' color='#979797' />
+                    返回
+                  </>
+                }
+                left={<Icon name='close' size={12} />}
+                right={
+                  <span onClick={e => Taro.showToast({ title: 'icon' })}>
+                    {icons.Share}
+                  </span>
+                }
                 onBackClick={_e => Taro.showToast({ title: '返回' })}
               >
                 <span onClick={_e => Taro.showToast({ title: '标题' })}>
