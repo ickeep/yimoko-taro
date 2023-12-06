@@ -15,7 +15,7 @@ export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
   onChange?: (value: string | any[], selectedOptions?: any[]) => void,
 } & IOptionsAPIProps;
 
-export const Cascader = (props: CascaderProps) => {
+export const Cascader = (props: Partial<CascaderProps>) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
@@ -39,11 +39,12 @@ export const Cascader = (props: CascaderProps) => {
   const valText = useMemo(() => {
     const textArr: string[] = [];
     const valKey = rest.optionKey?.valueKey ?? 'value';
+    const textKey = rest.optionKey?.textKey ?? 'text';
     const childKey = rest.optionKey?.childrenKey ?? childrenKey;
     const find = (arr: any[]) => {
       for (const item of arr) {
         if (curValue.includes(item[valKey])) {
-          textArr.push(item.text);
+          textArr.push(item[textKey]);
           if (item[childKey]) {
             find(item[childKey]);
           }
