@@ -1,4 +1,4 @@
-import { IconFont as NIconFont, StarFill, Star, My, Share } from '@nutui/icons-react-taro';
+import { IconFont as NIconFont, StarFill, Star, My, Share, Checklist } from '@nutui/icons-react-taro';
 import React from 'react';
 
 export const icons = {
@@ -6,6 +6,7 @@ export const icons = {
   Star: <Star />,
   My: <My />,
   Share: <Share />,
+  Checklist: <Checklist />,
 };
 
 export const Icon = NIconFont;
