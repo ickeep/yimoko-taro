@@ -2,122 +2,222 @@ import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
+import { Cell, Rate, Tabs } from '@/library';
+import { Icon, icons } from '@/src/icons';
+
 function Index() {
-  const store = useStore({});
+  const store = useStore({
+    defaultValues: {
+      tab: 'JSX',
+      v1: 3,
+    },
+  });
+  const { tab, v1 } = store.values;
+  const { setValues } = store;
+  const onChange = (val: any) => {
+    console.log('评分变化：', val);
+  };
 
   return (
+    <div>
+      <Tabs
+        value={tab}
+        options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
+        onChange={value => setValues({ tab: `${value}` })}
+      />
+      {tab === 'JSX' ? (
         <>
+          <Cell.Group title='基础用法'>
+            <Cell>
+              非受控
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              受控
+              <Rate value={v1} onChange={value => setValues({ v1: value })} />
+            </Cell>
+          </Cell.Group>
+          <Cell.Group title='自定义规则'>
+            <Cell>
+              支持半选
+              <Rate allowHalf defaultValue={3.5} />
+            </Cell>
+            <Cell>
+              最大值
+              <Rate count={6} defaultValue={3} />
+            </Cell>
+            <Cell>
+              最小值
+              <Rate min={2} defaultValue={3} />
+            </Cell>
+          </Cell.Group>
+          <Cell.Group title='自定义样式'>
+            <Cell>
+              自定义 icon
+              <Rate
+                checkedIcon={icons.HeartFill}
+                defaultValue={3}
+              />
+            </Cell>
+            <Cell>
+              自定义颜色
+              <Rate
+                defaultValue={3}
+                checkedIcon={<Icon name='heart-fill' color='rgb(255, 200, 0)' />}
+              />
+            </Cell>
+          </Cell.Group>
+          <Cell.Group title='特殊状态'>
+            <Cell>
+              禁用
+              <Rate disabled defaultValue={3} />
+            </Cell>
+            <Cell>
+              只读
+              <Rate defaultValue={3} readOnly />
+            </Cell>
+            <Cell>
+              触发事件
+              <Rate defaultValue={3} onChange={onChange} />
+            </Cell>
+          </Cell.Group>
+        </>
+      ) : (
         <StorePage
           store={store}
-          components={{
-            HeartFill: () => <div>HeartFill</div>,
-          }}
           schema={{
             type: 'object',
             properties: {
-              textArea: {
-                type: 'number',
-                title: '基础使用',
-                'x-component': 'Rate',
+              g1: {
+                type: 'void',
+                'x-component': 'Cell.Group',
                 'x-component-props': {
-                  placeholder: '基础使用',
-                  defaultValue: 3,
+                  title: '基础用法',
                 },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '基础使用',
-                },
-              },
-              allowHalf: {
-                type: 'number',
-                title: '允许半星',
-                'x-component': 'Rate',
-                'x-component-props': {
-                  allowHalf: true,
-                  defaultValue: 3.5,
-                },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '允许半星',
-                },
-              },
-              checkedIcon: {
-                type: 'number',
-                title: '选中图标',
-                'x-component': 'Rate',
-                'x-component-props': {
-                  // checkedIcon: 'favorfill',
-                  checkedIcon: {
+                properties: {
+                  c1: {
                     type: 'void',
-                    'x-component': 'HeartFill',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
                     'x-component-props': {
-
+                      defaultValue: 3,
                     },
                   },
-                  defaultValue: 3,
-                },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '选中图标',
-                },
-              },
-              // 自定义数量
-              count: {
-                type: 'number',
-                title: '自定义数量',
-                'x-component': 'Rate',
-                'x-component-props': {
-                  count: 10,
-                  defaultValue: 3,
-                },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '自定义数量',
+                  v1: {
+                    type: 'number',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      defaultValue: 3,
+                    },
+                  },
                 },
               },
-              min: {
-                type: 'number',
-                title: '最小值',
-                'x-component': 'Rate',
+              g2: {
+                type: 'void',
+                'x-component': 'Cell.Group',
                 'x-component-props': {
-                  min: 2,
-                  defaultValue: 3,
+                  title: '自定义规则',
                 },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '最小值',
+                properties: {
+                  c1: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      allowHalf: true,
+                      defaultValue: 3.5,
+                    },
+                  },
+                  c2: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      count: 6,
+                      defaultValue: 3,
+                    },
+                  },
+                  c3: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      min: 2,
+                      defaultValue: 3,
+                    },
+                  },
                 },
               },
-              disabled: {
-                type: 'number',
-                title: '禁用',
-                'x-component': 'Rate',
+              g3: {
+                type: 'void',
+                'x-component': 'Cell.Group',
                 'x-component-props': {
-                  disabled: true,
-                  defaultValue: 3,
+                  title: '自定义样式',
                 },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '禁用',
+                properties: {
+                  c1: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      checkedIcon: '{{icons.HeartFill}}',
+                      defaultValue: 3,
+                    },
+                  },
+                  c2: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      checkedIcon: <Icon name='heart-fill' color='rgb(255, 200, 0)' />,
+                      defaultValue: 3,
+                    },
+                  },
                 },
               },
-              readOnly: {
-                type: 'number',
-                title: '只读',
-                'x-component': 'Rate',
+              g4: {
+                type: 'void',
+                'x-component': 'Cell.Group',
                 'x-component-props': {
-                  readOnly: true,
-                  defaultValue: 3,
+                  title: '特殊状态',
                 },
-                'x-decorator': 'FormItem',
-                'x-decorator-props': {
-                  title: '只读',
+                properties: {
+                  c1: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      disabled: true,
+                      defaultValue: 3,
+                    },
+                  },
+                  c2: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      readOnly: true,
+                      defaultValue: 3,
+                    },
+                  },
+                  c3: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Rate',
+                    'x-component-props': {
+                      onChange,
+                      defaultValue: 3,
+                    },
+                  },
                 },
               },
             },
-          }}
-        />
-        </>
+          }
+          }
+        />)
+      }
+    </div >
   );
 }
 
