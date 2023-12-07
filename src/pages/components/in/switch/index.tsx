@@ -1,105 +1,112 @@
+import Taro from '@tarojs/taro';
+
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
-
 import React from 'react';
 
-import { Cell } from '@/library';
+import { Cell, Switch, Tabs } from '@/library';
 
-const ExtraCell = ({ extra, children, title }) => (
-    <Cell title={title} description={children} extra={extra} />
-);
 function Index() {
   const store = useStore({
     defaultValues: {
-      values: '关闭是0',
-      controlled: true,
+      tab: 'JSX',
+      checkedAsync: false,
     },
   });
-  return (
-    <>
-      <StorePage
-        store={store}
-        components={{ ExtraCell }}
-        schema={{
-          type: 'object',
-          properties: {
-            base: {
-              type: 'boolean',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '非受控',
-              },
-              'x-component-props': {
-                defaultChecked: true,
-              },
-            },
-            controlled: {
-              type: 'boolean',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '受控',
-              },
-              'x-component-props': {
+  const { tab, checkedAsync } = store.values;
+  const { setValues } = store;
+  const onChangeAsync = (value) => {
+    Taro.showToast({ title: `2秒后异步触发 ${value}` });
+    setTimeout(() => {
+      setValues({ checkedAsync: value });
+    }, 2000);
+  };
 
-              },
-            },
-            disabled: {
-              type: 'boolean',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '禁用',
-              },
-              'x-component-props': {
-                disabled: true,
-              },
-            },
-            style: {
-              type: 'boolean',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '自定义颜色',
-              },
-              'x-component-props': {
-                style: { '--nutui-switch-open-background-color': 'blue' },
-              },
-            },
-            // 自定义文字
-            text: {
-              type: 'string',
-              'x-component': 'Switch',
-              'x-decorator': 'FormItem',
-              'x-decorator-props': {
-                label: '自定义文字',
-              },
-              'x-component-props': {
-                activeText: '开',
-                inactiveText: '关',
-              },
-            },
-            // 自定义值
-            values: {
-              type: 'string',
-              'x-component': 'Switch',
-              'x-decorator': 'ExtraCell',
-              'x-decorator-props': {
-                title: '自定义值',
-                extra: '{{curStore.values.values}}',
-              },
-              'x-component-props': {
-                values: {
-                  true: '开启是1',
-                  false: '关闭是0',
+  return (
+    <div>
+      <Tabs
+        value={tab}
+        options={[{ title: 'JSX', value: 'JSX' }, { title: 'Schema', value: 'Schema' }]}
+        onChange={value => setValues({ tab: `${value}` })}
+      />
+      {tab === 'JSX' ? (
+        <>
+          <Cell.Group title='基础用法'>
+            <Cell>
+              非受控
+              <Switch defaultChecked />
+            </Cell>
+            <Cell>
+              受控
+              <Switch
+                checked={checkedAsync}
+                onChange={value => onChangeAsync(value)}
+              />
+            </Cell>
+            <Cell>
+              禁用
+              <Switch defaultChecked disabled />
+            </Cell>
+            <Cell>
+              文字
+              <Switch defaultChecked activeText='开' inactiveText='关' />
+            </Cell>
+          </Cell.Group>
+        </>
+      ) : (
+        <StorePage
+          store={store}
+          schema={{
+            type: 'object',
+            properties: {
+              group: {
+                type: 'void',
+                'x-component': 'Cell.Group',
+                'x-component-props': {
+                  title: '基础用法',
+                },
+                properties: {
+                  c1: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Switch',
+                    'x-component-props': {
+                      defaultChecked: true,
+                    },
+                  },
+                  checkedAsync: {
+                    type: 'boolean',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Switch',
+                    'x-component-props': {
+                      onChange: value => onChangeAsync(value),
+                    },
+                  },
+                  c3: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Switch',
+                    'x-component-props': {
+                      disabled: true,
+                    },
+                  },
+                  c4: {
+                    type: 'void',
+                    'x-decorator': 'Cell',
+                    'x-component': 'Switch',
+                    'x-component-props': {
+                      activeText: '开',
+                      inactiveText: '关',
+                    },
+                  },
                 },
               },
             },
-          },
-        }}
-      />
-    </>
+          }
+          }
+        />)
+      }
+    </div >
   );
 }
 
