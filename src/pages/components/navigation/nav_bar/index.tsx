@@ -10,7 +10,7 @@ import { Icon, icons } from '@/src/icons';
 function Index() {
   const store = useStore({
     defaultValues: {
-      tab: 'JSX',
+      tab: 'Schema',
     },
   });
   const { tab } = store.values;
@@ -68,10 +68,21 @@ function Index() {
                     'x-component': 'NavBar',
                     'x-component-props': {
                       title: '订单详情',
-                      back: <span>返回</span>,
-                      left: <span>关闭</span>,
+                      left: '关闭',
                       right: <span onClick={_e => Taro.showToast({ title: 'icon' })}>分享</span>,
                       onBackClick: _e => Taro.showToast({ title: '返回' }),
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        back: {
+                          type: 'void',
+                          'x-component': 'Button',
+                          'x-component-props': {
+                            children: '返回',
+                          },
+                        },
+                      },
                     },
                     properties: {
                       s1: {
