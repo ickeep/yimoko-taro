@@ -44,7 +44,7 @@
     "@formily/reactive-react": "^2.3.0",
     "@nutui/icons-react-taro": "^0.0.4",
     "@nutui/nutui-react-taro": "^2.2.0",
-    "@yimoko/store": "^2.0.7",
+    "@yimoko/store": "^2.0.8",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react": "^18.0.0",

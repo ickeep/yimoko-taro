@@ -8,7 +8,7 @@ import { Icon, icons } from '@/src/icons';
 function Index() {
   const store = useStore({
     defaultValues: {
-      tab: 'JSX',
+      tab: 'Schema',
       v1: 3,
     },
   });
@@ -85,6 +85,7 @@ function Index() {
       ) : (
         <StorePage
           store={store}
+          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
@@ -170,8 +171,19 @@ function Index() {
                     'x-decorator': 'Cell',
                     'x-component': 'Rate',
                     'x-component-props': {
-                      checkedIcon: <Icon name='heart-fill' color='rgb(255, 200, 0)' />,
                       defaultValue: 3,
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        checkedIcon: {
+                          type: 'void',
+                          'x-component': '{{icons.Heart}}',
+                          'x-component-props': {
+                            color: 'rgb(0, 200, 0)',
+                          },
+                        },
+                      },
                     },
                   },
                 },

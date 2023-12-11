@@ -8,6 +8,7 @@ export const icons = {
   Share: <Share />,
   Checklist: <Checklist />,
   HeartFill: <HeartFill />,
+  Heart: HeartFill,
 };
 
 export const Icon = NIconFont;
