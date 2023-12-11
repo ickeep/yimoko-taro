@@ -36,13 +36,13 @@ function Index() {
                 }
                 left={<Icon name='close' size={12} />}
                 right={
-                  <span onClick={e => Taro.showToast({ title: 'icon' })}>
+                  <span onClick={() => Taro.showToast({ title: 'icon' })}>
                     {icons.Share}
                   </span>
                 }
-                onBackClick={_e => Taro.showToast({ title: '返回' })}
+                onBackClick={() => Taro.showToast({ title: '返回' })}
               >
-                <span onClick={_e => Taro.showToast({ title: '标题' })}>
+                <span onClick={() => Taro.showToast({ title: '标题' })}>
                   订单详情
                 </span>
               </NavBar>
