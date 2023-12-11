@@ -1,21 +1,11 @@
-import { ISchema, RecursionField, useFieldSchema } from '@formily/react';
 import { Rate as NRate, RateProps as NRateProps } from '@nutui/nutui-react-taro';
-import { isObject } from 'lodash-es';
-import React, { ReactNode, useMemo } from 'react';
+import { useAdditionalNode } from '@yimoko/store';
+import React from 'react';
 
-export type RateProps = NRateProps & {
-  checkedIcon?: ISchema | ReactNode,
-};
-
-export const Rate = (props: RateProps) => {
+export const Rate = (props: NRateProps) => {
   const { checkedIcon, uncheckedIcon, ...rest } = props;
-  const { name } = useFieldSchema() ?? {};
-  const curCheckedIcon = useMemo(() => {
-    if (isObject(checkedIcon)) {
-      // @ts-expect-error
-      return <RecursionField schema={checkedIcon as Schema} name={name} />;
-    }
-    return checkedIcon;
-  }, [checkedIcon, name]);
-  return <NRate {...rest} checkedIcon={curCheckedIcon} />;
+  const curCheckedIcon = useAdditionalNode('checkedIcon', checkedIcon);
+  const curUncheckedIcon = useAdditionalNode('uncheckedIcon', uncheckedIcon);
+
+  return <NRate {...rest} checkedIcon={curCheckedIcon} uncheckedIcon={curUncheckedIcon} />;
 };
