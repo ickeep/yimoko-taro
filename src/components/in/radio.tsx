@@ -1,8 +1,10 @@
-import { ISchema, RecursionField, observer, useFieldSchema } from '@formily/react';
+import { RecursionField, observer, useFieldSchema } from '@formily/react';
 import { Radio as NRadio, RadioProps as NRadioProps, RadioGroup as NRadioGroup, RadioGroupProps as NRadioGroupProps } from '@nutui/nutui-react-taro';
-import { TriggerProps, Trigger, IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
-import { isObject } from 'lodash-es';
-import React, { ReactNode, isValidElement, useMemo } from 'react';
+import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
+import React, { ReactNode, useMemo } from 'react';
+import { isFragment } from 'react-is';
+
+import { ItemSchemaToProps } from '../../tools/schema';
 
 export type RadioProps = NRadioProps & {
   value?: any,
@@ -10,10 +12,7 @@ export type RadioProps = NRadioProps & {
   onChange?: (val: unknown) => void,
 };
 
-export type RadioGroupProps = NRadioGroupProps & IOptionsAPIProps & {
-  labelTrigger?: TriggerProps;
-  children?: ReactNode | ISchema;
-};
+export type RadioGroupProps = NRadioGroupProps & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode };
 
 export const Radio = (props: Partial<RadioProps>) => {
   const { value, checked, onChange, values, ...rest } = props;
@@ -26,6 +25,7 @@ export const Radio = (props: Partial<RadioProps>) => {
     }
     return value ?? undefined;
   }, [checked, value, values]);
+
   return <NRadio {...rest} checked={curVal} onChange={(val) => {
     if (values) {
       onChange?.(val ? values.true : values.false);
@@ -37,25 +37,40 @@ export const Radio = (props: Partial<RadioProps>) => {
 };
 
 export const RadioGroup = observer((props: Partial<RadioGroupProps>) => {
-  const { value, onChange, labelTrigger, children, options, api, keys, splitter, valueType, ...rest } = props;
-  const schema = useFieldSchema();
-  const { name } = schema ?? {};
-  const change = (val: string | number) => {
-    onChange?.(val);
-  };
+  const { options, api, keys, splitter, children, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
-  const curChildren = useMemo(() => {
-    if (isValidElement(children)) {
-      return children;
-    }
-    if (isObject(children)) {
-      return <RecursionField schema={children as ISchema} name={name} />;
-    }
-    if (isObject(labelTrigger) && Array.isArray(data)) {
-      return data.map((item, index) => <NRadio key={index} {...item}><Trigger text={item.label} {...labelTrigger} /></NRadio>);
-    }
-    return children;
-  }, [children, labelTrigger, name, data]);
+  const schema = useFieldSchema();
 
-  return <NRadioGroup {...rest} value={value} options={isObject(labelTrigger) ? undefined : data} onChange={change}>{curChildren}</NRadioGroup>;
+  // 当 schema 使用时 会对 children 进行处理 导致 Radio 不在顶层 必须将其取出来
+  // eslint-disable-next-line complexity
+  const useChildren = useMemo(() => {
+    let tmpChildren = children;
+    if (schema && isFragment(tmpChildren)) {
+      tmpChildren = tmpChildren?.props?.children;
+    }
+    if (Array.isArray(tmpChildren)) {
+      // 过滤undefined
+      tmpChildren = tmpChildren.filter(item => item) as any[];
+      // 如果长度等于1，且是Fragment，那么就是schema中的children
+      if (Array.from(tmpChildren).length === 1 && isFragment(tmpChildren[0])) {
+        tmpChildren = tmpChildren[0]?.props?.children;
+      }
+    }
+    if (Array.isArray(tmpChildren)) {
+      return tmpChildren.map((item, index) => {
+        // 判断是不是用 RecursionField 渲染 如果是则处理 Radio 的方式
+        if (item.type === RecursionField) {
+          const { schema: itemSchema, ...args } = item.props;
+          const itemProps = ItemSchemaToProps(itemSchema, 'Radio', args);
+          return (
+            <Radio key={index}  {...itemProps} />
+          );
+        }
+        return item;
+      });
+    }
+    return tmpChildren;
+  }, [children, schema]);
+
+  return <NRadioGroup {...rest} options={data} >{useChildren}</NRadioGroup>;
 });
