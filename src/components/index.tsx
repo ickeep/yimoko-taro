@@ -6,6 +6,7 @@ import { Image } from './base/image';
 
 import { Overlay } from './base/overlay';
 import { Animate } from './display/animate';
+import { AnimatingNumbers } from './display/animating-numbers';
 import { Avatar } from './display/avatar';
 import { CircleProgress } from './display/circle-progress';
 import { CountDown } from './display/count-down';
@@ -126,6 +127,7 @@ export const components = {
 
   // 数据展示
   Animate,
+  AnimatingNumbers,
   Avatar,
   CircleProgress,
   CountDown,
