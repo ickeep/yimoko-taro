@@ -1,4 +1,4 @@
-import { StepProps, Step as NStep, StepsProps as NStepsProps } from '@nutui/nutui-react-taro';
+import { StepProps, Step as NStep, Steps as NSteps, StepsProps as NStepsProps } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useAdditionalNode } from '@yimoko/store';
 import React, { useMemo } from 'react';
 
@@ -10,7 +10,7 @@ export const Steps = (props: StepsProps) => {
 
   const dataChildren = useMemo(() => data.map((item, index) => <Step key={item.value ?? index} {...item} />), [data]);
 
-  return <NStep {...rest} >{dataChildren}{children}</NStep>;
+  return <NSteps {...rest} >{dataChildren}{children}</NSteps>;
 };
 
 

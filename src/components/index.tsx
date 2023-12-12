@@ -17,6 +17,8 @@ import { Pagination } from './display/pagination';
 import { Price } from './display/price';
 import { Progress } from './display/progress';
 import { Step, Steps } from './display/steps';
+import { Swiper } from './display/swiper';
+import { Video } from './display/video';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -144,6 +146,8 @@ export const components = {
   Progress,
   Steps,
   Step,
+  Swiper,
+  Video,
 };
 
 export const componentsPlus = {
