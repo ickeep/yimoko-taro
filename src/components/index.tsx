@@ -25,6 +25,7 @@ import { Popup } from './feedback/popup';
 import { Skeleton } from './feedback/skeleton';
 
 import { Swipe } from './feedback/swipe';
+import { Toast } from './feedback/toast';
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
 import { Cascader } from './in/cascader';
 import { Checkbox } from './in/checkbox';
@@ -83,6 +84,7 @@ export const components = {
   Popup,
   Skeleton,
   Swipe,
+  Toast,
 
   // 布局
   Divider,
@@ -123,8 +125,8 @@ export const components = {
   Rate,
 
   // 数据展示
-  Avatar,
   Animate,
+  Avatar,
   CircleProgress,
   CountDown,
   Ellipsis,
