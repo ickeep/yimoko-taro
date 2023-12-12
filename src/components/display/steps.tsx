@@ -8,7 +8,7 @@ export const Steps = (props: StepsProps) => {
   const { children, options, api, keys, splitter, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
 
-  const dataChildren = useMemo(() => data.map((item, index) => <Step key={index} {...item} />), [data]);
+  const dataChildren = useMemo(() => data.map((item, index) => <Step key={item.value ?? index} {...item} />), [data]);
 
   return <NStep {...rest} >{dataChildren}{children}</NStep>;
 };
