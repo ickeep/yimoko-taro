@@ -6,12 +6,12 @@ import React from 'react';
 import { components, componentsPlus, configStore, defaultConfig } from '@/library';
 
 import './app.css';
-import { Icon, icons } from './icons';
+import icons from './icons';
 
 
 Schema.registerCompiler(compiler);
 const useComponents = { ...components, ...componentsPlus };
-const SchemaField = createSchemaField({ components: useComponents, scope: { Icon, icons, configStore } });
+const SchemaField = createSchemaField({ components: useComponents, scope: { icons, configStore } });
 
 configStore.setConfig({
   ...defaultConfig,

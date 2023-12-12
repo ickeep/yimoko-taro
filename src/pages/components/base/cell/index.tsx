@@ -6,10 +6,10 @@ import React from 'react';
 
 import { Cell, Switch, Tabs } from '@/library';
 
-import { icons } from '@/src/icons';
+import icons from '@/src/icons';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'JSX' } });
+  const store = useStore({ defaultValues: { tab: 'Schema' } });
   const { tab } = store.values;
   return (
     <div>
@@ -43,7 +43,7 @@ function Index() {
             <Cell
               title={
                 <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-                  {icons.My}
+                  <icons.My />
                   我是标题
                 </div>
               }
@@ -84,6 +84,7 @@ function Index() {
       ) : (
         <StorePage
           store={store}
+          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
@@ -150,9 +151,60 @@ function Index() {
                     type: 'void',
                     'x-component': 'Cell',
                     'x-component-props': {
-                      title: <div style={{ display: 'inline-flex', alignItems: 'center' }}>{icons.My}我是标题</div>,
-                      description: <span>我是描述<b style={{ color: 'red' }}>1</b></span>,
                       extra: '描述文字',
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        title: {
+                          type: 'void',
+                          'x-component': 'div',
+                          'x-component-props': {
+                            style: {
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                            },
+
+                          },
+                          properties: {
+                            t1: {
+                              type: 'void',
+                              'x-component': '{{icons.My}}',
+                            },
+                            t2: {
+                              type: 'void',
+                              'x-component': 'span',
+                              'x-component-props': {
+                                children: '我是标题',
+                              },
+                            },
+                          },
+                        },
+                        description: {
+                          type: 'void',
+                          'x-component': 'span',
+                          properties: {
+                            d1: {
+                              type: 'void',
+                              'x-component': 'text',
+                              'x-component-props': {
+                                children: '我是描述',
+                              },
+                            },
+                            d2: {
+                              type: 'void',
+                              'x-component': 'b',
+                              'x-component-props': {
+                                style: {
+                                  color: 'red',
+                                },
+                                children: '1',
+                              },
+                            },
+                          },
+                        },
+                      },
+
                     },
                   },
                 },
@@ -169,7 +221,18 @@ function Index() {
                     'x-component': 'Cell',
                     'x-component-props': {
                       title: 'Switch',
-                      extra: <Switch defaultChecked />,
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        extra: {
+                          type: 'void',
+                          'x-component': 'Switch',
+                          'x-component-props': {
+                            defaultChecked: true,
+                          },
+                        },
+                      },
                     },
                   },
                 },
@@ -194,9 +257,20 @@ function Index() {
                     'x-component': 'Cell',
                     'x-component-props': {
                       title: 'URL 跳转',
-                      extra: <span>pages/components/index</span>,
                       align: 'center',
                       onClick: () => console.log('跳转失败'),
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        extra: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            children: 'pages/components/index',
+                          },
+                        },
+                      },
                     },
                   },
                 },

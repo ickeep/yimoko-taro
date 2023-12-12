@@ -1,6 +1,6 @@
 import { RecursionField, observer, useFieldSchema } from '@formily/react';
 import { Radio as NRadio, RadioProps as NRadioProps, RadioGroup as NRadioGroup, RadioGroupProps as NRadioGroupProps } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, useAPIOptions, useAdditionalNode, useChildrenNullishCoalescing } from '@yimoko/store';
 import React, { ReactNode, useMemo } from 'react';
 import { isFragment } from 'react-is';
 
@@ -14,25 +14,35 @@ export type RadioProps = NRadioProps & {
 
 export type RadioGroupProps = NRadioGroupProps & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode };
 
-export const Radio = (props: Partial<RadioProps>) => {
-  const { value, checked, onChange, values, ...rest } = props;
+// id 用于兼容 schema 模式下无法传 value 的问题
+// Group 模式 下 check 无效
+export const Radio = (props: Partial<RadioProps> & { id?: RadioProps['value'] }) => {
+  const { value, id, checked, onChange, values, icon, activeIcon, ...rest } = props;
+
+  // Group 模式下无效，待优化
+  const curIcon = useAdditionalNode('icon', icon);
+  const curActiveIcon = useAdditionalNode('activeIcon', activeIcon);
+
+  const curValue = value ?? id;
   const curVal = useMemo(() => {
     if (checked !== undefined) {
       return checked;
     }
     if (values) {
-      return value === values.true;
+      return curValue === values.true;
     }
-    return value ?? undefined;
-  }, [checked, value, values]);
+    return curValue ?? undefined;
+  }, [checked, curValue, values]);
 
-  return <NRadio {...rest} checked={curVal} onChange={(val) => {
+  return <NRadio {...rest} value={curValue} checked={curVal} onChange={(val) => {
     if (values) {
       onChange?.(val ? values.true : values.false);
     } else {
       onChange?.(val);
     }
   }}
+    icon={curIcon}
+    activeIcon={curActiveIcon}
   />;
 };
 
@@ -41,10 +51,12 @@ export const RadioGroup = observer((props: Partial<RadioGroupProps>) => {
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
   const schema = useFieldSchema();
 
+  const curChildren = useChildrenNullishCoalescing(children);
+
   // 当 schema 使用时 会对 children 进行处理 导致 Radio 不在顶层 必须将其取出来
   // eslint-disable-next-line complexity
   const useChildren = useMemo(() => {
-    let tmpChildren = children;
+    let tmpChildren = curChildren;
     if (schema && isFragment(tmpChildren)) {
       tmpChildren = tmpChildren?.props?.children;
     }
@@ -70,7 +82,7 @@ export const RadioGroup = observer((props: Partial<RadioGroupProps>) => {
       });
     }
     return tmpChildren;
-  }, [children, schema]);
+  }, [curChildren, schema]);
 
   return <NRadioGroup {...rest} options={data} >{useChildren}</NRadioGroup>;
 });

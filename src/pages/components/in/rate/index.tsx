@@ -3,7 +3,9 @@ import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
 import { Cell, Rate, Tabs } from '@/library';
-import { Icon, icons } from '@/src/icons';
+import icons from '@/src/icons';
+
+const { HeartFill } = icons;
 
 function Index() {
   const store = useStore({
@@ -55,7 +57,7 @@ function Index() {
             <Cell>
               自定义 icon
               <Rate
-                checkedIcon={icons.HeartFill}
+                checkedIcon={<HeartFill />}
                 defaultValue={3}
               />
             </Cell>
@@ -63,7 +65,7 @@ function Index() {
               自定义颜色
               <Rate
                 defaultValue={3}
-                checkedIcon={<Icon name='heart-fill' color='rgb(255, 200, 0)' />}
+                checkedIcon={<HeartFill color='rgb(255, 200, 0)' />}
               />
             </Cell>
           </Cell.Group>

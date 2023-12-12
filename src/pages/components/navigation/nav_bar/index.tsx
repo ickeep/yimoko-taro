@@ -5,7 +5,7 @@ import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
 import { Cell, NavBar, Tabs } from '@/library';
-import { Icon, icons } from '@/src/icons';
+import icons from '@/src/icons';
 
 function Index() {
   const store = useStore({
@@ -37,7 +37,7 @@ function Index() {
                 left={<Icon name='close' size={12} />}
                 right={
                   <span onClick={() => Taro.showToast({ title: 'icon' })}>
-                    {icons.Share}
+                    <icons.Share />
                   </span>
                 }
                 onBackClick={() => Taro.showToast({ title: '返回' })}
@@ -52,6 +52,7 @@ function Index() {
       ) : (
         <StorePage
           store={store}
+          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
@@ -69,12 +70,19 @@ function Index() {
                     'x-component-props': {
                       title: '订单详情',
                       left: '关闭',
-                      right: <span onClick={_e => Taro.showToast({ title: 'icon' })}>分享</span>,
-                      onBackClick: _e => Taro.showToast({ title: '返回' }),
+                      onBackClick: () => Taro.showToast({ title: '返回' }),
                     },
                     additionalProperties: {
                       type: 'void',
                       properties: {
+                        right: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            onClick: () => Taro.showToast({ title: 'icon' }),
+                            children: <icons.Share />,
+                          },
+                        },
                         back: {
                           type: 'void',
                           'x-component': 'Button',
