@@ -16,6 +16,7 @@ export * from './components/feedback/infinite-loading';
 export * from './components/feedback/loading';
 export * from './components/feedback/notice-bar';
 export * from './components/feedback/notify';
+export * from './components/feedback/popover';
 export * from './components/feedback/skeleton';
 
 export * from './components/layout/divider';

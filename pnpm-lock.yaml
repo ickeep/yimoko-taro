@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.0.4
     version: 0.0.4
   '@nutui/nutui-react-taro':
-    specifier: ^2.2.0
-    version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.3.0
+    version: 2.3.0(react-dom@18.2.0)(react@18.2.0)
   '@yimoko/store':
     specifier: ^2.0.8
     version: 2.0.8(@testing-library/dom@8.20.1)(@types/react-dom@18.2.14)(@types/react@18.2.29)(typescript@4.9.5)
@@ -2275,13 +2275,17 @@ packages:
     resolution: {integrity: sha512-29XhXpYb1x/lsWGKudho0sKTQZi1B9bbMDo70UxfxSD34rNiHIthHJeLcKc++aLMxu88cVPWD+qwt4AQQf8lBw==}
     dev: false
 
-  /@nutui/nutui-react-taro@2.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-OiLnyi2Hk4sUvDu75na6xcYDFGqg2vVBjstu9OB/q5zAKU//ZpAU+lOBm01UJMQglD1HNClkmJq08RWh9Dcq9Q==}
+  /@nutui/icons-react-taro@0.0.5:
+    resolution: {integrity: sha512-HFulikNTWnVVduN7NV2g7zQEwzQPWZxAQcYtaBRw8vecq6OLnV97+WkoLo1eflZ/BD9LGKfOWAhxijxzUDTRrA==}
+    dev: false
+
+  /@nutui/nutui-react-taro@2.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-q7SZ1xEllVt+ixu1ROCXmKFcoSja8jNCo9JCSED7teuircXQU1VAAJkPOCQt2u3XTnl8Jq0JW7wZMdWfSWFJXA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@nutui/icons-react-taro': 0.0.4
+      '@nutui/icons-react-taro': 0.0.5
       '@nutui/touch-emulator': 1.0.0
       '@react-spring/web': 9.6.1(react-dom@18.2.0)(react@18.2.0)
       '@use-gesture/react': 10.2.20(react@18.2.0)

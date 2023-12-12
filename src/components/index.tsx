@@ -53,6 +53,7 @@ import { NavBar } from './navigation/nav_bar';
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 import { Tabbar } from './navigation/tabbar';
 import { TabPane, Tabs } from './navigation/tabs';
+import { Popover } from './feedback/popover';
 
 export const components = {
   // store 相关组件
@@ -76,6 +77,7 @@ export const components = {
   NoticeBar,
   Notify,
   PageLoading,
+  Popover,
   Skeleton,
   // 布局
   Divider,
