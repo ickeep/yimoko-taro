@@ -21,6 +21,7 @@ import { Swiper } from './display/swiper';
 import { Tag } from './display/tag';
 import { Tour } from './display/tour';
 import { Video } from './display/video';
+import { VirtualList } from './display/virtual-list';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -152,6 +153,7 @@ export const components = {
   Tag,
   Tour,
   Video,
+  VirtualList,
 };
 
 export const componentsPlus = {
