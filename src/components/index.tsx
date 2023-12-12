@@ -12,6 +12,8 @@ import { CircleProgress } from './display/circle-progress';
 import { CountDown } from './display/count-down';
 import { Ellipsis } from './display/ellipsis';
 import { ImagePreview } from './display/image-preview';
+import { Indicator } from './display/indicator';
+import { Pagination } from './display/pagination';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -133,6 +135,8 @@ export const components = {
   CountDown,
   Ellipsis,
   ImagePreview,
+  Indicator,
+  Pagination,
 };
 
 export const componentsPlus = {

@@ -58,9 +58,12 @@ export * from './components/display/animate';
 export * from './components/display/animating-numbers';
 export * from './components/display/avatar';
 export * from './components/display/circle-progress';
+export * from './components/display/collapse';
 export * from './components/display/count-down';
-export * from './components/display/image-preview';
 export * from './components/display/ellipsis';
+export * from './components/display/image-preview';
+export * from './components/display/indicator';
+export * from './components/display/pagination';
 
 export * from './components/index';
 
