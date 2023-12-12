@@ -19,6 +19,7 @@ import { Progress } from './display/progress';
 import { Step, Steps } from './display/steps';
 import { Swiper } from './display/swiper';
 import { Tag } from './display/tag';
+import { Tour } from './display/tour';
 import { Video } from './display/video';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
@@ -149,6 +150,7 @@ export const components = {
   Step,
   Swiper,
   Tag,
+  Tour,
   Video,
 };
 

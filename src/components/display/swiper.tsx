@@ -13,7 +13,7 @@ type ISwiperFC = FC<Partial<NSwiperProps> & Omit<IOptionsAPIProps<'value' | 'typ
 
 type ISwiper = ISwiperFC & { Item: typeof NSwiper.Item };
 
-export const SwiperFC: ISwiperFC = observer((props) => {
+const SwiperFC: ISwiperFC = observer((props) => {
   const { children, options, api, keys, splitter, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter) as any[];
   const navigate = useNavigate();
