@@ -1,10 +1,10 @@
 
-import { useFieldSchema } from '@formily/react';
+import { observer, useFieldSchema } from '@formily/react';
 import { CascaderProps as NCascaderProps, Cascader as NCascader } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
-import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
+export type CascaderProps = Omit<Partial<NCascaderProps>, 'value' | 'onChange'> & {
   // 触发器
   trigger?: TriggerProps,
   children?: ReactNode,
@@ -15,7 +15,7 @@ export type CascaderProps = Omit<NCascaderProps, 'value' | 'onChange'> & {
   onChange?: (value: string | any[], selectedOptions?: any[]) => void,
 } & IOptionsAPIProps;
 
-export const Cascader = (props: Partial<CascaderProps>) => {
+export const Cascader: FC<CascaderProps> = observer((props) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
@@ -105,5 +105,5 @@ export const Cascader = (props: Partial<CascaderProps>) => {
       <NCascader  {...rest} title={curTitle} value={curValue} visible={curVisible} options={data} onClose={close} onChange={change} />
     </>
   );
-};
+});
 

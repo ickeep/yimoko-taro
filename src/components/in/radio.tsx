@@ -1,4 +1,4 @@
-import { ISchema, RecursionField, useFieldSchema } from '@formily/react';
+import { ISchema, RecursionField, observer, useFieldSchema } from '@formily/react';
 import { Radio as NRadio, RadioProps as NRadioProps, RadioGroup as NRadioGroup, RadioGroupProps as NRadioGroupProps } from '@nutui/nutui-react-taro';
 import { TriggerProps, Trigger, IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 import { isObject } from 'lodash-es';
@@ -36,7 +36,7 @@ export const Radio = (props: Partial<RadioProps>) => {
   />;
 };
 
-export const RadioGroup = (props: Partial<RadioGroupProps>) => {
+export const RadioGroup = observer((props: Partial<RadioGroupProps>) => {
   const { value, onChange, labelTrigger, children, options, api, keys, splitter, valueType, ...rest } = props;
   const schema = useFieldSchema();
   const { name } = schema ?? {};
@@ -58,4 +58,4 @@ export const RadioGroup = (props: Partial<RadioGroupProps>) => {
   }, [children, labelTrigger, name, data]);
 
   return <NRadioGroup {...rest} value={value} options={isObject(labelTrigger) ? undefined : data} onChange={change}>{curChildren}</NRadioGroup>;
-};
+});

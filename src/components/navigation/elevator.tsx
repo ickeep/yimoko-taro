@@ -1,13 +1,17 @@
+import { observer } from '@formily/react';
 import { ElevatorProps, Elevator as NElevator } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 
-import React from 'react';
+import React, { FC } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
 // 渲染数据支持 value 和 options 两种方式 优先级 value > options
 // Elevator 多为展示数据，不引入 ArrayBase 组件
-export const Elevator = (props: Partial<ElevatorProps> & Omit<IOptionsAPIProps, 'valueType'> & { value?: any[] }) => {
+type IElevatorFC = FC<Partial<ElevatorProps> & Omit<IOptionsAPIProps, 'valueType'> & { value?: any[] }>;
+type IElevator = IElevatorFC & { Context: typeof NElevator.Context };
+
+export const ElevatorFC: IElevatorFC = observer((props) => {
   const { options, api, keys, splitter, value, list, onItemClick, ...rest } = props;
   const [data] = useAPIOptions(list ?? options, api, keys, splitter);
   const navigate = useNavigate();
@@ -25,6 +29,6 @@ export const Elevator = (props: Partial<ElevatorProps> & Omit<IOptionsAPIProps, 
       }}
     />
   );
-};
-
+});
+export const Elevator = ElevatorFC as IElevator;
 Elevator.Context = NElevator.Context;

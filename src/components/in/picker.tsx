@@ -1,4 +1,4 @@
-import { useFieldSchema } from '@formily/react';
+import { observer, useFieldSchema } from '@formily/react';
 import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
 import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
@@ -16,7 +16,7 @@ export type PickerProps = Omit<Partial<NPickerProps>, 'value' | 'onChange'> & Re
   onOptionChange?: NPickerProps['onChange'],
 } & IOptionsAPIProps;
 
-export const Picker = (props: PickerProps) => {
+export const Picker = observer((props: PickerProps) => {
   const {
     value, valueType, placeholder = '请选择',
     options, api, keys, splitter, childrenKey = 'children',
@@ -118,5 +118,5 @@ export const Picker = (props: PickerProps) => {
       />
     </>
   );
-};
+});
 

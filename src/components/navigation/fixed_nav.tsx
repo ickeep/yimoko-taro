@@ -1,3 +1,4 @@
+import { observer } from '@formily/react';
 import { FixedNavProps, FixedNav as NFixedNav } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 
@@ -5,7 +6,7 @@ import React from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
-export const FixedNav = (props: Partial<FixedNavProps> & Omit<IOptionsAPIProps, 'valueType'> & { value?: boolean }) => {
+export const FixedNav = observer((props: Partial<FixedNavProps> & Omit<IOptionsAPIProps, 'valueType'> & { value?: boolean }) => {
   const { options, children, visible, api, keys, splitter, value, list, onSelect, ...rest } = props;
   const [data] = useAPIOptions(list ?? options, api, keys, splitter);
   const navigate = useNavigate();
@@ -25,5 +26,5 @@ export const FixedNav = (props: Partial<FixedNavProps> & Omit<IOptionsAPIProps, 
       }}
     >{curChildren}</NFixedNav>
   );
-};
+});
 

@@ -1,7 +1,7 @@
-import { useFieldSchema } from '@formily/react';
+import { observer, useFieldSchema } from '@formily/react';
 import { ActionSheetProps as NActionSheetProps, ActionSheet as NActionSheet } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
-import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
@@ -14,7 +14,7 @@ export type ActionSheetProps = Omit<Partial<NActionSheetProps>, 'value' | 'onCha
   onChange?: (value: any, option: any, index: number) => void,
 } & Omit<IOptionsAPIProps<'value' | 'name' | 'description' | 'danger' | 'disabled'>, 'valueType'>;
 
-export const ActionSheet = (props: ActionSheetProps) => {
+export const ActionSheet: FC<ActionSheetProps> = observer((props) => {
   const {
     value,
     options, api, keys, splitter,
@@ -108,5 +108,5 @@ export const ActionSheet = (props: ActionSheetProps) => {
       />
     </>
   );
-};
+});
 

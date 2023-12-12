@@ -1,8 +1,12 @@
+import { observer } from '@formily/react';
 import { TabbarProps, Tabbar as NTabbar } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
-import React from 'react';
+import React, { FC } from 'react';
 
-export const Tabbar = (props: Partial<TabbarProps> & Omit<IOptionsAPIProps, 'valueType'> & { onChange?: (value: number) => void }) => {
+type ITabbarFC = FC<Partial<TabbarProps> & Omit<IOptionsAPIProps, 'valueType'> & { onChange?: (value: number) => void }>;
+type ITabbar = ITabbarFC & { Item: typeof NTabbar.Item };
+
+const TabbarFC: ITabbarFC = observer((props) => {
   const { options, api, keys, splitter, value, onChange, onSwitch, children, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter);
   const curChildren = useChildrenNullishCoalescing(children);
@@ -19,6 +23,7 @@ export const Tabbar = (props: Partial<TabbarProps> & Omit<IOptionsAPIProps, 'val
       {curChildren}
     </NTabbar>
   );
-};
+});
 
+export const Tabbar = TabbarFC as ITabbar;
 Tabbar.Item = NTabbar.Item;

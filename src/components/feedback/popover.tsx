@@ -1,7 +1,7 @@
 import { observer, useFieldSchema } from '@formily/react';
 import { PopoverProps as NPopoverProps, Popover as NPopover } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, useAPIOptions, Trigger, TriggerProps } from '@yimoko/store';
-import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
@@ -12,7 +12,7 @@ export type PopoverProps = Omit<Partial<NPopoverProps>, 'value' | 'onChange' | '
   // 数据
 } & Omit<IOptionsAPIProps<'key' | 'name' | 'icon' | 'danger' | 'disabled' | 'className' | 'action'>, 'valueType'>;
 
-export const Popover = observer((props: PopoverProps) => {
+export const Popover: FC<PopoverProps> = observer((props) => {
   const {
     options, api, keys, splitter,
     title, trigger,

@@ -1,4 +1,4 @@
-import { useFieldSchema } from '@formily/react';
+import { observer, useFieldSchema } from '@formily/react';
 import {
   SideNavBarProps as NSideNavBarProps,
   SideNavBar as NSideNavBar,
@@ -26,7 +26,7 @@ export type SideNavBarProps = Partial<NSideNavBarProps> & {
   childrenKey?: string,
 } & Omit<IOptionsAPIProps, 'valueType'>;
 
-export const SideNavBar = (props: Partial<SideNavBarProps>) => {
+export const SideNavBar = observer((props: Partial<SideNavBarProps>) => {
   const { options, api, keys, splitter, children, value, childrenKey = 'children', visible, trigger, onChange, onClose, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter, childrenKey);
   const curChildren = useChildrenNullishCoalescing(children);
@@ -91,5 +91,5 @@ export const SideNavBar = (props: Partial<SideNavBarProps>) => {
       </NSideNavBar>
     </>
   );
-};
+});
 

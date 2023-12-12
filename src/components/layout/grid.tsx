@@ -1,7 +1,7 @@
-import { RecordScope, RecordsScope, RecursionField, useFieldSchema } from '@formily/react';
+import { RecordScope, RecordsScope, RecursionField, observer, useFieldSchema } from '@formily/react';
 import { GridItemProps, GridProps, Grid as NGrid } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
-import React, { ReactNode, useMemo } from 'react';
+import React, { FC, ReactNode, useMemo } from 'react';
 import { isFragment } from 'react-is';
 
 import { ItemSchemaToProps } from '../../tools/schema';
@@ -9,7 +9,11 @@ import { ItemSchemaToProps } from '../../tools/schema';
 // Grid 的子组件必须为 Grid.Item 组件
 // 渲染数据支持 value 和 options 两种方式 优先级 value > options
 // Grid 多为展示数据，不引入 ArrayBase 组件
-export const Grid = (props: Partial<GridProps> & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode, value?: any[] }) => {
+type IGridFC = FC<Partial<GridProps> & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode, value?: any[] }>;
+type IGridItemFC = FC<Partial<GridItemProps> & { value?: ReactNode }>;
+type IGrid = IGridFC & { Item: IGridItemFC };
+
+export const GridFC: IGridFC = observer((props) => {
   const { options, api, keys, splitter, children, value, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter);
   const schema = useFieldSchema();
@@ -74,15 +78,15 @@ export const Grid = (props: Partial<GridProps> & Omit<IOptionsAPIProps, 'valueTy
       </NGrid>
     </RecordsScope>
   );
-};
+});
 
 // 父组件有侵入性，不可使用 useChildrenNullishCoalescing， 会导致读取的schema为父组件的schema
-const Item = (props: Partial<GridItemProps> & { value?: ReactNode }) => {
+const Item: IGridItemFC = (props) => {
   const { value, text, ...rest } = props;
 
   return <NGrid.Item {...rest} text={text ?? value} />;
 };
-
+const Grid = GridFC as IGrid;
 Grid.Item = Item;
 
 
