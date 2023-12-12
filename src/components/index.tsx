@@ -24,6 +24,7 @@ import { Popover } from './feedback/popover';
 import { Popup } from './feedback/popup';
 import { Skeleton } from './feedback/skeleton';
 
+import { Swipe } from './feedback/swipe';
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
 import { Cascader } from './in/cascader';
 import { Checkbox } from './in/checkbox';
@@ -81,6 +82,8 @@ export const components = {
   Popover,
   Popup,
   Skeleton,
+  Swipe,
+
   // 布局
   Divider,
   Space,

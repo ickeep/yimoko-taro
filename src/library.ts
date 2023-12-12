@@ -19,6 +19,7 @@ export * from './components/feedback/notify';
 export * from './components/feedback/popover';
 export * from './components/feedback/popup';
 export * from './components/feedback/skeleton';
+export * from './components/feedback/swipe';
 
 export * from './components/layout/divider';
 export * from './components/layout/grid';
