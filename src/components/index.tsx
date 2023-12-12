@@ -14,6 +14,7 @@ import { Ellipsis } from './display/ellipsis';
 import { ImagePreview } from './display/image-preview';
 import { Indicator } from './display/indicator';
 import { Pagination } from './display/pagination';
+import { Price } from './display/price';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -137,6 +138,7 @@ export const components = {
   ImagePreview,
   Indicator,
   Pagination,
+  Price,
 };
 
 export const componentsPlus = {

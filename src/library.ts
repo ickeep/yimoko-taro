@@ -64,6 +64,7 @@ export * from './components/display/ellipsis';
 export * from './components/display/image-preview';
 export * from './components/display/indicator';
 export * from './components/display/pagination';
+export * from './components/display/price';
 
 export * from './components/index';
 

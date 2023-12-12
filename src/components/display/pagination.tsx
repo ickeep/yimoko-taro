@@ -1,8 +1,8 @@
 import { PaginationProps, Pagination as NPagination } from '@nutui/nutui-react-taro';
 import { useAdditionalNode } from '@yimoko/store';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-export const Pagination = (props: Partial<PaginationProps> & { value?: ReactNode }) => {
+export const Pagination = (props: Partial<PaginationProps>) => {
   const { prev, next, ...rest } = props;
   const curPrev = useAdditionalNode('prev', prev);
   const curNext = useAdditionalNode('next', next);
