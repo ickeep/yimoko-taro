@@ -68,6 +68,7 @@ export * from './components/display/price';
 export * from './components/display/progress';
 export * from './components/display/steps';
 export * from './components/display/swiper';
+export * from './components/display/tag';
 export * from './components/display/video';
 
 export * from './components/index';
