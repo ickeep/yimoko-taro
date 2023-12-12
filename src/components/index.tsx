@@ -3,8 +3,8 @@ import { StorePageContent, Trigger } from '@yimoko/store';
 import { Button } from './base/button';
 import { Cell } from './base/cell';
 import { Image } from './base/image';
-
 import { Overlay } from './base/overlay';
+
 import { Animate } from './display/animate';
 import { AnimatingNumbers } from './display/animating-numbers';
 import { Avatar } from './display/avatar';
@@ -22,6 +22,12 @@ import { Tag } from './display/tag';
 import { Tour } from './display/tour';
 import { Video } from './display/video';
 import { VirtualList } from './display/virtual-list';
+
+import { Card } from './feature/card';
+
+import { TimeSelect } from './feature/time-select';
+import { TrendArrow } from './feature/trend-arrow';
+import { WaterMark } from './feature/water-mark';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
@@ -34,9 +40,9 @@ import { Notify } from './feedback/notify';
 import { Popover } from './feedback/popover';
 import { Popup } from './feedback/popup';
 import { Skeleton } from './feedback/skeleton';
-
 import { Swipe } from './feedback/swipe';
 import { Toast } from './feedback/toast';
+
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
 import { Cascader } from './in/cascader';
 import { Checkbox } from './in/checkbox';
@@ -49,11 +55,11 @@ import { Picker } from './in/picker';
 import { Radio, RadioGroup } from './in/radio';
 import { Range } from './in/range';
 import { Rate } from './in/rate';
-import { SearchBar } from './in/search-bar';
+// import { SearchBar } from './in/search-bar';
 import { Signature } from './in/signature';
 import { Switch } from './in/switch';
-
 import { TextArea } from './in/text-area';
+
 import { Divider } from './layout/divider';
 import { Grid } from './layout/grid';
 import { Col, Layout, Row } from './layout/layout';
@@ -79,6 +85,11 @@ export const components = {
   Cell,
   Image,
   Overlay,
+
+  // 特色组件
+  Card,
+  TrendArrow,
+  WaterMark,
 
   // 操作反馈
   ActionSheet,
@@ -167,5 +178,7 @@ export const componentsPlus = {
   NumberKeyboard,
 
   Signature,
-  SearchBar,
+  // SearchBar,
+
+  TimeSelect,
 };

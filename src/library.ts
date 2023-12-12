@@ -7,6 +7,11 @@ export * from './components/base/cell';
 export * from './components/base/image';
 export * from './components/base/overlay';
 
+export * from './components/feature/card';
+export * from './components/feature/time-select';
+export * from './components/feature/trend-arrow';
+export * from './components/feature/water-mark';
+
 export * from './components/feedback/action-sheet';
 export * from './components/feedback/badge';
 export * from './components/feedback/dialog';
@@ -52,7 +57,8 @@ export * from './components/in/text-area';
 export * from './components/in/range';
 export * from './components/in/rate';
 export * from './components/in/signature';
-export * from './components/in/search-bar';
+// TODO css * token error
+// export * from './components/in/search-bar';
 
 export * from './components/display/animate';
 export * from './components/display/animating-numbers';

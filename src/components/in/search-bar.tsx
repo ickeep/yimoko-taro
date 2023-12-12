@@ -2,6 +2,7 @@ import { SearchBar as NSearchBar, SearchBarProps } from '@nutui/nutui-react-taro
 import { useAdditionalNode } from '@yimoko/store';
 import React from 'react';
 
+// TODO css * token error
 export const SearchBar = (props: Partial<SearchBarProps>) => {
   const { left, right, leftIn, rightIn, ...rest } = props;
   const curLeft = useAdditionalNode('left', left);
