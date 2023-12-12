@@ -1,5 +1,3 @@
-import Taro from '@tarojs/taro';
-
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';

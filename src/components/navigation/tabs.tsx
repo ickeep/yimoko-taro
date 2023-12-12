@@ -1,5 +1,4 @@
 import { RecordScope, RecursionField, observer, useFieldSchema } from '@formily/react';
-import { My } from '@nutui/icons-react-taro';
 import { TabsProps, Tabs as NTabs } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 import { pick } from 'lodash-es';

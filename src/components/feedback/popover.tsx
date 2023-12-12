@@ -10,7 +10,7 @@ export type PopoverProps = Omit<Partial<NPopoverProps>, 'value' | 'onChange' | '
   // 触发器
   trigger?: TriggerProps,
   // 数据
-} & Omit<IOptionsAPIProps<'key' | 'name' | 'icon' | 'danger' | 'disabled' | "className" | 'action'>, 'valueType'>;
+} & Omit<IOptionsAPIProps<'key' | 'name' | 'icon' | 'danger' | 'disabled' | 'className' | 'action'>, 'valueType'>;
 
 export const Popover = observer((props: PopoverProps) => {
   const {
@@ -52,19 +52,17 @@ export const Popover = observer((props: PopoverProps) => {
     }
   };
 
-  const triggerEl = useMemo(() => {
-    return (
-      <Trigger
-        {...trigger}
-        onTrig={(...args) => {
-          trig();
-          trigger?.onTrig?.(...args);
-        }}
-      >
-        {children}
-      </Trigger >
-    );
-  }, [curTitle, trigger, children, trig]);
+  const triggerEl = useMemo(() => (
+    <Trigger
+      {...trigger}
+      onTrig={(...args) => {
+        trig();
+        trigger?.onTrig?.(...args);
+      }}
+    >
+      {children}
+    </Trigger >
+  ), [trigger, children, trig]);
 
   return (
     <>
