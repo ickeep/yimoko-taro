@@ -86,7 +86,7 @@ const Item: IGridItemFC = (props) => {
 
   return <NGrid.Item {...rest} text={text ?? value} />;
 };
-const Grid = GridFC as IGrid;
+export const Grid = GridFC as IGrid;
 Grid.Item = Item;
 
 
