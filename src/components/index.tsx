@@ -20,6 +20,8 @@ import { InfiniteLoading } from './feedback/infinite-loading';
 import { Loading, PageLoading } from './feedback/loading';
 import { NoticeBar } from './feedback/notice-bar';
 import { Notify } from './feedback/notify';
+import { Popover } from './feedback/popover';
+import { Popup } from './feedback/popup';
 import { Skeleton } from './feedback/skeleton';
 
 import { Calendar, SingleCalendar, RangeCalendar, MultipleCalendar, WeekCalendar } from './in/calendar';
@@ -53,7 +55,6 @@ import { NavBar } from './navigation/nav_bar';
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 import { Tabbar } from './navigation/tabbar';
 import { TabPane, Tabs } from './navigation/tabs';
-import { Popover } from './feedback/popover';
 
 export const components = {
   // store 相关组件
@@ -78,6 +79,7 @@ export const components = {
   Notify,
   PageLoading,
   Popover,
+  Popup,
   Skeleton,
   // 布局
   Divider,
