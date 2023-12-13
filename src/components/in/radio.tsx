@@ -12,7 +12,6 @@ export type RadioProps = NRadioProps & {
   onChange?: (val: unknown) => void,
 };
 
-export type RadioGroupProps = NRadioGroupProps & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode };
 
 // id 用于兼容 schema 模式下无法传 value 的问题
 // Group 模式 下 check 无效
@@ -45,6 +44,8 @@ export const Radio = (props: Partial<RadioProps> & { id?: RadioProps['value'] })
     activeIcon={curActiveIcon}
   />;
 };
+
+export type RadioGroupProps = NRadioGroupProps & Omit<IOptionsAPIProps, 'valueType'> & { children?: ReactNode };
 
 export const RadioGroup = observer((props: Partial<RadioGroupProps>) => {
   const { options, api, keys, splitter, children, ...rest } = props;
