@@ -2,17 +2,19 @@ import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
-import { Button, Cell, Radio, RadioGroup, Tabs } from '@/library';
-import { Icon, icons } from '@/src/icons';
+import { Cell, Radio, RadioGroup, Tabs } from '@/library';
+import icons from '@/src/icons';
+
+const { Checklist } = icons;
 
 function Index() {
   const store = useStore({
     defaultValues: {
-      tab: 'JSX',
-      v1: 1,
+      tab: 'Schema',
+
     },
   });
-  const { tab, v1 } = store.values;
+  const { tab } = store.values;
   const { setValues } = store;
 
   return (
@@ -26,21 +28,13 @@ function Index() {
         <>
           <Cell.Group title='基础用法'>
             <Cell>
-              <Radio defaultChecked>选项</Radio>
-            </Cell>
-            <Cell>
-              禁用
-              <Radio defaultChecked disabled>选项</Radio>
-            </Cell>
-            <Cell>
-              自定义选中
-              <Radio
-                defaultChecked
-                disabled
-                icon={icons.Checklist}
-                activeIcon={<Icon name='checklist' style={{ color: 'red' }} />}
-              >选项
-              </Radio>
+              <RadioGroup defaultValue='1'>
+                <Radio value='1' checked={false}>
+                  选项1
+                </Radio>
+                <Radio value='2'>选项2</Radio>
+                <Radio value='3'>选项3</Radio>
+              </RadioGroup>
             </Cell>
           </Cell.Group>
           <Cell.Group title='Group'>
@@ -59,7 +53,6 @@ function Index() {
                 defaultValue='2'
                 options={options}
                 direction='horizontal'
-                labelTrigger={{ component: Button }}
               />
             </Cell>
           </Cell.Group>
@@ -67,54 +60,79 @@ function Index() {
             <Cell>
               <RadioGroup
                 options={options}
-                defaultValue={v1}
+                defaultValue='1'
                 onChange={value => console.log(value)}
               />
+            </Cell>
+          </Cell.Group>
+          <Cell.Group title='自定义图标'>
+            <Cell>
+              <RadioGroup defaultValue='1'>
+                <Radio
+                  value='1'
+                  icon={<Checklist />}
+                  activeIcon={<Checklist style={{ color: 'red' }} />}
+                >
+                  选项1
+                </Radio>
+                <Radio
+                  value='2'
+                  icon={<Checklist />}
+                  activeIcon={<Checklist style={{ color: 'red' }} />}
+                >
+                  选项2
+                </Radio>
+              </RadioGroup>
             </Cell>
           </Cell.Group>
         </>
       ) : (
         <StorePage
           store={store}
+          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
               c1: {
                 type: 'void',
-                'x-component': 'Cell.Group',
+                'x-decorator': 'Cell.Group',
                 'x-component-props': {
                   title: '基础用法',
                 },
+                'x-component': 'Cell',
                 properties: {
-                  r1: {
+                  v1: {
                     type: 'void',
-                    'x-decorator': 'Cell',
-                    'x-component': 'Radio',
+                    'x-component': 'RadioGroup',
                     'x-component-props': {
-                      defaultChecked: true,
-                      children: '选项',
+                      defaultValue: '1',
                     },
-                  },
-                  r2: {
-                    type: 'void',
-                    'x-decorator': 'Cell',
-                    'x-component': 'Radio',
-                    'x-component-props': {
-                      defaultChecked: true,
-                      disabled: true,
-                      children: '选项',
-                    },
-                  },
-                  r3: {
-                    type: 'void',
-                    'x-decorator': 'Cell',
-                    'x-component': 'Radio',
-                    'x-component-props': {
-                      defaultChecked: true,
-                      disabled: true,
-                      icon: '{{icons.Checklist}}',
-                      activeIcon: <Icon name='checklist' style={{ color: 'red' }} />,
-                      children: '选项',
+                    properties: {
+                      r1: {
+                        type: 'void',
+                        'x-component': 'Radio',
+                        'x-component-props': {
+                          disabled: true,
+                          id: '1',
+                          children: '选项1',
+                        },
+                      },
+                      r2: {
+                        type: 'void',
+                        'x-component': 'Radio',
+                        'x-component-props': {
+                          id: '2',
+                          children: '选项2',
+                        },
+                      },
+                      r3: {
+                        type: 'void',
+                        'x-component': 'Radio',
+                        'x-component-props': {
+                          id: '3',
+                          children: '选项3',
+                        },
+                      },
                     },
                   },
                 },
@@ -161,9 +179,6 @@ function Index() {
                       defaultValue: '2',
                       options,
                       direction: 'horizontal',
-                      labelTrigger: {
-                        component: 'Button',
-                      },
                     },
                   },
                 },
@@ -180,8 +195,44 @@ function Index() {
                     'x-decorator': 'Cell',
                     'x-component': 'RadioGroup',
                     'x-component-props': {
+                      defaultValue: '1',
                       options,
                       onChange: value => console.log(value),
+                    },
+                  },
+                },
+              },
+              c5: {
+                type: 'void',
+                'x-component': 'Cell.Group',
+                'x-component-props': {
+                  title: '自定义图标',
+                },
+                properties: {
+                  r1: {
+                    'x-decorator': 'Cell',
+                    'x-component': 'Radio',
+                    'x-component-props': {
+                      id: '1',
+                      children: '选项1',
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        icon: {
+                          type: 'void',
+                          'x-component': '{{icons.Checklist}}',
+                        },
+                        activeIcon: {
+                          type: 'void',
+                          'x-component': '{{icons.Checklist}}',
+                          'x-component-props': {
+                            style: {
+                              color: 'red',
+                            },
+                          },
+                        },
+                      },
                     },
                   },
                 },

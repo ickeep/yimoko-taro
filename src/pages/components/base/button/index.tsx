@@ -5,10 +5,10 @@ import React from 'react';
 
 import { Button, Cell, Col, Row, Space, Tabs } from '@/library';
 
-import { Icon, icons } from '@/src/icons';
+import icons from '@/src/icons';
 
 function Index() {
-  const store = useStore({ defaultValues: { tab: 'JSX' } });
+  const store = useStore({ defaultValues: { tab: 'Schema' } });
   const { tab } = store.values;
   return (
     <div>
@@ -99,10 +99,10 @@ function Index() {
             <Cell>
               <Row type='flex' wrap='wrap'>
                 <Space>
-                  <Button shape='square' type='primary' fill='outline' icon={icons.StarFill}>
+                  <Button shape='square' type='primary' fill='outline' icon={<icons.StarFill />}>
                     收集
                   </Button>
-                  <Button shape='square' type='primary' icon={icons.Star}>
+                  <Button shape='square' type='primary' icon={<icons.Star />}>
                     收藏
                   </Button>
                 </Space>
@@ -110,7 +110,7 @@ function Index() {
                   shape='round'
                   type='primary'
                   size='large'
-                  icon={icons.Star}
+                  icon={<icons.Star />}
                 >
                   收藏
                 </Button>
@@ -159,7 +159,7 @@ function Index() {
       ) : (
         <StorePage
           store={store}
-          scope={{ icons, Icon }}
+          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
@@ -473,8 +473,16 @@ function Index() {
                               type: 'primary',
                               shape: 'square',
                               fill: 'outline',
-                              icon: '{{icons.StarFill}}',
                               children: '收集',
+                            },
+                            additionalProperties: {
+                              type: 'void',
+                              properties: {
+                                icon: {
+                                  type: 'void',
+                                  'x-component': '{{icons.StarFill}}',
+                                },
+                              },
                             },
                           },
                           btn2: {
@@ -483,8 +491,19 @@ function Index() {
                             'x-component-props': {
                               type: 'primary',
                               shape: 'square',
-                              icon: '{{icons.Star}}',
                               children: '收集',
+                            },
+                            additionalProperties: {
+                              type: 'void',
+                              properties: {
+                                icon: {
+                                  type: 'void',
+                                  'x-component': '{{icons.Star}}',
+                                  'x-component-props': {
+                                    color: '#fff',
+                                  },
+                                },
+                              },
                             },
                           },
                         },
@@ -495,9 +514,20 @@ function Index() {
                         'x-component-props': {
                           type: 'primary',
                           shape: 'round',
-                          icon: <Icon name='star' color='#fff' />,
                           size: 'large',
                           children: '收集',
+                        },
+                        additionalProperties: {
+                          type: 'void',
+                          properties: {
+                            icon: {
+                              type: 'void',
+                              'x-component': '{{icons.Star}}',
+                              'x-component-props': {
+                                color: '#fff',
+                              },
+                            },
+                          },
                         },
                       },
                     },

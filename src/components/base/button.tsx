@@ -1,4 +1,10 @@
-import { Button as NButton } from '@nutui/nutui-react-taro';
-import { withValueChildren } from '@yimoko/store';
+import { Button as NButton, ButtonProps as NButtonProps } from '@nutui/nutui-react-taro';
+import { useAdditionalNode } from '@yimoko/store';
+import React, { forwardRef } from 'react';
 
-export const Button = withValueChildren(NButton);
+export const Button = forwardRef<HTMLButtonElement, Omit<Partial<NButtonProps>, 'ref'> & React.RefAttributes<HTMLButtonElement>>((props, ref) => {
+  const { icon, ...rest } = props;
+  const curIcon = useAdditionalNode('icon', icon);
+
+  return <NButton {...rest} icon={curIcon} ref={ref} />;
+});
