@@ -7,6 +7,8 @@ import React from 'react';
 import { Cell, NavBar, Tabs } from '@/library';
 import icons from '@/src/icons';
 
+const { Left, Close, Share } = icons;
+
 function Index() {
   const store = useStore({
     defaultValues: {
@@ -30,14 +32,14 @@ function Index() {
               <NavBar
                 back={
                   <>
-                    <Icon name='left' color='#979797' />
+                    <Left color='#979797' />
                     返回
                   </>
                 }
-                left={<Icon name='close' size={12} />}
+                left={<Close size={12} />}
                 right={
                   <span onClick={() => Taro.showToast({ title: 'icon' })}>
-                    <icons.Share />
+                    <Share />
                   </span>
                 }
                 onBackClick={() => Taro.showToast({ title: '返回' })}
@@ -52,7 +54,6 @@ function Index() {
       ) : (
         <StorePage
           store={store}
-          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
@@ -80,7 +81,7 @@ function Index() {
                           'x-component': 'span',
                           'x-component-props': {
                             onClick: () => Taro.showToast({ title: 'icon' }),
-                            children: <icons.Share />,
+                            children: <Share />,
                           },
                         },
                         back: {
