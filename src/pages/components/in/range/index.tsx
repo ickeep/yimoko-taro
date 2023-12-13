@@ -231,10 +231,27 @@ function Index() {
                     'x-component': 'Range',
                     'x-component-props': {
                       defaultValue: 40,
-                      minDescription: '0%',
-                      maxDescription: '100%',
                       currentDescription: value => `${value}%`,
                       onEnd: val => console.log(`${val}`),
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        maxDescription: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            children: '100%',
+                          },
+                        },
+                        minDescription: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            children: '0%',
+                          },
+                        },
+                      },
                     },
                   },
                   r2: {
@@ -325,9 +342,26 @@ function Index() {
                     'x-component': 'Range',
                     'x-component-props': {
                       defaultValue: 30,
-                      maxDescription: null,
-                      minDescription: null,
                       onEnd: val => console.log(`${val}`),
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        maxDescription: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            children: null,
+                          },
+                        },
+                        minDescription: {
+                          type: 'void',
+                          'x-component': 'span',
+                          'x-component-props': {
+                            children: null,
+                          },
+                        },
+                      },
                     },
                   },
                   r3: {
@@ -364,8 +398,20 @@ function Index() {
                     },
                     'x-component': 'Range',
                     'x-component-props': {
-                      button: <div style={buttonStyle}>{v3}</div>,
                       onEnd: val => console.log(`${val}`),
+                    },
+                    additionalProperties: {
+                      type: 'void',
+                      properties: {
+                        button: {
+                          type: 'void',
+                          'x-component': 'div',
+                          'x-component-props': {
+                            children: v3,
+                            style: buttonStyle,
+                          },
+                        },
+                      },
                     },
                   },
                 },

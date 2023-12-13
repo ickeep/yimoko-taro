@@ -15,6 +15,6 @@ export const Range = (props: Partial<RangeProps>) => {
       maxDescription={curMaxDescription}
       minDescription={curMinDescription}
       button={curButton}
-      {...props}
+      {...rest}
     />);
 };
