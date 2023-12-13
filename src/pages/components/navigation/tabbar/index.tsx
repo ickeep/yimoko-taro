@@ -3,7 +3,9 @@ import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
 import { Cell, Tabbar, Tabs } from '@/library';
-import { Icon } from '@/src/icons';
+import icons from '@/src/icons';
+
+const { Home, Category, Find, Cart, My } = icons;
 
 function Index() {
   const store = useStore({
@@ -29,11 +31,11 @@ function Index() {
                 console.log(idx);
               }}
               >
-                <Tabbar.Item title='首页' icon={<Icon name='home' width={18} height={18} />} />
-                <Tabbar.Item title='分类' icon={<Icon name='category' width={18} height={18} />} />
-                <Tabbar.Item icon={<Icon name='find' width={18} height={18} />} />
-                <Tabbar.Item title='购物车' icon={<Icon name='cart' width={18} height={18} />} />
-                <Tabbar.Item title='我的' icon={<Icon name='my' width={18} height={18} />} />
+                <Tabbar.Item title='首页' icon={<Home width={18} height={18} />} />
+                <Tabbar.Item title='分类' icon={<Category width={18} height={18} />} />
+                <Tabbar.Item icon={<Find width={18} height={18} />} />
+                <Tabbar.Item title='购物车' icon={<Cart width={18} height={18} />} />
+                <Tabbar.Item title='我的' icon={<My width={18} height={18} />} />
               </Tabbar>
             </Cell>
           </Cell.Group>
@@ -43,11 +45,11 @@ function Index() {
                 console.log(idx);
               }}
               >
-                <Tabbar.Item title='首页' icon={<Icon name='home' width={18} height={18} />} />
-                <Tabbar.Item title='分类' icon={<Icon name='category' width={18} height={18} />} />
-                <Tabbar.Item icon={<Icon name='find' width={18} height={18} />} />
-                <Tabbar.Item title='购物车' icon={<Icon name='cart' width={18} height={18} />} />
-                <Tabbar.Item title='我的' icon={<Icon name='my' width={18} height={18} />} />
+                <Tabbar.Item title='首页' icon={<Home width={18} height={18} />} />
+                <Tabbar.Item title='分类' icon={<Category width={18} height={18} />} />
+                <Tabbar.Item icon={<Find width={18} height={18} />} />
+                <Tabbar.Item title='购物车' icon={<Cart width={18} height={18} />} />
+                <Tabbar.Item title='我的' icon={<My width={18} height={18} />} />
               </Tabbar>
             </Cell>
           </Cell.Group>
@@ -58,11 +60,11 @@ function Index() {
               }}
               >
                 <Tabbar>
-                  <Tabbar.Item title='首页' icon={<Icon name='home' width={12} height={12} />} value={11} />
-                  <Tabbar.Item title='分类' icon={<Icon name='category' width={12} height={12} />} dot />
-                  <Tabbar.Item icon={<Icon name='find' width={12} height={12} />} />
-                  <Tabbar.Item title='购物车' icon={<Icon name='cart' width={12} height={12} />} value={110} />
-                  <Tabbar.Item title='我的' icon={<Icon name='my' width={12} height={12} />} />
+                  <Tabbar.Item title='首页' icon={<Home width={12} height={12} />} value={11} />
+                  <Tabbar.Item title='分类' icon={<Category width={12} height={12} />} dot />
+                  <Tabbar.Item icon={<Find width={12} height={12} />} />
+                  <Tabbar.Item title='购物车' icon={<Cart width={12} height={12} />} value={110} />
+                  <Tabbar.Item title='我的' icon={<My width={12} height={12} />} />
                 </Tabbar>
               </Tabbar>
             </Cell>
@@ -74,11 +76,11 @@ function Index() {
               }}
               >
                 <Tabbar>
-                  <Tabbar.Item title='首页' icon={<Icon name='home' width={12} height={12} />} value={11} />
-                  <Tabbar.Item title='分类' icon={<Icon name='category' width={12} height={12} />} dot />
-                  <Tabbar.Item icon={<Icon name='find' width={12} height={12} />} />
-                  <Tabbar.Item title='购物车' icon={<Icon name='cart' width={12} height={12} />} value={110} />
-                  <Tabbar.Item title='我的' icon={<Icon name='my' width={12} height={12} />} />
+                  <Tabbar.Item title='首页' icon={<Home width={12} height={12} />} value={11} />
+                  <Tabbar.Item title='分类' icon={<Category width={12} height={12} />} dot />
+                  <Tabbar.Item icon={<Find width={12} height={12} />} />
+                  <Tabbar.Item title='购物车' icon={<Cart width={12} height={12} />} value={110} />
+                  <Tabbar.Item title='我的' icon={<My width={12} height={12} />} />
                 </Tabbar>
               </Tabbar>
             </Cell>
@@ -89,11 +91,11 @@ function Index() {
                 console.log(idx);
               }}
               >
-                <Tabbar.Item title='首页' icon={<Icon name='home' width={18} height={18} />} />
-                <Tabbar.Item title='分类' icon={<Icon name='category' width={18} height={18} />} />
-                <Tabbar.Item icon={<Icon name='find' width={18} height={18} />} />
-                <Tabbar.Item title='购物车' icon={<Icon name='cart' width={18} height={18} />} />
-                <Tabbar.Item title='我的' icon={<Icon name='my' width={18} height={18} />} />
+                <Tabbar.Item title='首页' icon={<Home width={18} height={18} />} />
+                <Tabbar.Item title='分类' icon={<Category width={18} height={18} />} />
+                <Tabbar.Item icon={<Find width={18} height={18} />} />
+                <Tabbar.Item title='购物车' icon={<Cart width={18} height={18} />} />
+                <Tabbar.Item title='我的' icon={<My width={18} height={18} />} />
               </Tabbar>
             </Cell>
           </Cell.Group>
@@ -120,11 +122,11 @@ function Index() {
                         console.log(idx);
                       },
                       options: [
-                        { title: '首页', icon: <Icon name='home' width={18} height={18} /> },
-                        { title: '分类', icon: <Icon name='category' width={18} height={18} /> },
-                        { icon: <Icon name='find' width={18} height={18} /> },
-                        { title: '购物车', icon: <Icon name='cart' width={18} height={18} /> },
-                        { title: '我的', icon: <Icon name='my' width={18} height={18} /> },
+                        { title: '首页', icon: <Home width={18} height={18} /> },
+                        { title: '分类', icon: <Category width={18} height={18} /> },
+                        { icon: <Find width={18} height={18} /> },
+                        { title: '购物车', icon: <Cart width={18} height={18} /> },
+                        { title: '我的', icon: <My width={18} height={18} /> },
                       ],
                     },
                   },
@@ -147,11 +149,11 @@ function Index() {
                         console.log(idx);
                       },
                       options: [
-                        { title: '首页', icon: <Icon name='home' width={18} height={18} /> },
-                        { title: '分类', icon: <Icon name='category' width={18} height={18} /> },
-                        { icon: <Icon name='find' width={18} height={18} /> },
-                        { title: '购物车', icon: <Icon name='cart' width={18} height={18} /> },
-                        { title: '我的', icon: <Icon name='my' width={18} height={18} /> },
+                        { title: '首页', icon: <Home width={18} height={18} /> },
+                        { title: '分类', icon: <Category width={18} height={18} /> },
+                        { icon: <Find width={18} height={18} /> },
+                        { title: '购物车', icon: <Cart width={18} height={18} /> },
+                        { title: '我的', icon: <My width={18} height={18} /> },
                       ],
                     },
                   },
@@ -173,11 +175,11 @@ function Index() {
                         console.log(idx);
                       },
                       options: [
-                        { title: '首页', icon: <Icon name='home' width={12} height={12} />, value: 11 },
-                        { title: '分类', icon: <Icon name='category' width={12} height={12} />, dot: true },
-                        { icon: <Icon name='find' width={12} height={12} /> },
-                        { title: '购物车', icon: <Icon name='cart' width={12} height={12} />, value: 110 },
-                        { title: '我的', icon: <Icon name='my' width={12} height={12} /> },
+                        { title: '首页', icon: <Home width={12} height={12} />, value: 11 },
+                        { title: '分类', icon: <Category width={12} height={12} />, dot: true },
+                        { icon: <Find width={12} height={12} /> },
+                        { title: '购物车', icon: <Cart width={12} height={12} />, value: 110 },
+                        { title: '我的', icon: <My width={12} height={12} /> },
                       ],
                     },
                   },
@@ -201,11 +203,11 @@ function Index() {
                         console.log(idx);
                       },
                       options: [
-                        { title: '首页', icon: <Icon name='home' width={12} height={12} />, value: 11 },
-                        { title: '分类', icon: <Icon name='category' width={12} height={12} />, dot: true },
-                        { icon: <Icon name='find' width={12} height={12} /> },
-                        { title: '购物车', icon: <Icon name='cart' width={12} height={12} />, value: 110 },
-                        { title: '我的', icon: <Icon name='my' width={12} height={12} /> },
+                        { title: '首页', icon: <Home width={12} height={12} />, value: 11 },
+                        { title: '分类', icon: <Category width={12} height={12} />, dot: true },
+                        { icon: <Find width={12} height={12} /> },
+                        { title: '购物车', icon: <Cart width={12} height={12} />, value: 110 },
+                        { title: '我的', icon: <My width={12} height={12} /> },
                       ],
                     },
                   },
@@ -228,11 +230,11 @@ function Index() {
                         console.log(idx);
                       },
                       options: [
-                        { title: '首页', icon: <Icon name='home' width={18} height={18} /> },
-                        { title: '分类', icon: <Icon name='category' width={18} height={18} /> },
-                        { icon: <Icon name='find' width={18} height={18} /> },
-                        { title: '购物车', icon: <Icon name='cart' width={18} height={18} /> },
-                        { title: '我的', icon: <Icon name='my' width={18} height={18} /> },
+                        { title: '首页', icon: <Home width={18} height={18} /> },
+                        { title: '分类', icon: <Category width={18} height={18} /> },
+                        { icon: <Find width={18} height={18} /> },
+                        { title: '购物车', icon: <Cart width={18} height={18} /> },
+                        { title: '我的', icon: <My width={18} height={18} /> },
                       ],
                     },
                   },
