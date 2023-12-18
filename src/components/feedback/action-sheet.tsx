@@ -88,11 +88,9 @@ export const ActionSheet: FC<ActionSheetProps> = observer((props) => {
           trig();
           trigger?.onTrig?.(...args);
         }}
-      >
-        {curChildren}
-      </Trigger >
+      />
     );
-  }, [valText, curTitle, trigger, curChildren, trig]);
+  }, [valText, curTitle, trigger, trig]);
 
   return (
     <>
@@ -105,7 +103,9 @@ export const ActionSheet: FC<ActionSheetProps> = observer((props) => {
         onClose={close}
         onSelect={select}
         onCancel={cancel}
-      />
+      >
+        {curChildren}
+      </NActionSheet>
     </>
   );
 });
