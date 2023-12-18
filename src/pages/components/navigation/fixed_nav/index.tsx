@@ -1,8 +1,9 @@
 import { observer } from '@formily/react';
-import { Drag } from '@nutui/nutui-react-taro';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { Cell, FixedNav, Tabs } from '@/library';
+import React from 'react';
+
+import { Cell, Drag, FixedNav, Tabs } from '@/library';
 
 function Index() {
   const store = useStore({

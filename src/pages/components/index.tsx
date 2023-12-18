@@ -104,6 +104,7 @@ const data = [
       { title: '动作面板 - ActionSheet', path: '/pages/components/feedback/action-sheet/index' },
       { title: '徽标 - Badge', path: '/pages/components/feedback/badge/index' },
       { title: '对话框 - Dialog', path: '/pages/components/feedback/dialog/index' },
+      { title: '拖拽 - Drag', path: '/pages/components/feedback/drag/index' },
 
     ],
   },

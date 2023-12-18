@@ -31,6 +31,7 @@ import { WaterMark } from './feature/water-mark';
 import { ActionSheet } from './feedback/action-sheet';
 import { Badge } from './feedback/badge';
 import { Dialog } from './feedback/dialog';
+import { Drag } from './feedback/drag';
 import { Empty } from './feedback/empty';
 import { ErrorContent } from './feedback/error-content';
 import { InfiniteLoading } from './feedback/infinite-loading';
@@ -107,6 +108,7 @@ export const components = {
   Skeleton,
   Swipe,
   Toast,
+  Drag,
 
   // 布局
   Divider,

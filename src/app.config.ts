@@ -18,6 +18,7 @@ export default defineAppConfig({
     'pages/components/feedback/action-sheet/index',
     'pages/components/feedback/badge/index',
     'pages/components/feedback/dialog/index',
+    'pages/components/feedback/drag/index',
     // 'pages/components/feedback/error-content/index',
     // 'pages/components/feedback/loading/index',
     // 'pages/components/feedback/skeleton/index',
