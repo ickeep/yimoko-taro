@@ -105,7 +105,7 @@ const data = [
       { title: '徽标 - Badge', path: '/pages/components/feedback/badge/index' },
       { title: '对话框 - Dialog', path: '/pages/components/feedback/dialog/index' },
       { title: '拖拽 - Drag', path: '/pages/components/feedback/drag/index' },
-
+      { title: '空状态 - Empty', path: '/pages/components/feedback/empty/index' },
     ],
   },
   {
