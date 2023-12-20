@@ -5,6 +5,7 @@ import React from 'react';
 export const Loading = (props: Partial<LoadingProps>) => {
   const { icon, ...rest } = props;
   const curIcon = useAdditionalNode('icon', icon);
+
   return <NLoading {...rest} icon={curIcon} />;
 };
 

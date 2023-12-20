@@ -22,7 +22,7 @@ export default defineAppConfig({
     'pages/components/feedback/empty/index',
     'pages/components/feedback/infinite-loading/index',
     // 'pages/components/feedback/error-content/index',
-    // 'pages/components/feedback/loading/index',
+    'pages/components/feedback/loading/index',
     // 'pages/components/feedback/skeleton/index',
 
     'pages/components/layout/divider/index',
