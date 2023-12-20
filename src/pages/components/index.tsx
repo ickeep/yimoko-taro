@@ -106,6 +106,7 @@ const data = [
       { title: '对话框 - Dialog', path: '/pages/components/feedback/dialog/index' },
       { title: '拖拽 - Drag', path: '/pages/components/feedback/drag/index' },
       { title: '空状态 - Empty', path: '/pages/components/feedback/empty/index' },
+      { title: '滚动加载 - InfiniteLoading', path: '/pages/components/feedback/infinite-loading/index' },
     ],
   },
   {
