@@ -109,6 +109,7 @@ const data = [
       { title: '滚动加载 - InfiniteLoading', path: '/pages/components/feedback/infinite-loading/index' },
       { title: '加载 - Loading', path: '/pages/components/feedback/loading/index' },
       { title: '公告栏 - NoticeBar', path: '/pages/components/feedback/notice-bar/index' },
+      { title: '消息通知 - Notify', path: '/pages/components/feedback/notify/index' },
     ],
   },
   {

@@ -24,6 +24,7 @@ export default defineAppConfig({
     // 'pages/components/feedback/error-content/index',
     'pages/components/feedback/loading/index',
     'pages/components/feedback/notice-bar/index',
+    'pages/components/feedback/notify/index',
     // 'pages/components/feedback/skeleton/index',
 
     'pages/components/layout/divider/index',
