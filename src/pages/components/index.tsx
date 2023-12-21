@@ -108,6 +108,7 @@ const data = [
       { title: '空状态 - Empty', path: '/pages/components/feedback/empty/index' },
       { title: '滚动加载 - InfiniteLoading', path: '/pages/components/feedback/infinite-loading/index' },
       { title: '加载 - Loading', path: '/pages/components/feedback/loading/index' },
+      { title: '公告栏 - NoticeBar', path: '/pages/components/feedback/notice-bar/index' },
     ],
   },
   {
