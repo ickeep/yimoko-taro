@@ -26,8 +26,8 @@ configStore.setConfig({
 
 // 设置默认组件
 configStore.components = {
-  ...useComponents,
   ...configStore.components,
+  ...useComponents,
 };
 
 function App(props) {
