@@ -1,25 +1,20 @@
 import { observer, useFieldSchema } from '@formily/react';
 import { PopoverProps as NPopoverProps, Popover as NPopover } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, useAPIOptions, Trigger, TriggerProps } from '@yimoko/store';
-import React, { FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
+import React, { FC, useEffect, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
 
-export type PopoverProps = Omit<Partial<NPopoverProps>, 'value' | 'onChange' | 'options'> & React.RefAttributes<unknown> & {
-  children?: ReactNode,
-  // 触发器
-  trigger?: TriggerProps,
-  // 数据
-} & Omit<IOptionsAPIProps<'key' | 'name' | 'icon' | 'danger' | 'disabled' | 'className' | 'action'>, 'valueType'>;
+// eslint-disable-next-line max-len
+export type PopoverProps = Omit<Partial<NPopoverProps>, 'value' | 'onChange' | 'options'> & React.RefAttributes<unknown> & Omit<IOptionsAPIProps<'key' | 'name' | 'icon' | 'danger' | 'disabled' | 'className' | 'action'>, 'valueType'>;
 
 export const Popover: FC<PopoverProps> = observer((props) => {
   const {
     options, api, keys, splitter,
-    title, trigger,
-    children, visible, onClose, onSelect, ...rest
+    title, list, visible, onClose, onSelect, onClick, ...rest
   } = props;
 
-  const [data] = useAPIOptions(options, api, keys, splitter) as any[];
+  const [data] = useAPIOptions(list ?? options, api, keys, splitter) as any[];
   const [curVisible, setCurVisible] = useState(visible ?? false);
   const schema = useFieldSchema();
   const navigate = useNavigate();
@@ -30,17 +25,19 @@ export const Popover: FC<PopoverProps> = observer((props) => {
     visible !== undefined && setCurVisible(visible);
   }, [visible]);
 
-  const trig = useCallback(() => {
-    if (visible === undefined) {
-      setCurVisible(!curVisible);
-    }
-  }, [curVisible, visible]);
 
   const close: PopoverProps['onClose'] = () => {
     if (visible === undefined) {
       setCurVisible(false);
     }
     onClose?.();
+  };
+
+  const click: PopoverProps['onClick'] = () => {
+    onClick?.();
+    if (visible === undefined) {
+      setCurVisible(true);
+    }
   };
 
   const select: NPopoverProps['onSelect'] = (item: any, index) => {
@@ -52,30 +49,16 @@ export const Popover: FC<PopoverProps> = observer((props) => {
     }
   };
 
-  const triggerEl = useMemo(() => (
-    <Trigger
-      {...trigger}
-      onTrig={(...args) => {
-        trig();
-        trigger?.onTrig?.(...args);
-      }}
-    >
-      {children}
-    </Trigger >
-  ), [trigger, children, trig]);
-
   return (
-    <>
-      {triggerEl}
-      <NPopover
-        {...rest}
-        title={curTitle}
-        visible={curVisible}
-        list={data}
-        onClose={close}
-        onSelect={select}
-      />
-    </>
+    <NPopover
+      {...rest}
+      title={curTitle}
+      visible={curVisible}
+      onClick={click}
+      list={data}
+      onClose={close}
+      onSelect={select}
+    />
   );
 });
 

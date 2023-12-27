@@ -110,6 +110,7 @@ const data = [
       { title: '加载 - Loading', path: '/pages/components/feedback/loading/index' },
       { title: '公告栏 - NoticeBar', path: '/pages/components/feedback/notice-bar/index' },
       { title: '消息通知 - Notify', path: '/pages/components/feedback/notify/index' },
+      { title: '气泡弹出框 - Popover', path: '/pages/components/feedback/popover/index' },
     ],
   },
   {
