@@ -3,7 +3,6 @@ import { StorePage, useStore } from '@yimoko/store';
 import React from 'react';
 
 import { Button, Cell, Notify, Tabs } from '@/library';
-import icons from '@/src/icons';
 
 function Index() {
   const store = useStore({
@@ -128,7 +127,6 @@ function Index() {
       ) : (
         <StorePage
           store={store}
-          scope={{ icons }}
           schema={{
             type: 'object',
             properties: {
