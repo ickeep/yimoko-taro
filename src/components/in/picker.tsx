@@ -106,8 +106,8 @@ export const Picker = observer((props: PickerProps) => {
       {triggerEl}
       <NPicker
         {...rest}
+        value={value !== undefined ? curValue : undefined}
         title={curTitle}
-        value={curValue}
         visible={curVisible}
         options={data}
         onClose={close}
