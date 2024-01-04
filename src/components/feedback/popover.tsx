@@ -1,6 +1,6 @@
 import { observer, useFieldSchema } from '@formily/react';
 import { PopoverProps as NPopoverProps, Popover as NPopover } from '@nutui/nutui-react-taro';
-import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
+import { IOptionsAPIProps, useAPIOptions, useChildrenNullishCoalescing } from '@yimoko/store';
 import React, { FC, useEffect, useState } from 'react';
 
 import { useNavigate } from '../../hooks/use-router';
@@ -10,7 +10,7 @@ export type PopoverProps = Omit<Partial<NPopoverProps>, 'value' | 'onChange' | '
 
 export const Popover: FC<PopoverProps> = observer((props) => {
   const {
-    options, api, keys, splitter,
+    options, api, keys, splitter, children,
     title, list, visible, onClose, onSelect, onClick, ...rest
   } = props;
 
@@ -20,6 +20,7 @@ export const Popover: FC<PopoverProps> = observer((props) => {
   const navigate = useNavigate();
   const { title: sTitle } = schema ?? {};
   const curTitle = title ?? sTitle;
+  const curChildren = useChildrenNullishCoalescing(children);
 
   useEffect(() => {
     visible !== undefined && setCurVisible(visible);
@@ -58,7 +59,7 @@ export const Popover: FC<PopoverProps> = observer((props) => {
       list={data}
       onClose={close}
       onSelect={select}
-    />
+    >{curChildren}</NPopover>
   );
 });
 
