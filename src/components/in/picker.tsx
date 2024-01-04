@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { observer, useFieldSchema } from '@formily/react';
 import { PickerProps as NPickerProps, Picker as NPicker } from '@nutui/nutui-react-taro';
 import { IOptionsAPIProps, judgeIsEmpty, strToArr, useAPIOptions, Trigger, TriggerProps, useChildrenNullishCoalescing } from '@yimoko/store';
@@ -28,7 +29,6 @@ export const Picker = observer((props: PickerProps) => {
   const schema = useFieldSchema();
   const { title: sTitle } = schema ?? {};
   const curChildren = useChildrenNullishCoalescing(children);
-
 
   const curTitle = title ?? sTitle;
 
@@ -97,11 +97,9 @@ export const Picker = observer((props: PickerProps) => {
           trig();
           trigger?.onTrig?.(...args);
         }}
-      >
-        {curChildren}
-      </Trigger >
+      />
     );
-  }, [valText, placeholder, curTitle, trigger, curChildren, trig]);
+  }, [valText, placeholder, curTitle, trigger, trig]);
 
   return (
     <>
@@ -115,7 +113,9 @@ export const Picker = observer((props: PickerProps) => {
         onClose={close}
         onChange={onOptionChange}
         onConfirm={change}
-      />
+      >
+        {curChildren}
+      </NPicker>
     </>
   );
 });

@@ -1,4 +1,4 @@
-import { StarFill, Star, My, Share, Checklist, HeartFill, Heart, Home, Category, Find, Cart, Left, Close, Refresh, Fabulous, Failure } from '@nutui/icons-react-taro';
+import { StarFill, Star, My, Share, Checklist, HeartFill, Heart, Home, Category, Find, Cart, Left, Close, Refresh, Fabulous, Failure, Location } from '@nutui/icons-react-taro';
 
 
 const icons = {
@@ -18,6 +18,7 @@ const icons = {
   Refresh,
   Fabulous,
   Failure,
+  Location,
 };
 
 export default icons;

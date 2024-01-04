@@ -7,8 +7,6 @@ import { Cell, Picker } from '@/library';
 
 function Index() {
   const store = useStore({ defaultValues: { arr: [], arr2: [] } });
-  console.log('index', store.values.arr);
-  console.log('index', store.values.arr2);
 
   return (
     <>
