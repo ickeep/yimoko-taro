@@ -112,6 +112,7 @@ const data = [
       { title: '消息通知 - Notify', path: '/pages/components/feedback/notify/index' },
       { title: '气泡弹出框 - Popover', path: '/pages/components/feedback/popover/index' },
       { title: '骨架屏 - Skeleton', path: '/pages/components/feedback/skeleton/index' },
+      { title: '滑动手势 - Swipe', path: '/pages/components/feedback/swipe/index' },
     ],
   },
   {
