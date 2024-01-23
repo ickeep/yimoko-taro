@@ -19,15 +19,14 @@ function Index() {
       setValues({ percent: 0 });
       return;
     }
-    setValues({ percent: percent - 10 });
-    console.log(percent);
+    setValues({ percent: store.values.percent - 10 });
   };
+
   const setAddVal = () => {
     if (percent >= 100) {
       return;
     }
-    setValues({ percent: percent + 10 });
-    console.log(percent);
+    setValues({ percent: store.values.percent + 10 });
   };
 
   return (
@@ -45,7 +44,7 @@ function Index() {
           <Divider>自定义</Divider>
           <CircleProgress percent={50} strokeWidth={10} >粗细</CircleProgress>
           <CircleProgress percent={50} radius={60}>半径</CircleProgress>
-          {/* nutui 的 bug 颜色不会变 */}
+          {/* nutui 的 bug, 小程序颜色不会变 */}
           <CircleProgress percent={50} color='#fa2c19'>
             颜色
           </CircleProgress>
@@ -145,7 +144,7 @@ function Index() {
                 type: 'number',
                 'x-component': 'CircleProgress',
                 'x-component-props': {
-                  children: '{{curStore.value.percent}}',
+                  children: '{{curStore.values.percent}}',
                 },
               },
               b1: {

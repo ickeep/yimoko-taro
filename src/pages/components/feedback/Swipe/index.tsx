@@ -1,8 +1,9 @@
 import Taro from '@tarojs/taro';
 
 import { observer } from '@formily/react';
+import { SwipeInstance } from '@nutui/nutui-react-taro/dist/types/packages/swipe/swipe.taro';
 import { StorePage, useStore } from '@yimoko/store';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Button, Cell, Divider, InputNumber, Swipe, Tabs } from '@/library';
 
@@ -14,6 +15,7 @@ function Index() {
   });
   const { tab } = store.values;
   const { setValues } = store;
+  const openRef = useRef<SwipeInstance>(null);
 
   return (
     <div>
@@ -80,6 +82,26 @@ function Index() {
           >
             <Content />
           </Swipe>
+          <Divider>通过实例方法控制</Divider>
+          <Swipe
+            ref={openRef}
+            leftAction={
+              <Button shape='square' type='danger'>
+                删除
+              </Button>
+            }
+          >
+            <Cell title='点击下方按钮打开或关闭' radius={0} />
+          </Swipe>
+          <Button onClick={() => openRef.current?.open('left')}
+            type='primary'
+            size='small'
+          >
+            打开
+          </Button>
+          <Button onClick={() => openRef.current?.close()}>
+            关闭
+          </Button>
         </>
       ) : (
         <StorePage

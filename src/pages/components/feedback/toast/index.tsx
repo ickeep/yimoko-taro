@@ -80,16 +80,9 @@ function Index() {
                   children: '位置',
                 },
               },
-              c2: {
-                type: 'void',
+              v1: {
+                type: 'string',
                 'x-component': 'RadioGroup',
-                'x-component-props': {
-                  defaultValue: 'top',
-                  onChange: (v) => {
-                    console.log(v);
-                    setValues({ v1: v.toString() });
-                  },
-                },
                 properties: {
                   r1: {
                     type: 'void',
@@ -121,8 +114,8 @@ function Index() {
                 type: 'void',
                 'x-component': 'Toast',
                 'x-component-props': {
-                  msg: '{{curStore,value.v1}}',
-                  position: '{{curStore,value.v1}}',
+                  msg: '{{curStore.values.v1}}',
+                  position: '{{curStore.values.v1}}',
                   trigger: {
                     component: 'Cell',
                   },

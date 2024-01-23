@@ -1,28 +1,34 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button, CountDown, Divider, Tabs } from '@/library';
 
+const t1 = Date.now() + 20 * 1000;
+const endTime = Date.now() + 5 * 1000;
+
 function Index() {
+  const [defaultValues] = useState(() => ({
+    tab: 'Schema',
+    time: 5 * 1000,
+    paused: false,
+    t1: Date.now() + 20 * 1000,
+    endTime: Date.now() + 5 * 1000,
+  }));
+
   const store = useStore({
-    defaultValues: {
-      tab: 'Schema',
-      endTime: Date.now() + 5 * 1000,
-      time: 5 * 1000,
-      paused: false,
-      t1: Date.now() + 20 * 1000,
-    },
+    defaultValues,
   });
-  const { tab, endTime, time, paused, t1 } = store.values;
+
+  const { tab, time, paused } = store.values;
   const { setValues } = store;
   const onEnd = () => {
     console.log('countdown: ended.');
   };
   const toggle = () => {
-    console.log(!paused);
-    setValues({ paused: !paused });
+    setValues({ paused: !store.values.paused });
   };
+
   const onPaused = (v) => {
     console.log('paused: ', v);
   };
@@ -47,11 +53,10 @@ function Index() {
           <CountDown endTime={endTime} onEnd={onEnd} format='DD 天 HH 时 mm 分 ss 秒' />
           <Divider>毫秒级渲染</Divider>
           <CountDown endTime={endTime} onEnd={onEnd} millisecond format='DD 天 HH 时 mm 分 ss 秒' />
-          {/* 暂停存在 bug */}
           <Divider>暂停</Divider>
           <CountDown
             endTime={t1}
-            paused
+            paused={paused}
             onPaused={onPaused}
             onRestart={onRestart}
           />
@@ -139,7 +144,7 @@ function Index() {
                 'x-component': 'CountDown',
                 'x-component-props': {
                   endTime: t1,
-                  paused,
+                  paused: '{{curStore.values.paused}}',
                   onPaused,
                   onRestart,
                 },
@@ -150,7 +155,7 @@ function Index() {
                 'x-component-props': {
                   type: 'primary',
                   size: 'small',
-                  children: paused ? 'start' : 'stop',
+                  children: '{{curStore.values.paused ? \'start\' : \'stop\'}}',
                   onClick: () => toggle(),
                 },
               },
