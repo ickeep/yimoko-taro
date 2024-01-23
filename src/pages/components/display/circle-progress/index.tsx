@@ -53,6 +53,7 @@ function Index() {
             渐变色
           </CircleProgress>
 
+          {/* 低代码模式存在 bug */}
           <Divider>动态</Divider>
           <CircleProgress percent={percent}>{percent}</CircleProgress>
           <Button type='primary' size='small' onClick={setReduceVal}>
