@@ -26,7 +26,7 @@ export default defineAppConfig({
     'pages/components/feedback/notice-bar/index',
     'pages/components/feedback/notify/index',
     'pages/components/feedback/popover/index',
-    // 'pages/components/feedback/skeleton/index',
+    'pages/components/feedback/skeleton/index',
 
     'pages/components/layout/divider/index',
     'pages/components/layout/space/index',
