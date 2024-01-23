@@ -11,7 +11,6 @@ function Index() {
   const store = useStore({
     defaultValues: {
       tab: 'Schema',
-
     },
   });
   const { tab } = store.values;
