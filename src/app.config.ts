@@ -72,6 +72,7 @@ export default defineAppConfig({
     'pages/components/display/collapse/index',
     'pages/components/display/pagination/index',
     'pages/components/display/progress/index',
+    'pages/components/display/steps/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',
