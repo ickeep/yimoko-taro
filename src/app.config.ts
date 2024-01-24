@@ -70,6 +70,7 @@ export default defineAppConfig({
     'pages/components/display/animate/index',
     'pages/components/display/ellipsis/index',
     'pages/components/display/collapse/index',
+    'pages/components/display/pagination/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',
