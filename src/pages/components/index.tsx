@@ -125,6 +125,7 @@ const data = [
       { title: '圆形进度条 - CircleProgress', path: '/pages/components/display/circle-progress/index' },
       { title: '省略号 - Ellipsis', path: '/pages/components/display/ellipsis/index' },
       { title: '图片预览 - ImagePreview', path: '/pages/components/display/image-preview/index' },
+      { title: '折叠面板 - Collapse', path: '/pages/components/display/collapse/index' },
     ],
   },
 ];
