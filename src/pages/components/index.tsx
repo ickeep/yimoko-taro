@@ -129,6 +129,7 @@ const data = [
       { title: '折叠面板 - Pagination', path: '/pages/components/display/pagination/index' },
       { title: '进度条 - Progress', path: '/pages/components/display/progress/index' },
       { title: '步骤条 - Steps', path: '/pages/components/display/steps/index' },
+      { title: '轮播 - Swiper', path: '/pages/components/display/swiper/index' },
     ],
   },
 ];
