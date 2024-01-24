@@ -31,6 +31,6 @@ export const ImagePreview = observer((props: ImagePreviewProps) => {
 
   return <>
     {triggerEl}
-    <NImagePreview {...rest} images={data} />
+    <NImagePreview {...rest} images={data} visible={curVisible} />
   </>;
 });
