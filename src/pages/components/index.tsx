@@ -127,6 +127,7 @@ const data = [
       { title: '图片预览 - ImagePreview', path: '/pages/components/display/image-preview/index' },
       { title: '折叠面板 - Collapse', path: '/pages/components/display/collapse/index' },
       { title: '折叠面板 - Pagination', path: '/pages/components/display/pagination/index' },
+      { title: '进度条 - Progress', path: '/pages/components/display/progress/index' },
     ],
   },
 ];
