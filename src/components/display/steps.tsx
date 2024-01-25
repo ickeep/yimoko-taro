@@ -17,6 +17,7 @@ export const Steps = (props: StepsProps) => {
 export const Step = (props: Partial<StepProps>) => {
   const { icon, description, ...rest } = props;
   const curIcon = useAdditionalNode('icon', icon);
+
   const curDescription = useAdditionalNode('description', description);
 
   return <NStep {...rest} icon={curIcon} description={curDescription} />;

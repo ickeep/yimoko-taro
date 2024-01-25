@@ -41,6 +41,7 @@ export const Tour: ITour = observer((props) => {
       prev={curPrev}
       complete={curComplete}
       title={curTitle}
+      visible={curVisible}
     />
   </>;
 });

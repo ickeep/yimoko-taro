@@ -9,6 +9,7 @@ import { Animate } from './display/animate';
 import { AnimatingNumbers } from './display/animating-numbers';
 import { Avatar } from './display/avatar';
 import { CircleProgress } from './display/circle-progress';
+import { Collapse } from './display/collapse';
 import { CountDown } from './display/count-down';
 import { Ellipsis } from './display/ellipsis';
 import { ImagePreview } from './display/image-preview';
@@ -167,6 +168,7 @@ export const components = {
   Tour,
   Video,
   VirtualList,
+  Collapse,
 };
 
 export const componentsPlus = {

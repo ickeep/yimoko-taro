@@ -11,14 +11,15 @@ import { ItemSchemaToProps } from '../../tools/schema';
 // Collapse 多为展示数据，不引入 ArrayBase 组件
 
 type ICollapseFC = FC<Partial<CollapseProps> & Omit<IOptionsAPIProps, 'valueType'>>;
-type ICollapse = ICollapseFC & { Item: FC<CollapseItemProps>; };
+type ICollapse = ICollapseFC & { Item: FC<Partial<CollapseItemProps>>; };
 
 const CollapseFC: ICollapseFC = observer((props) => {
-  const { options, api, keys, splitter, children, ...rest } = props;
+  const { expandIcon, options, api, keys, splitter, children, ...rest } = props;
   const [data] = useAPIOptions(options, api, keys, splitter);
   const schema = useFieldSchema();
   const { items } = schema ?? {};
   const curChildren = useChildrenNullishCoalescing(children);
+  const curExpandIcon = useAdditionalNode('expandIcon', expandIcon);
 
   // 当 schema 使用时 会对 children 进行处理 导致 Collapse.Item 不在顶层 必须将其取出来
   // eslint-disable-next-line complexity
@@ -71,7 +72,7 @@ const CollapseFC: ICollapseFC = observer((props) => {
 
   return (
     <RecordsScope getRecords={() => data}>
-      <NCollapse  {...rest} >
+      <NCollapse  {...rest} expandIcon={curExpandIcon}>
         {itemsChildren}
         {uscChildren}
       </NCollapse>
