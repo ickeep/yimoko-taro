@@ -130,6 +130,10 @@ const data = [
       { title: '进度条 - Progress', path: '/pages/components/display/progress/index' },
       { title: '步骤条 - Steps', path: '/pages/components/display/steps/index' },
       { title: '轮播 - Swiper', path: '/pages/components/display/swiper/index' },
+      { title: '标签 - Tag', path: '/pages/components/display/tag/index' },
+      { title: '引导 - Tour', path: '/pages/components/display/tour/index' },
+      { title: '视频 - Video', path: '/pages/components/display/video/index' },
+      { title: '虚拟列表 - VirtualList', path: '/pages/components/display/virtualList/index' },
     ],
   },
 ];

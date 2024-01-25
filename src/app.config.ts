@@ -74,6 +74,10 @@ export default defineAppConfig({
     'pages/components/display/progress/index',
     'pages/components/display/steps/index',
     'pages/components/display/swiper/index',
+    'pages/components/display/tag/index',
+    'pages/components/display/tour/index',
+    'pages/components/display/video/index',
+    'pages/components/display/virtualList/index',
   ],
   tabBar: {
     selectedColor: '#fa3527',
