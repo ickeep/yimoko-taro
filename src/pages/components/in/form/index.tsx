@@ -5,7 +5,7 @@ import React from 'react';
 function Index() {
   const store = useStore({
     defaultValues: {
-      str: 'str',
+      str: '',
       num: 1,
       bool: true,
       arr: [],

@@ -23,7 +23,7 @@ export const Form = observer((props: FormProps) => {
       e?.preventDefault();
       e?.stopPropagation();
       onSubmit?.(e);
-      form?.submit(() => curStore?.runAPI());
+      form?.submit(() => curStore?.runAPI()).catch(() => { });
     }}
     >
       <Cell.Group>{children}</Cell.Group>
