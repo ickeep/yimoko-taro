@@ -47,6 +47,15 @@ function Index() {
                   label: '布尔值',
                 },
               },
+              btn: {
+                type: 'void',
+                'x-component': 'Button',
+                'x-component-props': {
+                  type: 'primary',
+                  formType: 'submit',
+                  children: '提交',
+                },
+              },
             },
           },
         },
