@@ -32,10 +32,10 @@ export const Form = observer((props: FormProps) => {
 });
 
 // eslint-disable-next-line complexity
-export const FormItem = observer((props: Partial<Omit<CellProps, 'extra'>> & { required?: boolean, label?: string }) => {
-  const { className = '', label, required, children, description, title, ...rest } = props;
+export const FormItem = observer((props: Partial<Omit<CellProps, 'extra'>> & { required?: boolean, label?: string, errMsg?: string }) => {
+  const { className = '', label, required, children, description, title, errMsg, ...rest } = props;
   const field = (useField() ?? {}) as Field;
-  const errMsg = field.errors?.[0]?.messages?.[0];
+  const curMsg = field.errors?.[0]?.messages?.[0] ? errMsg : '';
   const curRequired = required ?? field?.required;
   const curLabel = label ?? title ?? field.title;
 
@@ -49,7 +49,7 @@ export const FormItem = observer((props: Partial<Omit<CellProps, 'extra'>> & { r
       )}
       <div className='nut-cell__value nut-form-item__body'>
         <div className='nut-form-item__body__slots'>{children}</div>
-        <div className='nut-form-item__body__tips' >{errMsg}</div>
+        <div className='nut-form-item__body__tips' >{curMsg}</div>
       </div>
     </Cell>
   );
