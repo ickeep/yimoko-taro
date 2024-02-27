@@ -4,21 +4,27 @@ import Taro from '@tarojs/taro';
 import { handleResponse, IHTTPCode, IHTTPResponse } from '@yimoko/store';
 
 // 将 response 处理为统一的 { code, data, message } 格式
+// eslint-disable-next-line complexity
 export const httpRequest: <T = any, P = any>(config: IHTTPConfig<P> & { params?: Record<any, any> }) => Promise<IHTTPResponse<T>> = async (config) => {
   try {
     const { params = {}, data = {}, ...rest } = config;
     const curData = { ...params, ...data };
     const response = await Taro.request({ url: '', ...rest, data: curData }) as any;
+    response.status = response.status ?? response.statusCode;
+    response.statusText = response.statusText ?? response.errMsg;
     return handleResponse(response);
   } catch (e: any) {
     const { response, ...args } = e;
     if (!response) {
       return handleResponse({
         ...args,
+        status: IHTTPCode.networkError,
         statusCode: IHTTPCode.networkError,
         msg: '请求失败',
       });
     }
+    response.status = response.status ?? response.statusCode;
+    response.statusText = response.statusText ?? response.errMsg;
     return handleResponse(response);
   }
 };
