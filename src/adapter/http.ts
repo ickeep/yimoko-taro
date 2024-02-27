@@ -4,9 +4,11 @@ import Taro from '@tarojs/taro';
 import { handleResponse, IHTTPCode, IHTTPResponse } from '@yimoko/store';
 
 // 将 response 处理为统一的 { code, data, message } 格式
-export const httpRequest: <T = any, P = any>(config: IHTTPConfig<P>) => Promise<IHTTPResponse<T>> = async (config) => {
+export const httpRequest: <T = any, P = any>(config: IHTTPConfig<P> & { params?: Record<any, any> }) => Promise<IHTTPResponse<T>> = async (config) => {
   try {
-    const response = await Taro.request({ url: '', ...config }) as any;
+    const { params = {}, data = {}, ...rest } = config;
+    const curData = { ...params, ...data };
+    const response = await Taro.request({ url: '', ...rest, data: curData }) as any;
     return handleResponse(response);
   } catch (e: any) {
     const { response, ...args } = e;
