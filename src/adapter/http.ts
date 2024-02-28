@@ -5,7 +5,7 @@ import { handleResponse, IHTTPCode, IHTTPResponse } from '@yimoko/store';
 
 // 将 response 处理为统一的 { code, data, message } 格式
 // eslint-disable-next-line complexity
-export const httpRequest: <T = any, P = any>(config: IHTTPConfig<P> & { params?: Record<any, any> }) => Promise<IHTTPResponse<T>> = async (config) => {
+export const httpRequest: <T = any, P = any>(config: IHTTPConfig<P>) => Promise<IHTTPResponse<T>> = async (config) => {
   try {
     const { params = {}, data = {}, ...rest } = config;
     const curData = { ...params, ...data };
@@ -54,4 +54,4 @@ export const httpOptions: <R = any, P = any>(url: string, config?: IHTTPConfig<P
 export const httpPost: <R = any, P = Record<any, any>>(url: string, data?: P, config?: IHTTPConfig<P>) => Promise<IHTTPResponse<R>> = (url, data, config) => httpRequest({ ...config, url, data, method: 'POST' });
 export const httpPut: <R = any, P = Record<any, any>>(url: string, data?: P, config?: IHTTPConfig<P>) => Promise<IHTTPResponse<R>> = (url, data, config) => httpRequest({ ...config, url, data, method: 'PUT' });
 
-export type IHTTPConfig<P = any> = Omit<Taro.request.Option<P>, 'url'> & { url?: string };
+export type IHTTPConfig<P = any> = Omit<Taro.request.Option<P>, 'url'> & { url?: string, params?: Record<any, any> };
