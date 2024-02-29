@@ -76,8 +76,10 @@ import { NavBar } from './navigation/nav_bar';
 import { SideNavBar, SideNavBarItem, SubSideNavBar } from './navigation/side_nav_bar';
 import { Tabbar } from './navigation/tabbar';
 import { TabPane, Tabs } from './navigation/tabs';
+import { ComponentType } from 'react';
 
-export const components = {
+export type ComponentRecord = Record<string, ComponentType>;
+export const components: ComponentRecord = {
   // store 相关组件
   StorePageContent,
   Trigger,

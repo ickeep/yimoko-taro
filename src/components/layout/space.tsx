@@ -1,5 +1,6 @@
 import { useFieldSchema } from '@formily/react';
 import { Space as NSpace, SpaceProps } from '@nutui/nutui-react-taro';
+import React from 'react';
 import { isFragment } from 'react-is';
 
 export const Space = (props: Partial<SpaceProps>) => {

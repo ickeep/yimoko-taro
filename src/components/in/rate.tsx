@@ -9,3 +9,5 @@ export const Rate = (props: Partial<NRateProps>) => {
 
   return <NRate {...rest} checkedIcon={curCheckedIcon} uncheckedIcon={curUncheckedIcon} />;
 };
+
+export type RateProps = NRateProps;
