@@ -3,14 +3,14 @@ import { ToastProps as NToastProps, Toast as NToast } from '@nutui/nutui-react-t
 import { Trigger, TriggerProps } from '@yimoko/store';
 import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-export type ToastProps = NToastProps & {
+export type ToastProps = Partial<NToastProps> & {
   // 子组件
   children?: ReactNode,
   // 触发器
   trigger?: TriggerProps,
 };
 
-export const Toast = (props: Partial<ToastProps>) => {
+export const Toast = (props: ToastProps) => {
   const { children, visible, trigger, onClose, ...rest } = props;
   const schema = useFieldSchema();
   const { title } = schema ?? {};

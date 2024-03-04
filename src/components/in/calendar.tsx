@@ -4,7 +4,7 @@ import { Trigger, TriggerProps, judgeIsEmpty } from '@yimoko/store';
 import React, { useCallback, useMemo, useState } from 'react';
 
 
-export type CalendarProps = NCalendarProps & {
+export type CalendarProps = Partial<NCalendarProps> & {
   // 触发器
   trigger?: TriggerProps,
   placeholder?: string,

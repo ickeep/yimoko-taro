@@ -1,4 +1,4 @@
 export default definePageConfig({
-    navigationBarTitleText: '空状态',
-    enableShareAppMessage: true,
+  navigationBarTitleText: '空状态',
+  enableShareAppMessage: true,
 });

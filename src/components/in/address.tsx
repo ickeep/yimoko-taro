@@ -3,7 +3,7 @@ import { AddressProps as NAddressProps, Address as NAddress } from '@nutui/nutui
 import { IOptionsAPIProps, judgeIsEmpty, useAPIOptions, Trigger, TriggerProps } from '@yimoko/store';
 import React, { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-export type AddressProps = NAddressProps & {
+export type AddressProps = Partial<NAddressProps> & {
   // 子组件
   children?: ReactNode,
   // 触发器

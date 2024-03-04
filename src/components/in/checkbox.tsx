@@ -3,7 +3,7 @@ import { CheckboxProps as NCheckboxProps, Checkbox as NCheckbox, CheckboxGroupPr
 import { IOptionsAPIProps, strToArr, useAPIOptions } from '@yimoko/store';
 import React, { useMemo } from 'react';
 
-export interface CheckboxProps extends Omit<NCheckboxProps, 'onChange' | 'value'> {
+export interface CheckboxProps extends Omit<Partial<NCheckboxProps>, 'onChange' | 'value'> {
   onChange?: (value: any,) => void
   values?: { true: any, false: any }
   value?: any

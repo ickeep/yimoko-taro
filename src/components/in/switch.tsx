@@ -1,13 +1,13 @@
 import { Switch as NSwitch, SwitchProps as NSwitchProps } from '@nutui/nutui-react-taro';
 import React, { useMemo } from 'react';
 
-export type SwitchProps = NSwitchProps & {
+export type SwitchProps = Partial<NSwitchProps> & {
   value?: NSwitchProps['checked'],
   onChange?: (val: any) => void,
   values?: { true: unknown, false: unknown },
 };
 
-export const Switch = (props: Partial<SwitchProps>) => {
+export const Switch = (props: SwitchProps) => {
   const { value, onChange, checked, values, ...rest } = props;
 
   const curValue = useMemo(() => {

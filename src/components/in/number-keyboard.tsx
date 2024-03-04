@@ -3,7 +3,7 @@ import { NumberKeyboard as NNumberKeyboard, NumberKeyboardProps as NNumberKeyboa
 import { TriggerProps, Trigger, judgeIsEmpty } from '@yimoko/store';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-export type NumberKeyboardProps = NNumberKeyboardProps & {
+export type NumberKeyboardProps = Partial<NNumberKeyboardProps> & {
   // 触发器
   trigger?: TriggerProps,
   placeholder?: string,
